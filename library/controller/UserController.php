@@ -51,10 +51,54 @@ class UserController
         }
     }
 
+    public function logout()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            session_destroy();
+            header("location:index.php");
+        }
+    }
+
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include 'view/user/register.php';
+        } else {
+            $username = $_POST['username'];
+            $studentId = $_POST['studentId'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $password = $_POST['password'];
+            $re_psw = $_POST['re_psw'];
+
+            $checkId = $this->userDB->checkStudentId($studentId);
+            $checkUser = $this->userDB->checkUsername($username);
+            $checkEmail = $this->userDB->checkEmail($email);
+            $isError = false;
+
+            if ($checkId) {
+                $isError = true;
+                $existId = '* Student ID already exist.';
+            }
+
+            if ($checkUser) {
+                $isError = true;
+                $existUser = '* Username already exist.';
+            }
+
+            if ($checkEmail) {
+                $isError = true;
+                $existEmail = '* Email already exist.';
+            }
+
+            if ($isError) {
+                include 'view/user/register.php';
+            } else {
+                $user = new User($username, $studentId, $email, $phone, $password);
+                $this->userDB->create($user);
+                $success = "Created";
+                include 'view/user/register.php';
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+require 'config.php';
 require "model/database/DBConnect.php";
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
@@ -97,7 +98,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
                         <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
-                        <a class="dropdown-item" href="./index.php?page=logout">Logout</a>
+                        <a class="dropdown-item" href="./admin.php?page=logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -115,14 +116,20 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'register':
             $userController->register();
             break;
+        case 'logout':
+            $userController->logout();
+            break;
     }
-
 
     ?>
 
 </div>
 
 
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -132,9 +139,5 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
