@@ -82,6 +82,9 @@ use controller\BookController;
         case 'listBook':
             $bookController->listBook();
             break;
+        case 'detailsBook':
+            $bookController->details();
+            break;
     }
 
 

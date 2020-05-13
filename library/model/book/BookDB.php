@@ -43,4 +43,16 @@ class BookDB
         }
         return $books;
     }
+
+    public function getBookById($id)
+    {
+        $sql = "SELECT * FROM tblbook WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $result = $stmt->fetch();
+        $book = new Book($result['booktitle'], $result['bookauthors'], $result['subjectid'], $result['mdescription'],
+            $result['publisher'], $result['copyrightyear']);
+        $book->setId($id);
+        return $book;
+    }
 }

@@ -59,6 +59,15 @@ class BookController
     {
         $books = $this->bookDB->getAll();
         include "view/book/listBook.php";
+    }
 
+    public function details()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = $_GET['id'];
+            $book = $this->bookDB->getBookById($id);
+            var_dump($book);
+            include "view/book/editBook.php";
+        }
     }
 }
