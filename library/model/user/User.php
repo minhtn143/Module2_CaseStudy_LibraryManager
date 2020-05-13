@@ -20,6 +20,7 @@ class User
         $this->email = $email;
         $this->phone = $phone;
         $this->password = $password;
+        $this->avatar = $avatar;
     }
 
     /**

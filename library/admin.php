@@ -6,8 +6,12 @@ require "model/database/DBConnect.php";
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
 require 'controller/UserController.php';
+require 'model/Category/Category.php';
+require 'model/Category/CategoryDB.php';
+require 'controller/CategoryController.php';
 
 use controller\UserController;
+use controller\CategoryController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     header("location:./index.php?page=login");
@@ -33,8 +37,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
-        <a class="navbar-brand" href="index.php">Student management system</a>
+        <a class="navbar-brand" href="admin.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,11 +46,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                 <li class="navbar-collapse dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Classes
+                        Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="./index.php?page=add-class">Add Class</a>
-                        <a class="dropdown-item" href="./index.php?page=manage-class">Manage Class</a>
+                        <a class="dropdown-item" href="./admin.php?page=add-category">Add Category</a>
+                        <a class="dropdown-item" href="./index.php?page=manage-class">Manage Category</a>
                     </div>
                 </li>
             </ul>
@@ -108,6 +111,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <div class="container-fluid">
     <?php
     $userController = new UserController();
+    $categoryController = new CategoryController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
         case 'login':
@@ -118,6 +122,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
         case 'logout':
             $userController->logout();
+            break;
+        case 'add-category':
+            $categoryController->add();
             break;
     }
 
