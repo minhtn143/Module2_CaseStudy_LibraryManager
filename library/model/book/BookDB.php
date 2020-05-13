@@ -34,10 +34,11 @@ class BookDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         $books = [];
+
         foreach ($result as $key => $item) {
-            $book = new Book($item->getTitle(), $item->getAuthors(), $item->getSubjectId(), $item->getDescription(),
-                $item->getPublisher(), $item->getCopyrightYear());
-            $book->setId($item->getId());
+            $book = new Book($item['booktitle'], $item['bookauthors'], $item['subjectid'], $item['mdescription'],
+                $item['publisher'], $item['copyrightyear']);
+            $book->setId($item['ID']);
             array_push($books, $book);
         }
         return $books;

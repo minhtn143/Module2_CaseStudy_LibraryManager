@@ -24,9 +24,9 @@
                     <label for="subjectId">Category:</label>
                     <select id="subjectId" class="form-control" name="subjectId">
                         <option selected>Choose...</option>
-                        <option>ad</option>
-                        <option>as</option>
-                        <option>ad</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
                         <option>...</option>
                     </select>
                 </div>

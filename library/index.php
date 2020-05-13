@@ -55,6 +55,9 @@ use controller\BookController;
                 <li class="nav-item">
                     <a href="./index.php?page=addBook" class="nav-link">Add Book</a>
                 </li>
+                <li class="nav-item">
+                    <a href="./index.php?page=listBook" class="nav-link">List Book</a>
+                </li>
             </ul>
         </div>
 
@@ -75,6 +78,10 @@ use controller\BookController;
             break;
         case 'addBook':
             $bookController->add();
+            break;
+        case 'listBook':
+            $bookController->listBook();
+            break;
     }
 
 

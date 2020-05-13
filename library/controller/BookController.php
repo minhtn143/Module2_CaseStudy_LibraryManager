@@ -23,7 +23,7 @@ class BookController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include 'view/book/addBook.php';
         }
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $_REQUEST['booktitle'];
             $author = $_REQUEST['author'];
             $subjectId = $_REQUEST['subjectId'];
@@ -31,16 +31,14 @@ class BookController
             $description = $_REQUEST['description'];
             $copyrightYear = $_REQUEST['copyrightYear'];
 
-            $book = new Book($title,$author,$subjectId,$publisher,$description,$copyrightYear);
+            $book = new Book($title, $author, $subjectId,$description, $publisher, $copyrightYear);
 
-            if ($this->isDuplicate($book)){
+            if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
-                include "library\index.php";
-            }else{
+
+            } else {
                 $this->bookDB->add($book);
-                var_dump($this->bookDB->getAll());
-                die();
-                header("location:index.php");
+                header("location:view/book/listBook.php");
             }
 
         }
@@ -50,10 +48,17 @@ class BookController
     {
         $books = $this->bookDB->getAll();
         foreach ($books as $item) {
-            if ($book->getTitle() == $item->getTitle() && $book->getAuthors() == $item->getAuthors()){
+            if ($book->getTitle() == $item->getTitle() && $book->getAuthors() == $item->getAuthors()) {
                 return true;
             }
         }
         return false;
+    }
+
+    public function listBook()
+    {
+        $books = $this->bookDB->getAll();
+        include "view/book/listBook.php";
+
     }
 }
