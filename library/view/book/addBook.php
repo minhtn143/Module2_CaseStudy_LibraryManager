@@ -1,4 +1,6 @@
 <?php
+
+
 ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">
@@ -20,12 +22,19 @@
 
                 <div class="form-group">
                     <label for="subjectId">Category:</label>
-                    <input type="text" class="form-control" id="subjectId" name="subjectId" placeholder="Category"
-                           required>
+                    <select id="subjectId" class="form-control" name="subjectId">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="publisher">Pulisher:</label>
+                    <label for="publisher">Publisher:</label>
+                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher">
+                </div>
+
+                <div class="form-group">
+                    <label for="publisher">Publisher:</label>
                     <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher">
                 </div>
 

@@ -5,9 +5,15 @@ require "config.php";
 require "model/database/DBConnect.php";
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
+require 'model/book/Book.php';
+require 'model/book/BookDB.php';
+
 require 'controller/UserController.php';
+require 'controller/BookController.php';
+
 
 use controller\UserController;
+use controller\BookController;
 
 ?>
 <!doctype html>
@@ -55,6 +61,7 @@ use controller\UserController;
 <div class="container-fluid">
     <?php
     $userController = new UserController();
+    $bookController = new BookController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
         case 'login':
@@ -63,6 +70,8 @@ use controller\UserController;
         case 'register':
             $userController->register();
             break;
+        case 'addBook':
+            $bookController->add();
     }
 
 
