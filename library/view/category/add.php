@@ -1,14 +1,6 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        $(function () {
-            Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: 'Successfully Added',
-                showConfirmButton: false,
-                timer: 1000
-            })
-        });
+        myAlert('top', 'success', 'Successfully Added', 1000,'./admin.php?page=add-category');
     </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">

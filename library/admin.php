@@ -36,7 +36,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
@@ -148,6 +148,5 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

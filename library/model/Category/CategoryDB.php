@@ -41,8 +41,9 @@ class CategoryDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         $categories = [];
-        foreach ($categories as $category) {
-            $category = new  Category($result['subjectname'], $result['description']);
+        foreach ($result as $value) {
+            $category = new  Category($value['subjectname'], $value['description']);
+            $category->setId($value['ID']);
             array_push($categories,$category);
         }
         return $categories;

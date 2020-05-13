@@ -1,16 +1,6 @@
-<?php if (isset($success)): ?>
+<?php if (!isset($success)): ?>
     <script type="text/javascript">
-        $(function () {
-            Swal.fire({
-                // position: 'top',
-                icon: 'success',
-                title: 'Successfully Registered',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function () {
-                window.location = 'index.php';
-            })
-        });
+        myAlert('top','success','Successfully Registered',1500,'index.php');
     </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">

@@ -16,6 +16,14 @@ class Category
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @param mixed $name
      */
     public function setName($name)
