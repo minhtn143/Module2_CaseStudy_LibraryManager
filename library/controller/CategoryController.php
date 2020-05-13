@@ -39,4 +39,12 @@ class CategoryController
             }
         }
     }
+
+    public function index()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $categories = $this->categoryDB->getAll();
+            include 'view/category/list.php';
+        }
+    }
 }

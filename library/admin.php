@@ -54,7 +54,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="./admin.php?page=add-category">Add Category</a>
-                        <a class="dropdown-item" href="./index.php?page=manage-class">Manage Category</a>
+                        <a class="dropdown-item" href="./admin.php?page=manage-category">Manage Category</a>
                     </div>
                 </li>
             </ul>
@@ -129,6 +129,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
         case 'add-category':
             $categoryController->add();
+            break;
+        case 'manage-category':
+            $categoryController->index();
             break;
     }
 

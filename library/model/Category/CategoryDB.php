@@ -16,7 +16,7 @@ class CategoryDB
 
     public function create($category)
     {
-        $sql = "INSERT INTO tblsubject(subjectname,desrciption)
+        $sql = "INSERT INTO tblsubject(subjectname,description)
                 VALUES (?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
@@ -32,5 +32,19 @@ class CategoryDB
         $stmt->bindParam(1, $categoryName);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    public function getAll()
+    {
+        $sql = "SELECT * FROM tblsubject";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $categories = [];
+        foreach ($categories as $category) {
+            $category = new  Category($result['subjectname'], $result['description']);
+            array_push($categories,$category);
+        }
+        return $categories;
     }
 }
