@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+require "config.php";
 require "model/database/DBConnect.php";
 require 'model/user/User.php';
 require 'model/user/UserDB.php';

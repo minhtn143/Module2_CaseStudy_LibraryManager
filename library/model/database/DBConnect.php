@@ -13,9 +13,9 @@ class DBConnect
 
     public function __construct()
     {
-        $this->dsn = 'mysql:host=localhost;dbname=library';
-        $this->username = 'root';
-        $this->password = 'password';
+        $this->dsn = DSN;
+        $this->username = USER;
+        $this->password = PASSWORD;
     }
 
     public function connect()
