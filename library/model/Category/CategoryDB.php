@@ -25,5 +25,12 @@ class CategoryDB
         ]);
     }
 
-
+    public function checkCategoryName($categoryName)
+    {
+        $sql = "SELECT subjectname FROM tblsubject WHERE subjectname = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $categoryName);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }

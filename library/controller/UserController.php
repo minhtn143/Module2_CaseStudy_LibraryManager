@@ -69,7 +69,6 @@ class UserController
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $password = $_POST['password'];
-            $re_psw = $_POST['re_psw'];
 
             $checkId = $this->userDB->checkStudentId($studentId);
             $checkUser = $this->userDB->checkUsername($username);

@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <label for="studentId">Student ID:</label>
-                        <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Username">
+                        <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Student ID">
                         <div class="idErr error"></div>
                         <span class="error"><?php if (isset($existId)) {
                                 echo $existId;
@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Username">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                         <div class="emailErr error"></div>
                         <span class="error"><?php if (isset($existEmail)) {
                                 echo $existEmail;
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <label for="phone">Phone:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Username">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
                         <div class="phoneErr error"></div>
                     </div>
 

@@ -180,4 +180,3 @@ function confirmDel(url_link) {
         }
     })
 }
-
