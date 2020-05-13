@@ -31,7 +31,7 @@ class BookController
             $description = $_REQUEST['description'];
             $copyrightYear = $_REQUEST['copyrightYear'];
 
-            $book = new Book($title, $author, $subjectId,$description, $publisher, $copyrightYear);
+            $book = new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
 
             if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
@@ -61,13 +61,18 @@ class BookController
         include "view/book/listBook.php";
     }
 
-    public function details()
+    public function delete()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = $_GET['id'];
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($_REQUEST['confirm'])) {
+            $id = $_REQUEST['bookId'];
             $book = $this->bookDB->getBookById($id);
-            var_dump($book);
-            include "view/book/editBook.php";
+            include "view/book/deleteBook.php";
+        } else {
+            $id = $_REQUEST['confirm'];
+            $this->bookDB->deleteBook($id);
+            header("location:index.php");
         }
     }
+
 }

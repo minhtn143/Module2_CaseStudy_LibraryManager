@@ -55,4 +55,11 @@ class BookDB
         $book->setId($id);
         return $book;
     }
+
+    public function deleteBook($id)
+    {
+        $sql = "DELETE FROM tblbook WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+    }
 }

@@ -70,6 +70,9 @@ use controller\BookController;
     $bookController = new BookController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
+        default:
+            $bookController->listBook();
+            break;
         case 'login':
             $userController->login();
             break;
@@ -79,11 +82,8 @@ use controller\BookController;
         case 'addBook':
             $bookController->add();
             break;
-        case 'listBook':
-            $bookController->listBook();
-            break;
-        case 'detailsBook':
-            $bookController->details();
+        case 'deleteBook':
+            $bookController->delete();
             break;
     }
 

@@ -38,9 +38,7 @@
 
     <!--    display2-->
 
-    <?php foreach ($books
-
-                   as $key => $book): ?>
+    <?php foreach ($books as $key => $book): ?>
         <div class="card">
             <h4 class="card-header">
                 <i><?php echo ++$key; ?>.</i>
@@ -91,9 +89,9 @@
                             </div>
                             <div class="modal-footer">
 
-                                <a class="btn btn-primary" href="./index.php?page=update&id=<?php echo $book->getId(); ?>"
+                                <a class="btn btn-primary" href="./index.php?page=editBook&bookId=<?php echo $book->getId(); ?>"
                                    role="button">Edit</a>
-                                <a class="btn btn-danger" href="./index?page=delete&id=<?php echo $book->getId(); ?>"
+                                <a class="btn btn-danger" href="./index.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>"
                                    role="button">Delete</a>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
