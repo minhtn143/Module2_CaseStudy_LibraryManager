@@ -9,6 +9,7 @@ require 'controller/UserController.php';
 
 use controller\UserController;
 
+//var_dump($_SESSION['isLogin']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,48 +33,141 @@ use controller\UserController;
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
-        <a class="navbar-brand" href="index.php">Student management system</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto mr-5">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link active">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.php?page=login" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.php?page=register" class="nav-link">Register</a>
-                </li>
-            </ul>
+<?php if (!isset($_SESSION['isLogin']) && !isset($_SESSION['role'])): ?>
+    <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
+        <div class="container-fluid">
+            <!--        BRAND LOGO-->
+            <a class="navbar-brand" href="index.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
+
+            <!--            TOGGLE-BUTTON-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--            OPTIONAL-->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./index.php?page=login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./index.php?page=register" class="nav-link">Register</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+<?php elseif ($_SESSION['role'] == 5): ?>
+    <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
+        <!--        BRAND LOGO-->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="admin.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
 
+            <!--            TOGGLE-BUTTON-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <!--                OPTIONAL-->
+                <!--                <ul class="navbar-nav ml-auto">-->
+                <!--                    <li class="navbar-collapse dropdown">-->
+                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
+                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                            Category-->
+                <!--                        </a>-->
+                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                <!--                            <a class="dropdown-item" href="./admin.php?page=add-category">Add Category</a>-->
+                <!--                            <a class="dropdown-item" href="./admin.php?page=manage-category">Manage Category</a>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+                <!--                <ul class="navbar-nav">-->
+                <!--                    <li class="navbar-collapse dropdown">-->
+                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
+                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                            Students-->
+                <!--                        </a>-->
+                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Student</a>-->
+                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Student</a>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+                <!--                <ul class="navbar-nav">-->
+                <!--                    <li class="navbar-collapse dropdown">-->
+                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
+                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                            Scores-->
+                <!--                        </a>-->
+                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Score</a>-->
+                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Score</a>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+                <!--                <ul class="navbar-nav">-->
+                <!--                    <li class="navbar-collapse dropdown">-->
+                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
+                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                            Subjects-->
+                <!--                        </a>-->
+                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>-->
+                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
 
-    </div>
-</nav>
+                <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="navbar-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $_SESSION['username']; ?>
+                            <img src="<?php echo 'image/' . $_SESSION['avatar']; ?>" class="avatar"
+                                 alt="">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
+                            <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
+                            <a class="dropdown-item" href="./index.php?page=logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<?php endif; ?>
 <div class="container-fluid">
     <?php
     $userController = new UserController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
-    switch ($page) {
-        case 'login':
-            $userController->login();
-            break;
-        case 'register':
-            $userController->register();
-            break;
-        case 'logout':
-            $userController->logout();
-            break;
+    if (!isset($_SESSION['isLogin'])) {
+        switch ($page) {
+            case 'login':
+                $userController->login();
+                break;
+            case 'register':
+                $userController->register();
+                break;
+            default:
+        }
+    } else {
+        switch ($page) {
+            case 'logout':
+                $userController->logout();
+                break;
+            case 'change-psw':
+                $userController->changePsw();
+                break;
+        }
     }
 
-    ?>
 
+    ?>
 </div>
 
 

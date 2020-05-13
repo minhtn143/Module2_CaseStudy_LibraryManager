@@ -12,6 +12,7 @@ class User
     protected $password;
     protected $avatar;
     protected $role;
+    protected $status;
 
     public function __construct($username, $studentId, $email, $phone, $password, $avatar = 'default.png')
     {
@@ -77,6 +78,14 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     /**
@@ -151,4 +160,11 @@ class User
         return $this->avatar;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

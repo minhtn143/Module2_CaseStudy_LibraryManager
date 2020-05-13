@@ -12,6 +12,11 @@
                         <?php echo "$errLogin"; ?>
                     </div>
                 <?php endif; ?>
+                <?php if (isset($block)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo "$block"; ?>
+                    </div>
+                <?php endif; ?>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label>

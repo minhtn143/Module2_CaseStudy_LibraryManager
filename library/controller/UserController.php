@@ -24,8 +24,9 @@ class UserController
             $username = $_POST['username'];
             $password = $_POST['password'];
 
+            $status = $this->userDB->checkStatus($username);
             $isLogin = $this->userDB->userLogin($username, $password);
-            if ($isLogin) {
+            if ($isLogin && $status) {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
@@ -44,8 +45,11 @@ class UserController
                         session_destroy();
                         include 'view/user/login.php';
                 }
-            } else {
+            } elseif (!$isLogin) {
                 $errLogin = '* Incorrect username or password.';
+                include 'view/user/login.php';
+            } else {
+                $block = '* Your account has been locked, contact with admin to unlock the account.';
                 include 'view/user/login.php';
             }
         }
@@ -97,6 +101,27 @@ class UserController
                 $this->userDB->create($user);
                 $success = "Created";
                 include 'view/user/register.php';
+            }
+        }
+    }
+
+    public function changePsw()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            include 'view/user/change-psw.php';
+        } else {
+            $cur_psw = $_REQUEST['cur_psw'];
+            $new_psw = $_REQUEST['new_psw'];
+            $re_psw = $_REQUEST['re_psw'];
+
+            if ($cur_psw !== $_SESSION['password']) {
+                $errChange = '* Wrong current password.';
+                include 'view/user/change-psw.php';
+            } else {
+                $username = $_SESSION['username'];
+                $this->userDB->changePsw($username, $new_psw);
+                session_destroy();
+//                header("location:index.php?page=login");
             }
         }
     }

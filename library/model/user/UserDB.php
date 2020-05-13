@@ -82,4 +82,23 @@ class UserDB
         return $stmt->fetch();
     }
 
+    public function checkStatus($username)
+    {
+        $sql = "SELECT status FROM tblborrower WHERE username = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$username]);
+        $result = $stmt->fetch();
+        $status = $result['status'];
+        if ($status == 'active') {
+            return true;
+        } else
+            return false;
+    }
+
+    public function changePsw($username, $password)
+    {
+        $sql = "UPDATE tblborrower SET password = ? WHERE username = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$password, $username]);
+    }
 }
