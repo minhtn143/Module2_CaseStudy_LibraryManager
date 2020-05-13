@@ -52,6 +52,9 @@ use controller\BookController;
                 <li class="nav-item">
                     <a href="./index.php?page=register" class="nav-link">Register</a>
                 </li>
+                <li class="nav-item">
+                    <a href="./index.php?page=addBook" class="nav-link">Add Book</a>
+                </li>
             </ul>
         </div>
 

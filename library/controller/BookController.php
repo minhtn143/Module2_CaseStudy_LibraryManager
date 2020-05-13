@@ -35,10 +35,12 @@ class BookController
 
             if ($this->isDuplicate($book)){
                 $errDuplicate = "Book has been library!";
-                include "library/index.php";
+                include "library\index.php";
             }else{
                 $this->bookDB->add($book);
-                include "library/index.php";
+                var_dump($this->bookDB->getAll());
+                die();
+                header("location:index.php");
             }
 
         }

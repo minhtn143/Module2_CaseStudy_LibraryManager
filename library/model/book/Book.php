@@ -8,16 +8,16 @@ class Book
     protected $authors;
     protected $subjectId;
     protected $description;
-    protected $pulisher;
+    protected $publisher;
     protected $copyrightYear;
 
-    public function __construct($title, $authors, $subjectId, $description, $pulisher, $copyrightYear)
+    public function __construct($title, $authors, $subjectId, $description, $publisher, $copyrightYear)
     {
         $this->title = $title;
         $this->authors = $authors;
         $this->subjectId = $subjectId;
         $this->description = $description;
-        $this->pulisher = $pulisher;
+        $this->publisher = $publisher;
         $this->copyrightYear = $copyrightYear;
     }
 
@@ -118,19 +118,19 @@ class Book
     }
 
     /**
-     * @param mixed $pulisher
+     * @param mixed $publisher
      */
-    public function setPulisher($pulisher)
+    public function setPublisher($publisher)
     {
-        $this->pulisher = $pulisher;
+        $this->publisher = $publisher;
     }
 
     /**
      * @return mixed
      */
-    public function getPulisher()
+    public function getPublisher()
     {
-        return $this->pulisher;
+        return $this->publisher;
     }
 
 }
