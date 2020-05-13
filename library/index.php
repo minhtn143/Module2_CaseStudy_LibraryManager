@@ -31,7 +31,23 @@ use controller\UserController;
 <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
-
+        <a class="navbar-brand" href="index.php">Student management system</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto mr-5">
+                <li class="nav-item">
+                    <a href="index.php" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./index.php?page=login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./index.php?page=register" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
 
 
     </div>
