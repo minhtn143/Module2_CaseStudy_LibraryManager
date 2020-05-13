@@ -133,6 +133,12 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'manage-category':
             $categoryController->index();
             break;
+        case 'edit-category':
+            $categoryController->update();
+            break;
+        case'delete-category':
+            $categoryController->delete();
+            break;
     }
 
     ?>

@@ -4,7 +4,7 @@
 <div class="col-md-8 ml-auto mr-auto">
     <div class="card bg-light my-5">
         <div class="card-header bg-primary text-white">
-            <h3>Add Category</h3>
+            <h3>List Categories</h3>
         </div>
         <div class="card-body">
             <div class="row justify-content-center">
