@@ -163,6 +163,9 @@ use controller\UserController;
             case 'change-psw':
                 $userController->changePsw();
                 break;
+            case 'edit-profile':
+                $userController->edit();
+                break;
         }
     }
 

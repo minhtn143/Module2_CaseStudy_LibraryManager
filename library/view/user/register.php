@@ -1,4 +1,4 @@
-<?php if (!isset($success)): ?>
+<?php if (isset($success)): ?>
     <script type="text/javascript">
         myAlert('top','success','Successfully Registered',1500,'index.php');
     </script>
@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
         <div class="row justify-content-center">
-            <div class="col-md-7 col-xs-12 col-sm-6 my-3">
+            <div class="col-md-8 col-xs-12 col-sm-6 my-3">
                 <form action="" id="register-form" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label>

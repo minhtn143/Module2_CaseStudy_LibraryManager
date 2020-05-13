@@ -120,9 +120,58 @@ class UserController
             } else {
                 $username = $_SESSION['username'];
                 $this->userDB->changePsw($username, $new_psw);
+                $success = true;
                 session_destroy();
-//                header("location:index.php?page=login");
+                include 'view/user/change-psw.php';
             }
+        }
+    }
+
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $user = $this->userDB->get($_SESSION['username']);
+            include 'view/user/edit-profile.php';
+        } else {
+            $username = $_SESSION['username'];
+            $fullName = $_POST['fullName'];
+            $dob = $_POST['dob'];
+            $gender = $_POST['gender'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            $avatar = $_FILES['avatar']['name'];
+            $data = [
+                'fullname' => $fullName,
+                'phone' => $phone,
+                'address' => $address,
+                'dob' => $dob,
+                'gender' => $gender,
+                'avatar' => $_SESSION['avatar'],
+                'username' => $username
+            ];
+
+            $user = $this->userDB->get($_SESSION['username']);
+            $cur_avatar = $user->getAvatar();
+            if (!empty($avatar)) {
+                $target_dir = "image/";
+                if ($cur_avatar !== 'default.png') {
+                    $avatar_del = $target_dir . $cur_avatar;
+                    unlink($avatar_del);
+                    $avatar_name = basename(time() . '_' . $avatar);
+                    $target_file = $target_dir . $avatar_name;
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file);
+                    $data['avatar'] = $avatar_name;
+                    $_SESSION['avatar'] = $avatar_name;
+                } else {
+                    $avatar_name = basename(time() . '_' . $avatar);
+                    $target_file = $target_dir . $avatar_name;
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file);
+                    $data['avatar'] = $avatar_name;
+                    $_SESSION['avatar'] = $avatar_name;
+                }
+            }
+            $this->userDB->updateProfile($data);
+            header("location:index.php");
         }
     }
 }

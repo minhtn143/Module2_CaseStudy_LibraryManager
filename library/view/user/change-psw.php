@@ -1,5 +1,8 @@
-<?php
-?>
+<?php if (isset($success)): ?>
+<script>
+    myAlert('center','success','Change password successfully.\n Please re-login.',1800,'./index.php');
+</script>
+<?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">
         <h3>Change Password</h3>
@@ -7,16 +10,6 @@
     <div class="card-body">
         <div class="row justify-content-center">
             <div class="col-md-6 col-xs-12 col-sm-6 my-3">
-                <?php if (isset($errLogin)): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo "$errLogin"; ?>
-                    </div>
-                <?php endif; ?>
-                <?php if (isset($block)): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo "$block"; ?>
-                    </div>
-                <?php endif; ?>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="cur_psw">Current password:</label>

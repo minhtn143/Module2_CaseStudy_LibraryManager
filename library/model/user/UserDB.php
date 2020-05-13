@@ -38,6 +38,10 @@ class UserDB
         $user = new User($row['username'], $row['studentid'], $row['email'], $row['phone'], $row['password'], $row['avatar']);
         $user->setRole($row['role']);
         $user->setId($row['ID']);
+        $user->setFullname($row['fullname']);
+        $user->setAddress($row['address']);
+        $user->setDob($row['dob']);
+        $user->setGender($row['gender']);
         return $user;
     }
 
@@ -100,5 +104,12 @@ class UserDB
         $sql = "UPDATE tblborrower SET password = ? WHERE username = ?";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$password, $username]);
+    }
+
+    public function updateProfile($data)
+    {
+        $sql = "UPDATE tblborrower SET fullname = :fullname, phone = :phone, address = :address, dob = :dob, gender = :gender, avatar = :avatar WHERE username = :username";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute($data);
     }
 }
