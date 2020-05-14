@@ -106,20 +106,37 @@ class UserDB
         return $stmt->execute($data);
     }
 
+    public function getAll()
+    {
+        $sql = "SELECT * FROM tblborrower";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $users = [];
+        foreach ($result as $item) {
+            $user = $this->createUserFromDB($item);
+            array_push($users, $user);
+        }
+
+        return $users;
+    }
+
     /**
      * @param $row
      * @return User
      */
-    public function creatUserFromDB($row): User
+    public function createUserFromDB($row): User
     {
-        $user = new User($row['username'], $row['studentid'], $row['email'], $row['phone'], $row['password'], $row['avatar']);
+        $user = new User($row['username'], $row['studentid'], $row['email'], $row['phone'], $row['password'],
+            $row['avatar']);
         $user->setRole($row['role']);
         $user->setId($row['ID']);
         $user->setFullname($row['fullname']);
         $user->setAddress($row['address']);
         $user->setDob($row['dob']);
         $user->setGender($row['gender']);
-        $user->setStatus($row);
+        $user->setStatus($row['status']);
         return $user;
     }
+
 }

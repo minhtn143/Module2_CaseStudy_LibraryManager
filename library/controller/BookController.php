@@ -29,14 +29,7 @@ class BookController
             include 'view/book/addBook.php';
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $title = $_REQUEST['booktitle'];
-            $author = $_REQUEST['author'];
-            $subjectId = $_REQUEST['subjectId'];
-            $publisher = $_REQUEST['publisher'];
-            $description = $_REQUEST['description'];
-            $copyrightYear = $_REQUEST['copyrightYear'];
-
-            $book = new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
+            $book = $this->createBookFromDB();
             if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
                 include 'view/book/addBook.php';
@@ -86,14 +79,7 @@ class BookController
             include "view/book/editBook.php";
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $title = $_REQUEST['booktitle'];
-            $author = $_REQUEST['author'];
-            $subjectId = $_REQUEST['subjectId'];
-            $publisher = $_REQUEST['publisher'];
-            $description = $_REQUEST['description'];
-            $copyrightYear = $_REQUEST['copyrightYear'];
-
-            $book = new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
+            $book = $this->createBookFromDB();
             $book->setId($_REQUEST['bookId']);
             if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
@@ -106,6 +92,21 @@ class BookController
             }
 
         }
+    }
+
+    /**
+     * @return Book
+     */
+    public function createBookFromDB(): Book
+    {
+        $title = $_REQUEST['booktitle'];
+        $author = $_REQUEST['author'];
+        $subjectId = $_REQUEST['subjectId'];
+        $publisher = $_REQUEST['publisher'];
+        $description = $_REQUEST['description'];
+        $copyrightYear = $_REQUEST['copyrightYear'];
+
+        return new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
     }
 
 }

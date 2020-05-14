@@ -175,4 +175,10 @@ class UserController
             header("location:$url_return");
         }
     }
+
+    public function listUsers()
+    {
+            $users = $this->userDB->getAll();
+            include "view/user/list-users.php";
+    }
 }

@@ -109,8 +109,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                              alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="./admin.php?page=edit-profile">Edit Profile</a>
-                        <a class="dropdown-item" href="./admin.php?page=change-psw">Change Password</a>
+                        <a class="dropdown-item" href="./admin.php?page=list-users">List Users</a>
+                        <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
+                        <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
                         <a class="dropdown-item" href="./admin.php?page=logout">Logout</a>
                     </div>
                 </li>
@@ -125,11 +126,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     $categoryController = new CategoryController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
-        case 'edit-profile':
-            $userController->edit('admin.php');
+        case 'login':
+            $userController->login();
             break;
-        case 'change-psw':
-            $userController->changePsw();
+        case 'register':
+            $userController->register();
             break;
         case 'logout':
             $userController->logout();
@@ -154,6 +155,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
             case 'editBook':
             $bookController->edit();
+            break;
+        case 'list-users':
+            $userController->listUsers();
             break;
         default:
             $bookController->listBook();

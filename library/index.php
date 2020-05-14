@@ -3,6 +3,7 @@ session_start();
 
 require 'config.php';
 require "model/database/DBConnect.php";
+
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
 require 'model/ticket/Ticket.php';
@@ -12,6 +13,10 @@ require 'model/book/BookDB.php';
 
 require 'controller/BookController.php';
 require 'controller/UserController.php';
+
+use controller\UserController;
+use controller\CategoryController;
+use controller\BookController;
 require 'controller/TicketController.php';
 
 use controller\UserController;
@@ -152,6 +157,7 @@ use controller\TicketController;
     <?php
     $ticketController = new TicketController();
     $userController = new UserController();
+    $bookController = new BookController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     if (!isset($_SESSION['isLogin'])) {
         switch ($page) {
@@ -161,6 +167,7 @@ use controller\TicketController;
             case 'register':
                 $userController->register();
                 break;
+            default:
         }
     } else {
         switch ($page) {
