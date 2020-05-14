@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th5 14, 2020 lúc 02:32 PM
+-- Thời gian đã tạo: Th5 15, 2020 lúc 01:32 AM
 -- Phiên bản máy phục vụ: 8.0.20-0ubuntu0.20.04.1
 -- Phiên bản PHP: 7.4.3
 
@@ -44,7 +44,6 @@ CREATE TABLE `tblbook` (
 INSERT INTO `tblbook` (`ID`, `booktitle`, `bookauthors`, `subjectid`, `mdescription`, `publisher`, `copyrightyear`) VALUES
 (4, 'Số đỏ', 'Vũ Trọng Phụng', NULL, '123123', 'Kim ĐỒng', 1992),
 (5, 'Số đỏ', 'Vũ Trọng Phụng', NULL, '123123', 'Kim ĐỒng', 1992),
-(6, 'Số đỏ', 'Vũ Trọng Phụng', NULL, '123123', 'Kim ĐỒng', 1992),
 (7, 'Số đỏ', 'Vũ Trọng Phụng', NULL, '123123', 'Kim ĐỒng', 1992),
 (9, 'Doremon', 'Vũ Trọng Phụng', 5, '', '', 0),
 (10, 'Số đỏ', 'honda', 5, '', '', 0),
@@ -65,6 +64,14 @@ CREATE TABLE `tblborrowedbook` (
   `borrowerid` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tblborrowedbook`
+--
+
+INSERT INTO `tblborrowedbook` (`ID`, `bookid`, `dateborrowed`, `duedate`, `datereturned`, `borrowerid`) VALUES
+(80, 4, '2020-05-14', '2020-06-13', NULL, 4),
+(81, 9, '2020-05-14', '2020-06-13', NULL, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -74,14 +81,14 @@ CREATE TABLE `tblborrowedbook` (
 CREATE TABLE `tblborrower` (
   `ID` int NOT NULL,
   `fullname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `studentid` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `studentid` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `gender` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'male',
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `gender` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'male',
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
   `role` int DEFAULT '5',
   `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'active'
@@ -92,10 +99,10 @@ CREATE TABLE `tblborrower` (
 --
 
 INSERT INTO `tblborrower` (`ID`, `fullname`, `username`, `studentid`, `email`, `phone`, `address`, `dob`, `gender`, `password`, `avatar`, `role`, `status`) VALUES
-(1, '', 'hieu1992', '', '', NULL, '', NULL, 'male', 'hieuanh92!A', 'default.png', 5, 'deactive'),
-(2, '', 'admin', '', '', NULL, '', NULL, 'male', '123456', 'default.png', 1, 'active'),
+(1, 'anh', 'hieu1992', '', '', NULL, '', NULL, 'male', 'hieuanh92!A', 'default.png', 5, 'deactive'),
+(2, 'anh nguyen', 'admin', '', '', '0987656432', 'Đào Tấn', '2020-05-04', 'female', 'hieuanh92!A', 'default.png', 1, 'active'),
 (3, '', 'admin1', '', '', NULL, '', NULL, 'male', '123456', NULL, 5, 'active'),
-(4, 'Anh Nguyễn', 'hieuanh92', 'h12', 'hieu132@gmail.com', '0987611111', 'Đào Tấn', '1992-09-09', 'male', 'hieuanh92!AS', '1589417697_AdobeStock_313222349_Preview.jpg', 5, 'active'),
+(4, 'Anh Nguyễn', 'hieuanh92', 'h12', 'hieu132@gmail.com', '', '', '1992-09-09', 'male', 'hieuanh92!AS', '1589417697_AdobeStock_313222349_Preview.jpg', 5, 'active'),
 (5, '', 'hoang1234', 'h111', 'hoang@gmail.com', '0987654342', '', NULL, 'male', 'hieuanh92!A', NULL, 5, 'active'),
 (6, NULL, 'hung123456', 'hu12', 'hung@gmail.com', '0987654342', NULL, NULL, 'male', 'hieuanh92!A', NULL, 5, 'active');
 
@@ -164,7 +171,7 @@ ALTER TABLE `tblbook`
 -- AUTO_INCREMENT cho bảng `tblborrowedbook`
 --
 ALTER TABLE `tblborrowedbook`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT cho bảng `tblborrower`
