@@ -181,3 +181,14 @@ function confirmDel(url_link) {
     })
 }
 
+function myAlert(posit, icon, txt, delay, next_url) {
+    Swal.fire({
+        position: posit,
+        icon: icon,
+        title: txt,
+        showConfirmButton: false,
+        timer: delay
+    }).then(function () {
+        window.location = next_url;
+    })
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th5 13, 2020 lúc 10:50 AM
+-- Thời gian đã tạo: Th5 14, 2020 lúc 08:27 AM
 -- Phiên bản máy phục vụ: 8.0.20-0ubuntu0.20.04.1
 -- Phiên bản PHP: 7.4.3
 
@@ -60,21 +60,30 @@ CREATE TABLE `tblborrowedbook` (
 
 CREATE TABLE `tblborrower` (
   `ID` int NOT NULL,
+  `fullname` varchar(100) NOT NULL,
   `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `studentid` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `address` varchar(100) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `gender` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'male',
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `avatar` varchar(100) DEFAULT NULL,
-  `role` int DEFAULT '5'
+  `role` int DEFAULT '5',
+  `status` varchar(10) NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblborrower`
 --
 
-INSERT INTO `tblborrower` (`ID`, `username`, `studentid`, `email`, `phone`, `password`, `avatar`, `role`) VALUES
-(1, 'hieu1992', '', '', NULL, 'hieuanh92!A', NULL, 5);
+INSERT INTO `tblborrower` (`ID`, `fullname`, `username`, `studentid`, `email`, `phone`, `address`, `dob`, `gender`, `password`, `avatar`, `role`, `status`) VALUES
+(1, '', 'hieu1992', '', '', NULL, '', NULL, 'male', 'hieuanh92!A', 'default.png', 5, 'deactive'),
+(2, '', 'admin', '', '', NULL, '', NULL, 'male', '123456', 'default.png', 1, 'active'),
+(3, '', 'admin1', '', '', NULL, '', NULL, 'male', '123456', NULL, 5, 'active'),
+(4, 'Anh Nguyễn', 'hieuanh92', 'h12', 'hieu132@gmail.com', '0987611111', 'Đào Tấn', '1992-09-09', 'male', 'hieuanh92!AS', '1589417697_AdobeStock_313222349_Preview.jpg', 5, 'active'),
+(5, '', 'hoang1234', 'h111', 'hoang@gmail.com', '0987654342', '', NULL, 'male', 'hieuanh92!A', NULL, 5, 'active');
 
 -- --------------------------------------------------------
 
@@ -85,8 +94,15 @@ INSERT INTO `tblborrower` (`ID`, `username`, `studentid`, `email`, `phone`, `pas
 CREATE TABLE `tblsubject` (
   `ID` int NOT NULL,
   `subjectname` varchar(255) DEFAULT NULL,
-  `desription` text
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tblsubject`
+--
+
+INSERT INTO `tblsubject` (`ID`, `subjectname`, `description`) VALUES
+(5, 'Drama', 'Drama depends a lot on realistic characters dealing with emotional themes, such as: alcoholism, drug addiction, infidelity, morals, racism, religion, intolerance, sexuality, poverty, class issues, violence, and corruption [society or natural disasters can even be thrown in from time to time]. Drama often crosses over and meshes with other genres');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -139,13 +155,13 @@ ALTER TABLE `tblborrowedbook`
 -- AUTO_INCREMENT cho bảng `tblborrower`
 --
 ALTER TABLE `tblborrower`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `tblsubject`
 --
 ALTER TABLE `tblsubject`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

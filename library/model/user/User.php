@@ -5,13 +5,18 @@ namespace model;
 class User
 {
     protected $id;
+    protected $fullname;
     protected $username;
     protected $studentId;
+    protected $dob;
+    protected $gender;
     protected $email;
     protected $phone;
+    protected $address;
     protected $password;
     protected $avatar;
     protected $role;
+    protected $status;
 
     public function __construct($username, $studentId, $email, $phone, $password, $avatar = 'default.png')
     {
@@ -20,6 +25,7 @@ class User
         $this->email = $email;
         $this->phone = $phone;
         $this->password = $password;
+        $this->avatar = $avatar;
     }
 
     /**
@@ -76,6 +82,14 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     /**
@@ -148,6 +162,78 @@ class User
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @param mixed $dob
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+    }
+
+    /**
+     * @param mixed $fullname
+     */
+    public function setFullname($fullname)
+    {
+        $this->fullname = $fullname;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFullname()
+    {
+        return $this->fullname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 
 }
