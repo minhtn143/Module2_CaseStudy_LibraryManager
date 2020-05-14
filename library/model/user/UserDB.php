@@ -108,7 +108,7 @@ class UserDB
 
     public function getAll()
     {
-        $sql = "SELECT * FROM tblborrowed";
+        $sql = "SELECT * FROM tblborrower";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -117,6 +117,7 @@ class UserDB
             $user = $this->createUserFromDB($item);
             array_push($users, $user);
         }
+
         return $users;
     }
 

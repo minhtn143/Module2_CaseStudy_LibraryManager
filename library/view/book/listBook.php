@@ -66,9 +66,7 @@
                                                    role="button">Edit</a>
                                                 <a style="color: #ff0000"><i class="far fa-trash-alt"
                                                                              onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"></i></a>
-                                                <!--                                            <a class="btn btn-danger"-->
-                                                <!--                                               "-->
-                                                <!--                                               role="button">Delete</a>-->
+
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>

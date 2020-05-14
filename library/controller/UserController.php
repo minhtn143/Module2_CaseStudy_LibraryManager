@@ -177,9 +177,7 @@ class UserController
 
     public function listUsers()
     {
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            $this->userDB->getAll();
-
-        }
+            $users = $this->userDB->getAll();
+            include "view/user/list-users.php";
     }
 }
