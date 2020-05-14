@@ -39,7 +39,7 @@ class UserController
                         header("location:admin.php");
                         break;
                     case 5:
-                        header("location:listBook.php");
+                        header("location:index.php");
                         break;
                     default:
                         session_destroy();
@@ -59,7 +59,7 @@ class UserController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             session_destroy();
-            header("location:index.php");
+            header("location:index.php?page=login");
         }
     }
 

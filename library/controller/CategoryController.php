@@ -50,23 +50,13 @@ class CategoryController
 
     public function update()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $id = $_GET['id'];
-            $category = $this->categoryDB->get($id);
-            include 'view/category/edit.php';
-        } else {
-            $checkName = $this->categoryDB->checkCategoryName($_POST['category']);
-            if ($checkName) {
-                $_SESSION['nameExist'] = "* Category already exist.";
-                echo "<script>window.history.back()</script>";
-            } else {
-                $id = $_POST['id'];
-                $category = new Category($_POST['category'], $_POST['description']);
-                $this->categoryDB->update($id, $category);
-                unset($_SESSION['nameExist']);
-                $updateComplete = true;
-                include 'view/category/edit.php';
-            }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $category = new Category($_POST['category'], $_POST['description']);
+            $this->categoryDB->update($id, $category);
+            $categories = $this->categoryDB->getAll();
+            $updateComplete = true;
+            include 'view/category/list.php';
         }
     }
 
