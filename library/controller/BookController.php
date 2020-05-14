@@ -77,4 +77,35 @@ class BookController
         }
     }
 
+    public function edit()
+    {
+        $id= $_REQUEST['bookId'];
+        $category = $this->categoryDB->getAll();
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $book = $this->bookDB->getBookById($id);
+            include "view/book/editBook.php";
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $title = $_REQUEST['booktitle'];
+            $author = $_REQUEST['author'];
+            $subjectId = $_REQUEST['subjectId'];
+            $publisher = $_REQUEST['publisher'];
+            $description = $_REQUEST['description'];
+            $copyrightYear = $_REQUEST['copyrightYear'];
+
+            $book = new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
+            $book->setId($_REQUEST['bookId']);
+            if ($this->isDuplicate($book)) {
+                $errDuplicate = "Book has been library!";
+                include 'view/book/editBook.php';
+            } else {
+
+                $this->bookDB->editBook($id,$book);
+                $success = ($this->bookDB->editBook($id,$book)) ? true:false;
+                include 'view/book/editBook.php';
+            }
+
+        }
+    }
+
 }
