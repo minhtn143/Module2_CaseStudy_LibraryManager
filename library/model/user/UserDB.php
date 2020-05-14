@@ -35,7 +35,7 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['username' => $username]);
         $row = $stmt->fetch();
-        return $this->creatUserFromDB($row);
+        return $this->createUserFromDB($row);
     }
 
     public function create($borrower)
@@ -108,7 +108,7 @@ class UserDB
 
     public function getAll()
     {
-        $sql = "SELECT * FROM tblborrower";
+        $sql = "SELECT * FROM tblborrower WHERE role = 5";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -117,7 +117,6 @@ class UserDB
             $user = $this->createUserFromDB($item);
             array_push($users, $user);
         }
-
         return $users;
     }
 

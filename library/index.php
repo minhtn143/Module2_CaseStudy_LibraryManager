@@ -8,18 +8,18 @@ require 'model/user/User.php';
 require 'model/user/UserDB.php';
 require 'model/ticket/Ticket.php';
 require 'model/ticket/TicketDB.php';
+require 'model/Category/Category.php';
+require 'model/Category/CategoryDB.php';
 require 'model/book/Book.php';
 require 'model/book/BookDB.php';
 
 require 'controller/BookController.php';
 require 'controller/UserController.php';
+require 'controller/TicketController.php';
 
 use controller\UserController;
 use controller\CategoryController;
 use controller\BookController;
-require 'controller/TicketController.php';
-
-use controller\UserController;
 use controller\TicketController;
 
 ?>
