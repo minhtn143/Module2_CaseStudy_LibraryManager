@@ -104,7 +104,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
-                        <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
+                        <a class="dropdown-item" href="./admin.php?page=change-psw">Change Password</a>
                         <a class="dropdown-item" href="./admin.php?page=logout">Logout</a>
                     </div>
                 </li>
