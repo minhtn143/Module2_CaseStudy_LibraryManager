@@ -25,7 +25,7 @@ class TicketController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $books = $this->bookDB->getAll();
-            include 'view/ticket/addTicket.php';
+            include 'view/borrow/borrowBook.php';
         } else {
             $bookId = $_REQUEST['checkList'];
 //            var_dump($bookId);
@@ -39,7 +39,15 @@ class TicketController
             }
             $success = 'success';
             $books = $this->bookDB->getAll();
-            include 'view/ticket/addTicket.php';
+            include 'view/borrow/borrowBook.php';
+        }
+    }
+
+    public function listBorrowed()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $listBooks = $this->ticketDB->listBorrowed($_SESSION['userID']);
+            include 'view/borrow/borrowed.php';
         }
     }
 

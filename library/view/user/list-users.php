@@ -30,7 +30,12 @@
                                 <td><?php echo $user->getFullName() ?></td>
                                 <td><?php echo $user->getStudentId() ?></td>
                                 <td><?php echo $user->getStatus() ?></td>
-                                <td></td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                                    </div>
+                                </td>
                             </tr>
 
                             <!-- modal -->

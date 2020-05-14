@@ -3,10 +3,10 @@
         myAlert('top', 'success', 'Request has been sent. We will check your request', 1500,'./index.php');
     </script>
 <?php endif; ?>
-<div class="col-md-10 ml-auto mr-auto my-5">
+<div class="col-md-8 ml-auto mr-auto my-5">
     <div class="card bg-light">
         <div class="card-header bg-primary text-white">
-            <h3>Borrow book</h3>
+            <h3>Borrow books</h3>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12 col-sm-6 my-3">
