@@ -3,16 +3,20 @@ session_start();
 
 require 'config.php';
 require "model/database/DBConnect.php";
+
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
+require 'model/Category/Category.php';
+require 'model/Category/CategoryDB.php';
 require 'model/book/Book.php';
 require 'model/book/BookDB.php';
 
-require 'controller/UserController.php';
+require 'controller/CategoryController.php';
 require 'controller/BookController.php';
-
+require 'controller/UserController.php';
 
 use controller\UserController;
+use controller\CategoryController;
 use controller\BookController;
 
 ?>

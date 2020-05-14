@@ -62,4 +62,20 @@ class BookDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
     }
+
+    public function editBook($id, $book)
+    {
+        $sql = "UPDATE tblbook SET booktitle = ?, bookauthors = ?, subjectid = ?, 
+                mdescription = ?, publisher = ?, copyrightyear = ? WHERE (ID = $id)";
+        $stmt = $this->conn->prepare($sql);
+
+        $title = $book->getTitle();
+        $author = $book->getAuthors();
+        $subjectId = $book->getSubjectId();
+        $description = $book->getDescription();
+        $publisher = $book->getPublisher();
+        $copyrightYear = $book->getCopyrightYear();
+
+        return $stmt->execute(array($title, $author, $subjectId, $description, $publisher, $copyrightYear));
+    }
 }
