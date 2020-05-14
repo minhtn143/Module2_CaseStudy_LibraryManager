@@ -37,7 +37,7 @@ class TicketController
                 $ticket = new Ticket((int)$bookId[$i], $borrowDate, $dueDate, (int)$borrowerId);
                 $this->ticketDB->create($ticket);
             }
-            $ticketAdded = 'success';
+            $success = 'success';
             $books = $this->bookDB->getAll();
             include 'view/ticket/addTicket.php';
         }

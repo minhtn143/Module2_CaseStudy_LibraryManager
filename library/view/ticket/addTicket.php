@@ -1,6 +1,6 @@
-<?php if (isset($ticketAdded)): ?>
+<?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top', 'success', 'Request has been sent.\n We will check your request.', 1500, './index.php);
+        myAlert('top', 'success', 'Request has been sent. We will check your request', 1500,'./index.php');
     </script>
 <?php endif; ?>
 <div class="col-md-10 ml-auto mr-auto my-5">
