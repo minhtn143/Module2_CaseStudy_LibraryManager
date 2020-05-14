@@ -33,8 +33,8 @@ class BookDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        $books = [];
 
+        $books = [];
         foreach ($result as $key => $item) {
             $book = new Book($item['booktitle'], $item['bookauthors'], $item['subjectid'], $item['mdescription'],
                 $item['publisher'], $item['copyrightyear']);

@@ -14,18 +14,16 @@ class TicketDB
 
     public function create($ticket)
     {
-        $sql = "INSERT INTO tblborrowedbook(bookid,dateborrowed,duedate,datereturned,borrowerid)
-                VALUES(?,?,?,?,?)";
+        $sql = "INSERT INTO tblborrowedbook(bookid,dateborrowed,duedate,borrowerid)
+                VALUES(?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
+        return $stmt->execute([
             $ticket->getBookId(),
             $ticket->getDateBorrow(),
             $ticket->getDueDate(),
-            $ticket->getDateReturn(),
             $ticket->getBorrowerId()
         ]);
     }
-
 
 
 }

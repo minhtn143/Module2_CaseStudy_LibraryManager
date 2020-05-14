@@ -27,14 +27,14 @@
                                 <td><?php echo $category->getName() ?></td>
                                 <td style="width: 600px"
                                     class="text-left"><?php echo $category->getDescription() ?></td>
-                                <td><a class="text-primary" data-toggle="modal" data-target="#test"><i
+                                <td><a class="text-primary" data-toggle="modal" data-target="#edit-form"><i
                                                 class="far fa-edit"></i></a> |
                                     <a class="text-danger"><i class="far fa-trash-alt"
                                                               onclick="confirmDel('./admin.php?page=delete-category&id=<?php echo $category->getId(); ?>')"></i></a>
 
                                 </td>
                             </tr>
-                            <div class="modal fade" id="test" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit-form" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel">
                                 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
                                     <div class="card-header bg-primary text-white">
@@ -43,7 +43,7 @@
                                     <div class="card-body">
                                         <div class="row justify-content-center">
                                             <div class="col-md-7 col-xs-12 col-sm-6 my-3">
-                                                <form action="./admin.php?page=edit-category&id=--><?php echo $category->getId(); ?>"
+                                                <form action="./admin.php?page=edit-category&id=<?php echo $category->getId(); ?>"
                                                       id="register-form" method="post">
                                                     <input type="hidden" value="<?php echo $category->getId(); ?>"
                                                            name="id">
@@ -89,6 +89,5 @@
     </div>
 </div>
 
-<!--<a href="./admin.php?page=edit-category&id=--><?php //echo $category->getId(); ?><!--"><i-->
-<!--            class="far fa-edit"></i></a>-->
+
 

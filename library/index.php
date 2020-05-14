@@ -5,10 +5,17 @@ require 'config.php';
 require "model/database/DBConnect.php";
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
+require 'model/ticket/Ticket.php';
+require 'model/ticket/TicketDB.php';
+require 'model/book/Book.php';
+require 'model/book/BookDB.php';
 
+require 'controller/BookController.php';
 require 'controller/UserController.php';
+require 'controller/TicketController.php';
 
 use controller\UserController;
+use controller\TicketController;
 
 ?>
 <!doctype html>
@@ -112,10 +119,10 @@ use controller\UserController;
                     <li class="navbar-collapse dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Subjects
+                            Borrow book
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>
+                            <a class="dropdown-item" href="./index.php?page=add-ticket">Create ticket</a>
                             <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>
                         </div>
                     </li>
@@ -143,6 +150,7 @@ use controller\UserController;
 <?php endif; ?>
 <div class="container-fluid">
     <?php
+    $ticketController = new TicketController();
     $userController = new UserController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     if (!isset($_SESSION['isLogin'])) {
@@ -164,6 +172,9 @@ use controller\UserController;
                 break;
             case 'edit-profile':
                 $userController->edit('index.php');
+                break;
+            case 'add-ticket':
+                $ticketController->add();
                 break;
         }
 

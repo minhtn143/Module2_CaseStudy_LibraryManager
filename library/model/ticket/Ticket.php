@@ -12,12 +12,11 @@ class Ticket
     protected $dateReturn;
     protected $borrowerId;
 
-    public function __construct($bookId, $dateBorrow, $dueDate, $dateReturn, $borrowerId)
+    public function __construct($bookId, $dateBorrow, $dueDate, $borrowerId)
     {
         $this->bookId = $bookId;
         $this->dateBorrow = $dateBorrow;
         $this->dueDate = $dueDate;
-        $this->dateReturn = $dateReturn;
         $this->borrowerId = $borrowerId;
     }
 

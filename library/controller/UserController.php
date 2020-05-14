@@ -31,6 +31,7 @@ class UserController
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
                 $user = $this->userDB->get($username);
+                $_SESSION['userID'] = $user->getId();
                 $_SESSION['avatar'] = $user->getAvatar();
                 $_SESSION['studentId'] = $user->getStudentId();
                 $_SESSION['role'] = $user->getRole();
