@@ -171,9 +171,15 @@ class UserController
                 }
             }
             $this->userDB->updateProfile($data);
-            header("location:index.php");
+            header("location:admin.php");
         }
     }
 
+    public function listUsers()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $this->userDB->getAll();
 
+        }
+    }
 }

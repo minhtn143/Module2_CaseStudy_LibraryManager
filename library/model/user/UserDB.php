@@ -35,14 +35,7 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['username' => $username]);
         $row = $stmt->fetch();
-        $user = new User($row['username'], $row['studentid'], $row['email'], $row['phone'], $row['password'], $row['avatar']);
-        $user->setRole($row['role']);
-        $user->setId($row['ID']);
-        $user->setFullname($row['fullname']);
-        $user->setAddress($row['address']);
-        $user->setDob($row['dob']);
-        $user->setGender($row['gender']);
-        return $user;
+        return $this->createUserFromDB($row);
     }
 
     public function create($borrower)
@@ -113,25 +106,36 @@ class UserDB
         return $stmt->execute($data);
     }
 
-    public function listUsers()
+    public function getAll()
     {
         $sql = "SELECT * FROM tblborrowed";
-        $stmt = $this->userDB->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
         $users = [];
         foreach ($result as $item) {
-            $user = new  User($item->getUserNam(), $item->getStudentId(), $item->getEmail(), $item->getPhone(),
-                $item->getPassword(), $item->getAvatar());
-            $user->setId($item->getId());
-            $user->setFullname($item->getFullName());
-            $user->setAddress($item->getAddress());
-            $user->setDob($item->getDob());
-            $user->setGender($item->getGender());
-            $user->setRole($item->getRole());
-            $user->setStatus($item->getStatus());
+            $user = $this->createUserFromDB($item);
             array_push($users, $user);
         }
         return $users;
     }
+
+    /**
+     * @param $row
+     * @return User
+     */
+    public function createUserFromDB($row): User
+    {
+        $user = new User($row['username'], $row['studentid'], $row['email'], $row['phone'], $row['password'],
+            $row['avatar']);
+        $user->setRole($row['role']);
+        $user->setId($row['ID']);
+        $user->setFullname($row['fullname']);
+        $user->setAddress($row['address']);
+        $user->setDob($row['dob']);
+        $user->setGender($row['gender']);
+        $user->setStatus($row['status']);
+        return $user;
+    }
+
 }
