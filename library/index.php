@@ -108,21 +108,21 @@ use controller\UserController;
                 <!--                        </div>-->
                 <!--                    </li>-->
                 <!--                </ul>-->
-                <!--                <ul class="navbar-nav">-->
-                <!--                    <li class="navbar-collapse dropdown">-->
-                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                            Subjects-->
-                <!--                        </a>-->
-                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>-->
-                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="navbar-collapse dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Subjects
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>
+                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>
+                        </div>
+                    </li>
+                </ul>
 
                 <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
-                <ul class="navbar-nav ml-auto mr-5">
+                <ul class="navbar-nav mr-5">
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -20,7 +20,7 @@ class TicketController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            include 'view/ticket/add.php';
+            include 'view/ticket/addTicket.php';
         }
     }
 
