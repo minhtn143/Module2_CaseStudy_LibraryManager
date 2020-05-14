@@ -3,6 +3,7 @@
         myAlert('center', 'success', 'Update Complete!', 800, './admin.php?page=manage-category')
     </script>
 <?php endif; ?>
+
 <div class="col-md-8 ml-auto mr-auto">
     <div class="card bg-light my-5">
         <div class="card-header bg-primary text-white">

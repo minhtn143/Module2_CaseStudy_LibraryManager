@@ -112,4 +112,26 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute($data);
     }
+
+    public function listUsers()
+    {
+        $sql = "SELECT * FROM tblborrowed";
+        $stmt = $this->userDB->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $users = [];
+        foreach ($result as $item) {
+            $user = new  User($item->getUserNam(), $item->getStudentId(), $item->getEmail(), $item->getPhone(),
+                $item->getPassword(), $item->getAvatar());
+            $user->setId($item->getId());
+            $user->setFullname($item->getFullName());
+            $user->setAddress($item->getAddress());
+            $user->setDob($item->getDob());
+            $user->setGender($item->getGender());
+            $user->setRole($item->getRole());
+            $user->setStatus($item->getStatus());
+            array_push($users, $user);
+        }
+        return $users;
+    }
 }

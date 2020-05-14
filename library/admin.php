@@ -152,8 +152,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'deleteBook':
             $bookController->delete();
             break;
-            case 'editBook':
+        case 'editBook':
             $bookController->edit();
+            break;
+        case 'list-users':
+            $userController->listUsers();
             break;
         default:
             $bookController->listBook();
