@@ -39,7 +39,7 @@ class UserController
                         header("location:admin.php");
                         break;
                     case 5:
-                        header("location:index.php");
+                        header("location:listBook.php");
                         break;
                     default:
                         session_destroy();

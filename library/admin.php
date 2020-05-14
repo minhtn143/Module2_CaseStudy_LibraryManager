@@ -14,7 +14,7 @@ use controller\UserController;
 use controller\CategoryController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
-    header("location:./index.php?page=login");
+    header("location:./listBook.php?page=login");
 }
 ?>
 <!doctype html>
