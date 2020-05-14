@@ -79,11 +79,11 @@ class UserDB
         return $stmt->fetch();
     }
 
-    public function checkStatus($username)
+    public function checkStatus($id)
     {
-        $sql = "SELECT status FROM tblborrower WHERE username = ?";
+        $sql = "SELECT status FROM tblborrower WHERE ID = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$username]);
+        $stmt->execute([$id]);
         $result = $stmt->fetch();
         $status = $result['status'];
         if ($status == 'active') {
@@ -136,6 +136,13 @@ class UserDB
         $user->setGender($row['gender']);
         $user->setStatus($row['status']);
         return $user;
+    }
+
+    public function activate_deactivate($status, $id)
+    {
+        $sql = "UPDATE tblborrower SET status = ? WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$status, $id]);
     }
 
 }

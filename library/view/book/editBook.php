@@ -5,7 +5,7 @@
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
 
-    <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
+    <div class="card bg-light ml-auto mr-auto" style="width: 700px">
         <div class="card-header bg-primary text-white">
             <h3>Edit Book</h3>
         </div>
@@ -67,13 +67,15 @@
                             <textarea class="form-control" id="description" name="description"
                                       rows="5"><?php echo $book->getDescription(); ?></textarea>
                         </div>
-
-                        <button type="submit" class="btn btn-success my-4" name="btn-save"><i class="fas fa-save"></i>
-                            Save
-                        </button>
-                        <button class="btn-secondary btn my-3 btn-block" type="reset"><i class="fas fa-magic"></i> Reset
-                        </button>
-                        <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                        <div class="form-inline form-group">
+                            <button type="submit" class="btn btn-success mr-1" name="btn-save"><i
+                                        class="fas fa-save"></i>
+                                Save
+                            </button>
+                            <button class="btn-secondary btn" type="reset"><i class="fas fa-magic"></i> Reset
+                            </button>
+                        </div>
+                            <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
                     </form>
                 </div>
             </div>

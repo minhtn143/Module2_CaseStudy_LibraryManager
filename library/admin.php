@@ -159,6 +159,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'list-users':
             $userController->listUsers();
             break;
+        case 'activate':
+            $userController->activate();
+            break;
         default:
             $bookController->listBook();
             break;

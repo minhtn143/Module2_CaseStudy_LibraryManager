@@ -23,6 +23,8 @@
                         <tbody>
                         <?php foreach ($users as $key => $user): ?>
                             <tr>
+                                <input type="hidden" name="id<?php echo $user->getId() ?>"
+                                       value="<?php echo $user->getId() ?>">
                                 <td><?php echo $key + 1 ?></td>
                                 <td><a class="text-primary" data-toggle="modal"
                                        data-target="#details-<?php echo $user->getId(); ?>"><?php echo $user->getUsername() ?></a>
@@ -31,10 +33,17 @@
                                 <td><?php echo $user->getStudentId() ?></td>
                                 <td><?php echo $user->getStatus() ?></td>
                                 <td>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-                                    </div>
+                                    <?php if ($user->getStatus() == 'active') {
+                                        ?>
+                                        <a href="./admin.php?page=activate&id=<?php echo $user->getId(); ?>"
+                                           onclick="return confirm('Are you sure you want to block this student?');"" >
+                                        <button class="btn btn-danger"><i class="fas fa-ban"></i> Inactive
+                                        </button>
+                                    <?php } else { ?>
+                                        <a href="./admin.php?page=activate&id=<?php echo $user->getId(); ?>"
+                                           onclick="return confirm('Are you sure you want to active this student?');"">
+                                        <button class="btn btn-primary"><i class="fas fa-unlock-alt"></i> Active</button>
+                                    <?php } ?>
                                 </td>
                             </tr>
 

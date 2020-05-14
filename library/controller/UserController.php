@@ -23,14 +23,15 @@ class UserController
         } else {
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $user = $this->userDB->get($username);
+            $id = $user->getId();
 
-            $status = $this->userDB->checkStatus($username);
+            $status = $this->userDB->checkStatus($id);
             $isLogin = $this->userDB->userLogin($username, $password);
             if ($isLogin && $status) {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
-                $user = $this->userDB->get($username);
                 $_SESSION['userID'] = $user->getId();
                 $_SESSION['avatar'] = $user->getAvatar();
                 $_SESSION['studentId'] = $user->getStudentId();
@@ -178,7 +179,22 @@ class UserController
 
     public function listUsers()
     {
-            $users = $this->userDB->getAll();
-            include "view/user/list-users.php";
+        $users = $this->userDB->getAll();
+        include "view/user/list-users.php";
+    }
+
+    public function activate()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $id = $_REQUEST['id'];
+            $status = $this->userDB->checkStatus($id);
+            if ($status == 'active') {
+                $this->userDB->activate_deactivate('inactive', $id);
+                header("location:./admin.php?page=list-users");
+            } else {
+                $this->userDB->activate_deactivate('active', $id);
+                header("location:./admin.php?page=list-users");
+            }
+        }
     }
 }

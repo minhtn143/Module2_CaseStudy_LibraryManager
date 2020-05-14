@@ -27,14 +27,14 @@
                                 <td><?php echo $category->getName() ?></td>
                                 <td style="width: 600px"
                                     class="text-left"><?php echo $category->getDescription() ?></td>
-                                <td><a class="text-primary" data-toggle="modal" data-target="#edit-form"><i
+                                <td><a class="text-primary" data-toggle="modal" data-target="#edit-form<?php echo $key + 1 ?>"><i
                                                 class="far fa-edit"></i></a> |
                                     <a class="text-danger"><i class="far fa-trash-alt"
                                                               onclick="confirmDel('./admin.php?page=delete-category&id=<?php echo $category->getId(); ?>')"></i></a>
 
                                 </td>
                             </tr>
-                            <div class="modal fade" id="edit-form" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit-form<?php echo $key + 1 ?>" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel">
                                 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
                                     <div class="card-header bg-primary text-white">

@@ -56,9 +56,9 @@
                     <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                 </div>
 
-                <button class="btn-primary btn my-3 btn-block" type="submit"><i class="fas fa-plus-circle"></i> Add
+                <button class="btn-primary btn my-3" type="submit"><i class="fas fa-plus-circle"></i> Add
                 </button>
-                <button class="btn-secondary btn my-3 btn-block" type="reset"><i class="fas fa-magic"></i> Reset
+                <button class="btn-secondary btn my-3" type="reset"><i class="fas fa-magic"></i> Reset
                 </button>
                 <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
             </form>
