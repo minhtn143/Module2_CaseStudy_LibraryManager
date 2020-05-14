@@ -181,4 +181,22 @@ class UserController
             $users = $this->userDB->getAll();
             include "view/user/list-users.php";
     }
+
+    public function changeStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $id = $_REQUEST['userId'];
+            $user = $this->userDB->getUserById($id);
+            switch ($user->getStatus()){
+                case "active":
+                    $newStatus = "deactive";
+                    break;
+                case "deactive":
+                    $newStatus = "active";
+                    break;
+            }
+            $this->userDB->changeStatus($id,$newStatus);
+            $this->listUsers();
+        }
+    }
 }

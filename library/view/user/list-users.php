@@ -1,7 +1,4 @@
 
-<?php
-
-?>
 <div class="col-md-8 ml-auto mr-auto">
     <div class="card bg-light my-5">
         <div class="card-header bg-primary text-white">
@@ -28,13 +25,30 @@
                                 <td><?php echo $user->getUsername() ?></td>
                                 <td class="text-left"><?php echo $user->getFullName() ?></td>
                                 <td class="text-left"><?php echo $user->getStudentId() ?></td>
-                                <td class="text-left"><?php echo $user->getStatus() ?></td>
-                                <td><a class="text-primary" data-toggle="modal" data-target="#details-<?php echo $user->getId();?>"><i
-                                                class="far fa-edit"></i></a> |
+                                <td class="text-center">
+
+                                    <div class="form-check form-check-inline">
+                                        <?php if ($user->getStatus() == 'active'): ?>
+                                            <p class="text-success"><strong>Active</strong></p>
+                                        <?php else: ?>
+                                            <p class="text-danger"><strong>Disable</strong></p>
+                                        <?php endif; ?>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" id="details"
+                                            data-target="#details-<?php echo $user->getId(); ?>"><i
+                                                class="far fa-edit"></i>
+                                        Details
+                                    </button>
+                                    <a class="btn btn-success"
+                                       href="./admin.php?page=changeStatus&userId=<?php echo $user->getId(); ?>"
+                                       role="button">Changer Status</a>
                                 </td>
                             </tr>
 
-                        <!-- modal -->
+                            <!-- modal -->
                             <div class="modal fade" id="details-<?php echo $user->getId() ?>" tabindex="-1"
                                  role="dialog"
                                  aria-labelledby="details-<?php echo $user->getId() ?>" aria-hidden="true">
@@ -57,24 +71,24 @@
                                                         <p class="card-title"><?php echo $user->getFullName(); ?></p>
                                                         <p class="card-text"><?php echo $user->getStudentId() ?></p>
 
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            Fullname: <?php echo $user->getFullName(); ?> </li>
-                                                        <li class="list-group-item">
-                                                            StudentId: <?php echo $user->getStudentId() ?> </li>
-                                                        <li class="list-group-item">
-                                                            Email: <?php echo $user->getEmail() ?> </li>
-                                                        <li class="list-group-item">
-                                                            Phone: <?php echo $user->getPhone() ?> </li>
-                                                        <li class="list-group-item">
-                                                            Address: <?php echo $user->getAddress() ?></li>
-                                                        <li class="list-group-item">
-                                                            Birthday: <?php echo $user->getDob() ?></li>
-                                                        <li class="list-group-item">
-                                                            Gender: <?php echo $user->getGender() ?></li>
-                                                        <li class="list-group-item">
-                                                            Status: <?php echo $user->getStatus() ?></li>
-                                                    </ul>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">
+                                                                Fullname: <?php echo $user->getFullName(); ?> </li>
+                                                            <li class="list-group-item">
+                                                                StudentId: <?php echo $user->getStudentId() ?> </li>
+                                                            <li class="list-group-item">
+                                                                Email: <?php echo $user->getEmail() ?> </li>
+                                                            <li class="list-group-item">
+                                                                Phone: <?php echo $user->getPhone() ?> </li>
+                                                            <li class="list-group-item">
+                                                                Address: <?php echo $user->getAddress() ?></li>
+                                                            <li class="list-group-item">
+                                                                Birthday: <?php echo $user->getDob() ?></li>
+                                                            <li class="list-group-item">
+                                                                Gender: <?php echo $user->getGender() ?></li>
+                                                            <li class="list-group-item">
+                                                                Status: <?php echo $user->getStatus() ?></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,7 +110,4 @@
         </div>
     </div>
 </div>
-
-<!--<a href="./admin.php?page=edit-category&id=--><?php //echo $category->getId(); ?><!--"><i-->
-<!--            class="far fa-edit"></i></a>-->
 

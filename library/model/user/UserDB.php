@@ -35,7 +35,7 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['username' => $username]);
         $row = $stmt->fetch();
-        return $this->creatUserFromDB($row);
+        return $this->createUserFromDB($row);
     }
 
     public function create($borrower)
@@ -88,8 +88,9 @@ class UserDB
         $status = $result['status'];
         if ($status == 'active') {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 
     public function changePsw($username, $password)
@@ -108,7 +109,7 @@ class UserDB
 
     public function getAll()
     {
-        $sql = "SELECT * FROM tblborrower";
+        $sql = "SELECT * FROM tblborrower WHERE role = 5";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -139,4 +140,19 @@ class UserDB
         return $user;
     }
 
+    public function changeStatus($id,$status)
+    {
+        $sql = "UPDATE `library`.`tblborrower` SET `status` = ? WHERE (`ID` = ?);";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute(array($status,$id));
+    }
+
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM tblborrower WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $user = $stmt->fetch();
+        return $this->createUserFromDB($user);
+    }
 }
