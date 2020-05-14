@@ -3,15 +3,21 @@ session_start();
 
 require 'config.php';
 require "model/database/DBConnect.php";
+
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
-require 'controller/UserController.php';
 require 'model/Category/Category.php';
 require 'model/Category/CategoryDB.php';
+require 'model/book/Book.php';
+require 'model/book/BookDB.php';
+
 require 'controller/CategoryController.php';
+require 'controller/BookController.php';
+require 'controller/UserController.php';
 
 use controller\UserController;
 use controller\CategoryController;
+use controller\BookController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     header("location:./listBook.php?page=login");
@@ -62,11 +68,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                 <li class="navbar-collapse dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Students
+                        Books
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Student</a>
-                        <a class="dropdown-item" href="./index.php?page=change-psw">Manage Student</a>
+                        <a class="dropdown-item" href="./admin.php?page=addBook">Add Books</a>
+                        <a class="dropdown-item" href="./admin.php?page=listBook">Manage Books</a>
                     </div>
                 </li>
             </ul>
@@ -115,6 +121,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <div class="container-fluid">
     <?php
     $userController = new UserController();
+    $bookController = new BookController();
     $categoryController = new CategoryController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
@@ -138,6 +145,15 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
         case'delete-category':
             $categoryController->delete();
+            break;
+        case 'addBook':
+            $bookController->add();
+            break;
+        case 'deleteBook':
+            $bookController->delete();
+            break;
+        default:
+            $bookController->listBook();
             break;
     }
 
