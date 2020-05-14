@@ -77,4 +77,11 @@ class BookController
         }
     }
 
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+            include "view/book/editBook.php";
+        }
+    }
+
 }
