@@ -1,8 +1,9 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top', 'success', 'Successfully Added', 1000,'./admin.php?page=addBook');
+        myAlert('top', 'success', 'Successfully Added', 1000, './admin.php?page=addBook');
     </script>
-<?php endif; ?><div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
+<?php endif; ?>
+<div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">
         <h3>Add new book</h3>
     </div>

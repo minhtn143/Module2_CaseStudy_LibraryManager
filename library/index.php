@@ -6,6 +6,8 @@ require "model/database/DBConnect.php";
 
 require 'model/user/User.php';
 require 'model/user/UserDB.php';
+require 'model/ticket/Ticket.php';
+require 'model/ticket/TicketDB.php';
 require 'model/Category/Category.php';
 require 'model/Category/CategoryDB.php';
 require 'model/book/Book.php';
@@ -14,8 +16,10 @@ require 'model/book/BookDB.php';
 require 'controller/CategoryController.php';
 require 'controller/BookController.php';
 require 'controller/UserController.php';
+require 'controller/TicketController.php';
 
 use controller\UserController;
+use controller\TicketController;
 use controller\CategoryController;
 use controller\BookController;
 
@@ -117,21 +121,21 @@ use controller\BookController;
                 <!--                        </div>-->
                 <!--                    </li>-->
                 <!--                </ul>-->
-                <!--                <ul class="navbar-nav">-->
-                <!--                    <li class="navbar-collapse dropdown">-->
-                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                            Subjects-->
-                <!--                        </a>-->
-                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>-->
-                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="navbar-collapse dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Borrow book
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./index.php?page=add-ticket">Create ticket</a>
+                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>
+                        </div>
+                    </li>
+                </ul>
 
                 <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
-                <ul class="navbar-nav ml-auto mr-5">
+                <ul class="navbar-nav mr-5">
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,6 +156,7 @@ use controller\BookController;
 <?php endif; ?>
 <div class="container-fluid">
     <?php
+    $ticketController = new TicketController();
     $userController = new UserController();
     $bookController = new BookController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
@@ -163,7 +168,6 @@ use controller\BookController;
             case 'register':
                 $userController->register();
                 break;
-            default:
         }
     } else {
         switch ($page) {
@@ -174,7 +178,10 @@ use controller\BookController;
                 $userController->changePsw();
                 break;
             case 'edit-profile':
-                $userController->edit();
+                $userController->edit('index.php');
+                break;
+            case 'add-ticket':
+                $ticketController->add();
                 break;
         }
 

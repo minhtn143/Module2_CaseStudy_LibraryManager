@@ -35,7 +35,7 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['username' => $username]);
         $row = $stmt->fetch();
-        return $this->createUserFromDB($row);
+        return $this->creatUserFromDB($row);
     }
 
     public function create($borrower)
