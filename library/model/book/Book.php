@@ -1,4 +1,5 @@
 <?php
+
 namespace model;
 
 class Book
@@ -133,4 +134,8 @@ class Book
         return $this->publisher;
     }
 
+    public function test()
+    {
+
+    }
 }
