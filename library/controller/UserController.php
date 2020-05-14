@@ -127,7 +127,7 @@ class UserController
         }
     }
 
-    public function edit()
+    public function edit($url_return)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $user = $this->userDB->get($_SESSION['username']);
@@ -171,7 +171,7 @@ class UserController
                 }
             }
             $this->userDB->updateProfile($data);
-            header("location:index.php");
+            header("location:$url_return");
         }
     }
 }

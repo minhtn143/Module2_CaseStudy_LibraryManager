@@ -61,7 +61,9 @@
                         <button type="submit" class="btn btn-success my-4" name="btn-save"><i class="fas fa-save"></i>
                             Save
                         </button>
-                        <button class="btn-secondary btn" onclick="window.history.back(); return false;">Cancel</button>
+                        <button class="btn-secondary btn" onclick="window.history.back(); return false;"><i
+                                    class="fas fa-window-close"></i> Cancel
+                        </button>
                     </div>
                 </form>
             </div>

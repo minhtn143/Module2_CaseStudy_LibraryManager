@@ -3,7 +3,6 @@
 
 namespace model;
 
-use PDO;
 
 class CategoryDB
 {

@@ -109,7 +109,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                              alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
+                        <a class="dropdown-item" href="./admin.php?page=edit-profile">Edit Profile</a>
                         <a class="dropdown-item" href="./admin.php?page=change-psw">Change Password</a>
                         <a class="dropdown-item" href="./admin.php?page=logout">Logout</a>
                     </div>
@@ -125,11 +125,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     $categoryController = new CategoryController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
-        case 'login':
-            $userController->login();
+        case 'edit-profile':
+            $userController->edit('admin.php');
             break;
-        case 'register':
-            $userController->register();
+        case 'change-psw':
+            $userController->changePsw();
             break;
         case 'logout':
             $userController->logout();

@@ -43,7 +43,8 @@
                                     <div class="card-body">
                                         <div class="row justify-content-center">
                                             <div class="col-md-7 col-xs-12 col-sm-6 my-3">
-                                                <form action="./admin.php?page=edit-category&id=--><?php echo $category->getId(); ?>" id="register-form" method="post">
+                                                <form action="./admin.php?page=edit-category&id=--><?php echo $category->getId(); ?>"
+                                                      id="register-form" method="post">
                                                     <input type="hidden" value="<?php echo $category->getId(); ?>"
                                                            name="id">
                                                     <div class="row">
@@ -70,8 +71,7 @@
                                                         </button>
                                                         <button class="btn btn-secondary ml-1" type="button"
                                                                 onclick="location.href='./admin.php?page=manage-category'">
-                                                            <i
-                                                                    class="fas fa-window-close"></i> Cancel
+                                                            <i class="fas fa-window-close"></i> Cancel
                                                         </button>
                                                     </div>
                                                 </form>

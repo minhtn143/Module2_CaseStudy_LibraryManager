@@ -163,7 +163,7 @@ use controller\UserController;
                 $userController->changePsw();
                 break;
             case 'edit-profile':
-                $userController->edit();
+                $userController->edit('index.php');
                 break;
         }
 
