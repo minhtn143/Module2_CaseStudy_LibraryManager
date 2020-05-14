@@ -28,9 +28,9 @@ class TicketDB
 
     public function listBorrowed($id)
     {
-        $sql = "SELECT tblborrowedbook.ID,tblbook.booktitle,tblborrowedbook.dateborrowed,tblborrowedbook.duedate,tblborrowedbook.datereturned 
+        $sql = "SELECT tblborrowedbook.ID,tblbook.booktitle,tblborrowedbook.dateborrowed,tblborrowedbook.duedate,tblborrowedbook.datereturned,tblbook.ID as bookId,tblbook.booktitle,tblbook.bookauthors,tblbook.publisher,tblbook.mdescription
                 FROM `tblborrowedbook` 
-                JOIN tblbook ON tblborrowedbook.bookid = tblbook.ID 
+                RIGHT JOIN tblbook ON tblborrowedbook.bookid = tblbook.ID 
                 JOIN tblborrower ON tblborrowedbook.borrowerid = tblborrower.ID 
                 WHERE tblborrower.ID = ?";
         $stmt = $this->conn->prepare($sql);
