@@ -5,7 +5,7 @@
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">
-        <h3>Add new book</h3>
+        <h3>Add New Book</h3>
     </div>
 
     <div class="row justify-content-center my-4">

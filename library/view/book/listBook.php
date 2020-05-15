@@ -58,7 +58,18 @@
                                                         </div>
                                                         <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
-                                                                Category: <?php echo $book->getSubjectId() ?> </li>
+                                                                Category:
+                                                                <?php
+                                                                $categoryId = $book->getSubjectId();
+                                                                foreach ($categories as $category) {
+                                                                    if ($categoryId == $category->getId()){
+                                                                        echo $category->getName();
+                                                                        break;
+                                                                    }
+                                                                }
+
+                                                                ?>
+                                                            </li>
                                                             <li class="list-group-item">
                                                                 Publisher: <?php echo $book->getPublisher() ?></li>
                                                             <li class="list-group-item">Copyright

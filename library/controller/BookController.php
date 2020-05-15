@@ -56,6 +56,7 @@ class BookController
     public function listBook()
     {
         $books = $this->bookDB->getAll();
+        $categories = $this->categoryDB->getAll();
         include "view/book/listBook.php";
     }
 
@@ -81,18 +82,12 @@ class BookController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $book = $this->createBookFromDB();
             $book->setId($_REQUEST['bookId']);
-            if ($this->isDuplicate($book)) {
-                $errDuplicate = "Book has been library!";
-                include 'view/book/editBook.php';
-            } else {
-
                 $this->bookDB->editBook($id,$book);
                 $success = ($this->bookDB->editBook($id,$book)) ? true:false;
                 include 'view/book/editBook.php';
             }
-
         }
-    }
+
 
     /**
      * @return Book
