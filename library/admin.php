@@ -109,7 +109,6 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                              alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-<<<<<<<<< Temporary merge branch 1
                         <a class="dropdown-item" href="./admin.php?page=list-users">List Users</a>
                         <a class="dropdown-item" href="./admin.php?page=edit-profile">Edit Profile</a>
                         <a class="dropdown-item" href="./admin.php?page=change-psw">Change Password</a>
