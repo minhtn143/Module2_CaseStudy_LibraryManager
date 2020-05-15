@@ -77,7 +77,6 @@
                                                                 class="far fa-trash-alt"></i> Delete
                                                     </button>
                                                 <?php endif; ?>
-
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     <i class="fas fa-window-close"></i> Close
                                                 </button>

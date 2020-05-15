@@ -1,7 +1,7 @@
 <?php if (isset($success)): ?>
-<script>
-    myAlert('center','success','Change password successfully.\n Please re-login.',1800,'./index.php');
-</script>
+    <script>
+        myAlert('center', 'success', 'Change password successfully.\n Please re-login.', 1800, './index.php');
+    </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">

@@ -21,13 +21,14 @@
                             <tbody>
                             <?php foreach ($returnBooks as $key => $book): ?>
                                 <tr>
-                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book['bookId'] ?>" class="form-check form-check-inline"></td>
+                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book['bookId'] ?>"
+                                               class="form-check form-check-inline"></td>
                                     <td><?php echo $book['fullname'] ?></td>
                                     <td><?php echo $book['booktitle'] ?></td>
                                     <td><?php echo $book['dateborrowed'] ?></td>
                                     <td><?php echo $book['duedate'] ?></td>
                                     <td><?php echo $book['status'] ?></td>
-                                    <input type="hidden" name="ticketId[]" value="<?php echo $book['ticketId']?>"
+                                    <input type="hidden" name="ticketId[]" value="<?php echo $book['ticketId'] ?>"
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

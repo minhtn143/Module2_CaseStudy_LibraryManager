@@ -75,7 +75,7 @@
                             <button class="btn-secondary btn" type="reset"><i class="fas fa-magic"></i> Reset
                             </button>
                         </div>
-                            <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                        <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
                     </form>
                 </div>
             </div>

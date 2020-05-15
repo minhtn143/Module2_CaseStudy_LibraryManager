@@ -1,6 +1,6 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top','success','Successfully Registered',1500,'index.php');
+        myAlert('top', 'success', 'Successfully Registered', 1500, 'index.php');
     </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">

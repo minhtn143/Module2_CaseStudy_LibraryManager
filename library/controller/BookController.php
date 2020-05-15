@@ -72,9 +72,9 @@ class BookController
 
     public function edit()
     {
-        $id= $_REQUEST['bookId'];
+        $id = $_REQUEST['bookId'];
         $category = $this->categoryDB->getAll();
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $book = $this->bookDB->getBookById($id);
             include "view/book/editBook.php";
         }
@@ -86,8 +86,8 @@ class BookController
                 include 'view/book/editBook.php';
             } else {
 
-                $this->bookDB->editBook($id,$book);
-                $success = ($this->bookDB->editBook($id,$book)) ? true:false;
+                $this->bookDB->editBook($id, $book);
+                $success = ($this->bookDB->editBook($id, $book)) ? true : false;
                 include 'view/book/editBook.php';
             }
 

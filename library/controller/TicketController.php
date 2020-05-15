@@ -73,7 +73,7 @@ class TicketController
         } else {
             $ticketId = $_REQUEST['ticketId'];
             $bookId = $_REQUEST['checkList'];
-            $date = date('Y-m-d');;
+            $date = date('Y-m-d');
             for ($i = 0; $i < count($bookId); $i++) {
                 $date = date('Y-m-d');
                 $this->ticketDB->returnedBook($date, $ticketId[$i]);

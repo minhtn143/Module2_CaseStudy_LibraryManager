@@ -200,10 +200,10 @@ class UserController
 
     public function changeStatus()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = $_REQUEST['userId'];
             $user = $this->userDB->getUserById($id);
-            switch ($user->getStatus()){
+            switch ($user->getStatus()) {
                 case "active":
                     $newStatus = "deactive";
                     break;
@@ -211,7 +211,7 @@ class UserController
                     $newStatus = "active";
                     break;
             }
-            $this->userDB->changeStatus($id,$newStatus);
+            $this->userDB->changeStatus($id, $newStatus);
             $this->listUsers();
         }
     }

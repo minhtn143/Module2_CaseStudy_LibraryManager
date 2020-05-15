@@ -1,6 +1,6 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top', 'success', 'Successfully Added', 1000,'./admin.php?page=add-category');
+        myAlert('top', 'success', 'Successfully Added', 1000, './admin.php?page=add-category');
     </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
