@@ -185,6 +185,9 @@ use controller\BookController;
             case 'listBook':
                 $bookController->listBook();
                 break;
+            case 'searchBook':
+                $bookController->search();
+                break;
         }
     }
     ?>
