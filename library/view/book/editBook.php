@@ -67,15 +67,14 @@
                             <textarea class="form-control" id="description" name="description"
                                       rows="5"><?php echo $book->getDescription(); ?></textarea>
                         </div>
-                        <div class="form-inline form-group">
-                            <button type="submit" class="btn btn-success mr-1" name="btn-save"><i
-                                        class="fas fa-save"></i>
-                                Save
-                            </button>
-                            <button class="btn-secondary btn" type="reset"><i class="fas fa-magic"></i> Reset
-                            </button>
+                        <div class="row my-1">
+                            <div class="form-inline form-group">
+                                <button type="submit" class="btn btn-success mr-1" name="btn-save">
+                                    <i class="fas fa-save"></i> Save</button>
+                                <button class="btn-secondary btn mr-1" type="reset"><i class="fas fa-undo"></i> Reset</button>
+                            </div>
                         </div>
-                            <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                        <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
                     </form>
                 </div>
             </div>

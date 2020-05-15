@@ -10,9 +10,11 @@
         </div>
         <div class="card-body">
             <!--            Search bar-->
-            <form class="form-inline my-2 my-lg-0 justify-content-center"  >
-                <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search" name="keyword">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchCategory">
+            <form class="form-inline my-2 my-lg-0 justify-content-center">
+                <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search"
+                       name="keyword">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden
+                       value="searchCategory">
                 <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
             </form>
             <div class="row justify-content-center">
@@ -33,60 +35,103 @@
                                 <td><?php echo $category->getName() ?></td>
                                 <td style="width: 600px"
                                     class="text-left"><?php echo $category->getDescription() ?></td>
-                                <td><a class="text-primary" data-toggle="modal" data-target="#edit-form<?php echo $key + 1 ?>"><i
-                                                class="far fa-edit"></i></a> |
+                                <td>
+                                    <button type="button" class="btn btn-info" data-toggle="modal"
+                                            data-target="#details-<?php echo $category->getId() ?>">
+                                        <i class="far fa-list-alt"></i> Details
+                                    </button>
+<!--                                    <a class="text-primary" data-toggle="modal"-->
+<!--                                       data-target="#edit-form--><?php //echo $key + 1 ?><!--"><i-->
+<!--                                                class="far fa-edit"></i></a> |-->
                                     <a class="text-danger"><i class="far fa-trash-alt"
                                                               onclick="confirmDel('./admin.php?page=delete-category&id=<?php echo $category->getId(); ?>')"></i></a>
 
                                 </td>
                             </tr>
-                            <div class="modal fade" id="edit-form<?php echo $key + 1 ?>" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel">
-                                <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
-                                    <div class="card-header bg-primary text-white">
-                                        <h3>Edit Category</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row justify-content-center">
-                                            <div class="col-md-7 col-xs-12 col-sm-6 my-3">
-                                                <form action="./admin.php?page=edit-category&id=<?php echo $category->getId(); ?>"
-                                                      id="register-form" method="post">
-                                                    <input type="hidden" value="<?php echo $category->getId(); ?>"
-                                                           name="id">
-                                                    <div class="row">
-                                                        <label for="category">Category Name:</label>
-                                                        <input type="text" class="form-control" readonly
-                                                               value="<?php echo $category->getName(); ?>"
-                                                               id="category"
-                                                               name="category"
-                                                               placeholder="Category name">
-                                                    </div>
 
-                                                    <div class="row my-3">
-                                                        <label for="description">Description:</label>
-                                                        <textarea class="form-control" id="description"
-                                                                  name="description"
-                                                                  placeholder="Description"
-                                                                  rows="7"><?php echo $category->getDescription(); ?></textarea>
-                                                    </div>
 
-                                                    <div class="row my-3">
-                                                        <button class="btn-primary btn" type="submit"><i
-                                                                    class="fas fa-edit"></i>
-                                                            Update
-                                                        </button>
-                                                        <button class="btn btn-secondary ml-1" type="button"
-                                                                onclick="location.href='./admin.php?page=manage-category'">
-                                                            <i
-                                                                    class="fas fa-window-close"></i> Cancel
-                                                        </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="details-<?php echo $category->getId() ?>" tabindex="-1"
+                                 role="dialog" aria-labelledby="details-<?php echo $category->getId() ?>"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="exampleModalLabel">Category Details</h3>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-sm10">
+                                                <div class="card">
+                                                    <h4 class="card-header">
+                                                        <?php echo $category->getName(); ?>
+                                                    </h4>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><?php echo $category->getDescription(); ?></h5>
+                                                        <p class="card-text"><?php echo $category->getDescription() ?></p>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <?php if ($_SESSION['role'] == 1): ?>
+                                                <a class="btn btn-primary"
+                                                   href="./admin.php?page=editCategory&categoryId=<?php echo $category->getId(); ?>"
+                                                   role="button"><i class="fas fa-edit"></i> Edit</a>
+                                                <!--                                                Delete btn-->
+                                                <button class="btn btn-danger"
+                                                        onclick="confirmDel('./admin.php?page=deleteCategory&categoryId=<?php echo $category->getId(); ?>')">
+                                                    <i class="far fa-trash-alt"></i> Delete
+                                                </button>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+<!--                            <div class="modal fade" id="#edit-form--><?php //echo $key + 1 ?><!--" tabindex="-1"-->
+<!--                                 role="dialog" aria-labelledby="#edit-form--><?php //echo $key + 1 ?><!--"-->
+<!--                                 aria-hidden="true">-->
+<!--                                <div class="modal-dialog">-->
+<!--                                    <div class="modal-content">-->
+<!--                                        <div class="modal-header">-->
+<!--                                            <h3 class="modal-title" id="#edit-modal--><?php //echo $key + 1 ?><!--">Category Details</h3>-->
+<!--                                            <button type="button" class="close" data-dismiss="modal"-->
+<!--                                                    aria-label="Close">-->
+<!--                                                <span aria-hidden="true">&times;</span>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        <div class="modal-body">-->
+<!--                                            <div class="col-sm10">-->
+<!--                                                <div class="card">-->
+<!--                                                    <h4 class="card-header">-->
+<!--                                                        --><?php //echo $category->getName(); ?>
+<!--                                                    </h4>-->
+<!--                                                    <div class="card-body">-->
+<!--                                                        <p class="card-text">--><?php //echo $category->getDescription() ?><!--</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!---->
+<!--                                        </div>-->
+<!--                                        <div class="modal-footer">-->
+<!--                                            --><?php //if ($_SESSION['role'] == 1): ?>
+<!--                                                <a class="btn btn-primary"-->
+<!--                                                   href="./admin.php?page=editBook&bookId=--><?php //echo $category->getId(); ?><!--"-->
+<!--                                                   role="button"><i class="fas fa-edit"></i> Edit</a>-->
+<!--                                                <!--                                                Delete btn-->-->
+<!--                                                <button class="btn btn-danger"-->
+<!--                                                        onclick="confirmDel('./admin.php?page=deleteBook&bookId=--><?php //echo $category->getId(); ?>//')">
+//                                                    <i class="far fa-trash-alt"></i> Delete
+//                                                </button>
+//                                            <?php //endif; ?>
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -96,6 +141,4 @@
     </div>
 </div>
 
-<!--<a href="./admin.php?page=edit-category&id=--><?php //echo $category->getId(); ?><!--"><i-->
-<!--            class="far fa-edit"></i></a>-->
 

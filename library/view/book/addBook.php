@@ -39,27 +39,24 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="publisher">Publisher:</label>
                     <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher">
                 </div>
-
                 <div class="form-group">
                     <label for="copyrightYear">Copyright Year:</label>
                     <input type="number" class="form-control" id="copyrightYear" name="copyrightYear"
                            placeholder="Copyright Year">
                 </div>
-
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                 </div>
+                <div class="form-inline form-group">
+                    <button class="btn-primary btn mr-1" type="submit"><i class="fas fa-plus"></i> Add</button>
+                    <button class="btn-secondary btn mr-1" type="reset"><i class="fas fa-undo"></i> Reset</button>
+                </div>
 
-                <button class="btn-primary btn my-3" type="submit"><i class="fas fa-plus-circle"></i> Add
-                </button>
-                <button class="btn-secondary btn my-3" type="reset"><i class="fas fa-magic"></i> Reset
-                </button>
                 <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
             </form>
         </div>

@@ -9,8 +9,10 @@
         <div class="card-body">
             <!--                Search bar-->
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 col-12" type="search" placeholder="Search" aria-label="Search" name="keyword">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchBook">
+                <input class="form-control mr-sm-2 col-12" type="search" placeholder="Search" aria-label="Search"
+                       name="keyword">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden
+                       value="searchBook">
                 <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
             </form>
             <div class="row">
@@ -33,8 +35,8 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="details-<?php echo $book->getId() ?>" tabindex="-1"
-                                     role="dialog"
-                                     aria-labelledby="details-<?php echo $book->getId() ?>" aria-hidden="true">
+                                     role="dialog" aria-labelledby="details-<?php echo $book->getId() ?>"
+                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -64,7 +66,6 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="modal-footer">
                                                 <?php if ($_SESSION['role'] == 1): ?>
@@ -73,14 +74,10 @@
                                                        role="button"><i class="fas fa-edit"></i> Edit</a>
                                                     <!--                                                Delete btn-->
                                                     <button class="btn btn-danger"
-                                                            onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"><i
-                                                                class="far fa-trash-alt"></i> Delete
+                                                            onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')">
+                                                        <i class="far fa-trash-alt"></i> Delete
                                                     </button>
                                                 <?php endif; ?>
-
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    <i class="fas fa-window-close"></i> Close
-                                                </button>
                                             </div>
                                         </div>
                                     </div>

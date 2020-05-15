@@ -19,21 +19,18 @@
                                 echo $nameExist;
                             } ?></span>
                     </div>
-
                     <div class="row my-3">
                         <label for="description">Description:</label>
                         <textarea class="form-control" id="description" name="description" placeholder="Description"
                                   rows="5"></textarea>
                     </div>
-
-                    <div class="row my-3">
-                        <button class="btn-primary btn" type="submit"><i class="fas fa-plus-circle"></i>
-                            Add
-                        </button>
-                        <button class="btn btn-secondary ml-1" type="button" onclick="window.location='./admin.php'"><i
-                                    class="fas fa-window-close"></i> Cancel
-                        </button>
+                    <div class="row my-1">
+                        <div class="form-inline form-group">
+                            <button class="btn-primary btn mr-1" type="submit"><i class="fas fa-plus"></i> Add</button>
+                            <button class="btn-secondary btn mr-1" type="reset"><i class="fas fa-undo"></i> Reset</button>
+                        </div>
                     </div>
+                    <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
                 </form>
             </div>
         </div>
