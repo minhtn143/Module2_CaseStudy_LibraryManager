@@ -154,4 +154,18 @@ class UserDB
         $user = $stmt->fetch();
         return $this->createUserFromDB($user);
     }
+
+    public function searchUser($keyword)
+    {
+        $sql = "SELECT * FROM tblborrower WHERE fullname LIKE'%$keyword%' OR username LIKE '%$keyword%' AND role = 5;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $users = [];
+        foreach ($result as $item) {
+            $user = $this->createUserFromDB($item);
+            array_push($users, $user);
+        }
+        return $users;
+    }
 }

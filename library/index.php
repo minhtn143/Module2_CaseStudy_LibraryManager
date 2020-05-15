@@ -109,25 +109,20 @@ use controller\BookController;
                 <!--                        </div>-->
                 <!--                    </li>-->
                 <!--                </ul>-->
-                <!--                <ul class="navbar-nav">-->
-                <!--                    <li class="navbar-collapse dropdown">-->
-                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                            Scores-->
-                <!--                        </a>-->
-                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Score</a>-->
-                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Score</a>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
                 <ul class="navbar-nav ml-auto">
+                    <li class="navbar-collapse dropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-5">
                     <li class="navbar-collapse dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
                             Books
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
                             <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
                             <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
                         </div>
@@ -187,9 +182,16 @@ use controller\BookController;
             case 'listBorrowed':
                 $ticketController->listBorrowed();
                 break;
+            case 'listBook':
+                $bookController->listBook();
+                break;
+            case 'searchBook':
+                $bookController->search();
+                break;
         }
 
     }
+
     ?>
 </div>
 

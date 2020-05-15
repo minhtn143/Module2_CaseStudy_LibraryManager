@@ -1,11 +1,18 @@
 <?php
 ?>
+
 <div class="col-md-10 ml-auto mr-auto">
     <div class="card my-5">
         <div class="card-header text-center">
             <h2>LIST BOOKS</h2>
         </div>
         <div class="card-body">
+            <!--                Search bar-->
+            <form class="form-inline my-2 my-lg-0" >
+                <input class="form-control mr-sm-2 col-12" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchBook">
+                <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
+            </form>
             <div class="row">
                 <?php foreach ($books as $key => $book): ?>
                     <div class="col-md-4 my-3">
@@ -60,12 +67,16 @@
 
                                             </div>
                                             <div class="modal-footer">
-
+                                                <?php if ($_SESSION['role'] == 1): ?>
+<!--                                                Edit btn-->
                                                 <a class="btn btn-primary"
                                                    href="./admin.php?page=editBook&bookId=<?php echo $book->getId(); ?>"
                                                    role="button">Edit</a>
-                                                <a style="color: #ff0000"><i class="far fa-trash-alt"
-                                                   onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"></i></a>
+<!--                                                Delete btn-->
+                                                    <a style="color: #ff0000"><i class="far fa-trash-alt"
+                                                                                 onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"></i></a>
+                                                <?php endif;?>
+
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>

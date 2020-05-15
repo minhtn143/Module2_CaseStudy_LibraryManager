@@ -34,14 +34,7 @@ class BookDB
         $stmt->execute();
         $result = $stmt->fetchAll();
 
-        $books = [];
-        foreach ($result as $key => $item) {
-            $book = new Book($item['booktitle'], $item['bookauthors'], $item['subjectid'], $item['mdescription'],
-                $item['publisher'], $item['copyrightyear']);
-            $book->setId($item['ID']);
-            array_push($books, $book);
-        }
-        return $books;
+        return $this->createBooksFromDB($result);
     }
 
     public function getBookById($id)
@@ -77,6 +70,31 @@ class BookDB
         $copyrightYear = $book->getCopyrightYear();
 
         return $stmt->execute(array($title, $author, $subjectId, $description, $publisher, $copyrightYear));
+    }
+
+    public function searchBook($keyword)
+    {
+        $sql = "SELECT * FROM tblbook WHERE booktitle LIKE '%$keyword%' OR bookauthors LIKE '%keyword%'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $this->createBooksFromDB($result);
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    public function createBooksFromDB($result): array
+    {
+        $books = [];
+        foreach ($result as $key => $item) {
+            $book = new Book($item['booktitle'], $item['bookauthors'], $item['subjectid'], $item['mdescription'],
+                $item['publisher'], $item['copyrightyear']);
+            $book->setId($item['ID']);
+            array_push($books, $book);
+        }
+        return $books;
     }
 
     public function changeStatus($id, $status)

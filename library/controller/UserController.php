@@ -215,4 +215,13 @@ class UserController
             $this->listUsers();
         }
     }
+
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $keyword = $_REQUEST['keyword'];
+            $users = $this->userDB->searchUser($keyword);
+            include "view/user/list-users.php";
+        }
+    }
 }

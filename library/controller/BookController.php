@@ -109,4 +109,13 @@ class BookController
         return new Book($title, $author, $subjectId, $description, $publisher, $copyrightYear);
     }
 
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $keyword = $_REQUEST['keyword'];
+            $books = $this->bookDB->searchBook($keyword);
+            include "view/book/listBook.php";
+        }
+    }
+
 }
