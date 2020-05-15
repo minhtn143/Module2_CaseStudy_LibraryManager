@@ -20,7 +20,7 @@ use controller\CategoryController;
 use controller\BookController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
-    header("location:./listBook.php?page=login");
+    header("location:./index.php?page=login");
 }
 ?>
 <!doctype html>
@@ -161,9 +161,6 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
         case 'activate':
             $userController->activate();
-            break;
-        default:
-            $bookController->listBook();
             break;
     }
 

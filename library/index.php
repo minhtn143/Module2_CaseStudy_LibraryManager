@@ -167,7 +167,6 @@ use controller\TicketController;
             case 'register':
                 $userController->register();
                 break;
-            default:
         }
     } else {
         switch ($page) {

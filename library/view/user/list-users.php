@@ -16,7 +16,7 @@
                             <th>Username</th>
                             <th>Full Name</th>
                             <th>Student ID</th>
-                            <th>Status</th>
+<!--                            <th>Status</th>-->
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -31,7 +31,7 @@
                                 </td>
                                 <td><?php echo $user->getFullName() ?></td>
                                 <td><?php echo $user->getStudentId() ?></td>
-                                <td><?php echo $user->getStatus() ?></td>
+<!--                                <td>--><?php //echo $user->getStatus() ?><!--</td>-->
                                 <td>
                                     <?php if ($user->getStatus() == 'active') {
                                         ?>
