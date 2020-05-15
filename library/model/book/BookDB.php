@@ -74,7 +74,7 @@ class BookDB
 
     public function searchBook($keyword)
     {
-        $sql = "SELECT * FROM tblbook WHERE booktitle LIKE '%$keyword%' OR bookauthors LIKE '%keyword%'";
+        $sql = "SELECT * FROM tblbook WHERE booktitle LIKE '%$keyword%' OR bookauthors LIKE '%$keyword%'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
