@@ -13,14 +13,15 @@ require 'model/Category/CategoryDB.php';
 require 'model/book/Book.php';
 require 'model/book/BookDB.php';
 
+require 'controller/CategoryController.php';
 require 'controller/BookController.php';
 require 'controller/UserController.php';
 require 'controller/TicketController.php';
 
 use controller\UserController;
+use controller\TicketController;
 use controller\CategoryController;
 use controller\BookController;
-use controller\TicketController;
 
 ?>
 <!doctype html>
@@ -167,6 +168,7 @@ use controller\TicketController;
             case 'register':
                 $userController->register();
                 break;
+            default:
         }
     } else {
         switch ($page) {
@@ -186,7 +188,9 @@ use controller\TicketController;
                 $ticketController->listBorrowed();
                 break;
         }
+
     }
+
     ?>
 </div>
 

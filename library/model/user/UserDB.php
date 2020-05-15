@@ -88,8 +88,9 @@ class UserDB
         $status = $result['status'];
         if ($status == 'active') {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 
     public function changePsw($username, $password)
@@ -138,11 +139,19 @@ class UserDB
         return $user;
     }
 
-    public function activate_deactivate($status, $id)
+    public function changeStatus($id,$status)
     {
-        $sql = "UPDATE tblborrower SET status = ? WHERE ID = ?";
+        $sql = "UPDATE `library`.`tblborrower` SET `status` = ? WHERE (`ID` = ?);";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([$status, $id]);
+        return $stmt->execute(array($status,$id));
     }
 
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM tblborrower WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $user = $stmt->fetch();
+        return $this->createUserFromDB($user);
+    }
 }

@@ -71,7 +71,8 @@
                                                         </button>
                                                         <button class="btn btn-secondary ml-1" type="button"
                                                                 onclick="location.href='./admin.php?page=manage-category'">
-                                                            <i class="fas fa-window-close"></i> Cancel
+                                                            <i
+                                                                    class="fas fa-window-close"></i> Cancel
                                                         </button>
                                                     </div>
                                                 </form>
@@ -89,5 +90,6 @@
     </div>
 </div>
 
-
+<!--<a href="./admin.php?page=edit-category&id=--><?php //echo $category->getId(); ?><!--"><i-->
+<!--            class="far fa-edit"></i></a>-->
 

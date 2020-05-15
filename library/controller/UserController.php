@@ -61,7 +61,7 @@ class UserController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             session_destroy();
-            header("location:index.php?page=login");
+            echo "<script>location.href='index.php';</script>";
         }
     }
 
@@ -195,6 +195,24 @@ class UserController
                 $this->userDB->activate_deactivate('active', $id);
                 header("location:./admin.php?page=list-users");
             }
+        }
+    }
+
+    public function changeStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $id = $_REQUEST['userId'];
+            $user = $this->userDB->getUserById($id);
+            switch ($user->getStatus()){
+                case "active":
+                    $newStatus = "deactive";
+                    break;
+                case "deactive":
+                    $newStatus = "active";
+                    break;
+            }
+            $this->userDB->changeStatus($id,$newStatus);
+            $this->listUsers();
         }
     }
 }

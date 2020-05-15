@@ -20,7 +20,7 @@ use controller\CategoryController;
 use controller\BookController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
-    header("location:./index.php?page=login");
+    header("location:./listBook.php?page=login");
 }
 ?>
 <!doctype html>
@@ -109,9 +109,10 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                              alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+<<<<<<<<< Temporary merge branch 1
                         <a class="dropdown-item" href="./admin.php?page=list-users">List Users</a>
-                        <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
-                        <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
+                        <a class="dropdown-item" href="./admin.php?page=edit-profile">Edit Profile</a>
+                        <a class="dropdown-item" href="./admin.php?page=change-psw">Change Password</a>
                         <a class="dropdown-item" href="./admin.php?page=logout">Logout</a>
                     </div>
                 </li>
@@ -126,11 +127,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     $categoryController = new CategoryController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
-        case 'login':
-            $userController->login();
+        case 'edit-profile':
+            $userController->edit('admin.php');
             break;
-        case 'register':
-            $userController->register();
+        case 'change-psw':
+            $userController->changePsw();
             break;
         case 'logout':
             $userController->logout();
@@ -159,8 +160,11 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'list-users':
             $userController->listUsers();
             break;
-        case 'activate':
-            $userController->activate();
+        case 'changeStatus':
+            $userController->changeStatus();
+            break;
+        default:
+            $bookController->listBook();
             break;
     }
 

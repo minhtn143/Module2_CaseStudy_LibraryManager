@@ -16,7 +16,7 @@
                             <th>Username</th>
                             <th>Full Name</th>
                             <th>Student ID</th>
-<!--                            <th>Status</th>-->
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -26,28 +26,33 @@
                                 <input type="hidden" name="id<?php echo $user->getId() ?>"
                                        value="<?php echo $user->getId() ?>">
                                 <td><?php echo $key + 1 ?></td>
-                                <td><a class="text-primary" data-toggle="modal"
-                                       data-target="#details-<?php echo $user->getId(); ?>"><?php echo $user->getUsername() ?></a>
+                                <td><?php echo $user->getUsername() ?></td>
+                                <td class="text-left"><?php echo $user->getFullName() ?></td>
+                                <td class="text-left"><?php echo $user->getStudentId() ?></td>
+                                <td class="text-center">
+
+                                    <div class="form-check form-check-inline">
+                                        <?php if ($user->getStatus() == 'active'): ?>
+                                            <p class="text-success"><strong>Active</strong></p>
+                                        <?php else: ?>
+                                            <p class="text-danger"><strong>Disable</strong></p>
+                                        <?php endif; ?>
+                                    </div>
+
                                 </td>
-                                <td><?php echo $user->getFullName() ?></td>
-                                <td><?php echo $user->getStudentId() ?></td>
-<!--                                <td>--><?php //echo $user->getStatus() ?><!--</td>-->
                                 <td>
-                                    <?php if ($user->getStatus() == 'active') {
-                                        ?>
-                                        <a href="./admin.php?page=activate&id=<?php echo $user->getId(); ?>"
-                                           onclick="return confirm('Are you sure you want to block this student?');"" >
-                                        <button class="btn btn-danger"><i class="fas fa-ban"></i> Inactive
-                                        </button>
-                                    <?php } else { ?>
-                                        <a href="./admin.php?page=activate&id=<?php echo $user->getId(); ?>"
-                                           onclick="return confirm('Are you sure you want to active this student?');"">
-                                        <button class="btn btn-primary"><i class="fas fa-unlock-alt"></i> Active</button>
-                                    <?php } ?>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" id="details"
+                                            data-target="#details-<?php echo $user->getId(); ?>"><i
+                                                class="far fa-edit"></i>
+                                        Details
+                                    </button>
+                                    <a class="btn btn-success"
+                                       href="./admin.php?page=changeStatus&userId=<?php echo $user->getId(); ?>"
+                                       role="button">Changer Status</a>
                                 </td>
                             </tr>
 
-                            <!-- modal -->
+                        <!-- modal -->
                             <div class="modal fade" id="details-<?php echo $user->getId() ?>" tabindex="-1"
                                  role="dialog"
                                  aria-labelledby="details-<?php echo $user->getId() ?>" aria-hidden="true">
