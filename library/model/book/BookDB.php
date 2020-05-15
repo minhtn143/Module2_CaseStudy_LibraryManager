@@ -79,7 +79,6 @@ class BookDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $this->createBooksFromDB($result);
-
     }
 
     /**

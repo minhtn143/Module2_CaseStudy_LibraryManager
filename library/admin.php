@@ -164,6 +164,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'list-users':
             $userController->listUsers();
             break;
+        case 'searchUser':
+            $userController->search();
+            break;
         case 'changeStatus':
             $userController->changeStatus();
             break;
