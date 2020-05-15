@@ -96,4 +96,13 @@ class BookDB
         }
         return $books;
     }
+
+    public function changeStatus($id, $status)
+    {
+        $sql = "UPDATE tblbook SET status = ? WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$status, $id]);
+    }
+
+
 }

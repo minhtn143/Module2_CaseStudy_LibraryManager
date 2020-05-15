@@ -10,14 +10,18 @@ require 'model/Category/Category.php';
 require 'model/Category/CategoryDB.php';
 require 'model/book/Book.php';
 require 'model/book/BookDB.php';
+require 'model/ticket/Ticket.php';
+require 'model/ticket/TicketDB.php';
 
 require 'controller/CategoryController.php';
 require 'controller/BookController.php';
 require 'controller/UserController.php';
+require 'controller/TicketController.php';
 
 use controller\UserController;
 use controller\CategoryController;
 use controller\BookController;
+use controller\TicketController;
 
 if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     header("location:./index.php?page=login");
@@ -34,10 +38,8 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -92,13 +94,12 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             </ul>
             <ul class="navbar-nav">
                 <li class="navbar-collapse dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Subjects
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        Request
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Subject</a>
-                        <a class="dropdown-item" href="./index.php?page=change-psw">Manage Subject</a>
+                        <a class="dropdown-item" href="./admin.php?page=request">Manage request</a>
                     </div>
                 </li>
             </ul>
@@ -126,6 +127,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     $userController = new UserController();
     $bookController = new BookController();
     $categoryController = new CategoryController();
+    $ticketController = new TicketController();
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
         case 'edit-profile':
@@ -172,6 +174,12 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             break;
         case 'changeStatus':
             $userController->changeStatus();
+            break;
+        case 'request':
+            $ticketController->acceptRequest();
+            break;
+        case 'return-book':
+            $ticketController->returnBook();
             break;
         default:
             $bookController->listBook();

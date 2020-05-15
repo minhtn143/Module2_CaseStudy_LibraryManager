@@ -32,7 +32,7 @@ class TicketDB
                 FROM `tblborrowedbook` 
                 RIGHT JOIN tblbook ON tblborrowedbook.bookid = tblbook.ID 
                 JOIN tblborrower ON tblborrowedbook.borrowerid = tblborrower.ID 
-                WHERE tblborrower.ID = ?";
+                WHERE tblborrower.ID = ? AND tblbook.status = 'unavailable'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,6 +42,27 @@ class TicketDB
             array_push($booksBorrowed, $item);
         }
         return $booksBorrowed;
+    }
+
+    public function listRequest($status)
+    {
+        $sql = "SELECT * FROM borrow_detail WHERE status = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$status]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $requests = [];
+        foreach ($result as $item) {
+            array_push($requests, $item);
+        }
+        return $requests;
+    }
+
+    public function deleteTicket($id)
+    {
+        $sql = "DELETE FROM tblborrowedbook WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$id]);
     }
 
 }

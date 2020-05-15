@@ -47,7 +47,7 @@ use controller\BookController;
 </head>
 <body>
 <?php if (!isset($_SESSION['isLogin']) && !isset($_SESSION['role'])): ?>
-    <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <!--        BRAND LOGO-->
             <a class="navbar-brand" href="index.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
@@ -74,7 +74,7 @@ use controller\BookController;
         </div>
     </nav>
 <?php elseif ($_SESSION['role'] == 5): ?>
-    <nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <!--        BRAND LOGO-->
         <div class="container-fluid">
             <a class="navbar-brand" href="admin.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
@@ -115,10 +115,10 @@ use controller\BookController;
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav mr-5">
+                <ul class="navbar-nav">
                     <li class="navbar-collapse dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
                             Books
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -132,8 +132,8 @@ use controller\BookController;
                 <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
                 <ul class="navbar-nav mr-5">
                     <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
                             <?php echo $_SESSION['username']; ?>
                             <img src="<?php echo 'image/' . $_SESSION['avatar']; ?>" class="avatar"
                                  alt="">
@@ -189,7 +189,9 @@ use controller\BookController;
                 $bookController->search();
                 break;
         }
+
     }
+
     ?>
 </div>
 
