@@ -60,12 +60,16 @@
 
                                             </div>
                                             <div class="modal-footer">
-
+                                                <?php if ($_SESSION['role'] == 1): ?>
+<!--                                                Edit btn-->
                                                 <a class="btn btn-primary"
                                                    href="./admin.php?page=editBook&bookId=<?php echo $book->getId(); ?>"
                                                    role="button">Edit</a>
-                                                <a style="color: #ff0000"><i class="far fa-trash-alt"
-                                                   onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"></i></a>
+<!--                                                Delete btn-->
+                                                    <a style="color: #ff0000"><i class="far fa-trash-alt"
+                                                                                 onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"></i></a>
+                                                <?php endif;?>
+
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>
