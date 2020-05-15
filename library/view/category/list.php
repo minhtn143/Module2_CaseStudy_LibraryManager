@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <!--            Search bar-->
-            <form class="form-inline my-2 my-lg-0 justify-content-center"  >
+            <form class="form-inline my-2 my-lg-0 justify-content-center">
                 <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search" name="keyword">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchCategory">
                 <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
@@ -40,53 +40,56 @@
 
                                 </td>
                             </tr>
-                            <div class="modal fade" id="edit-form<?php echo $key + 1 ?>" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel">
-                                <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
-                                    <div class="card-header bg-primary text-white">
-                                        <h3>Edit Category</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row justify-content-center">
-                                            <div class="col-md-7 col-xs-12 col-sm-6 my-3">
-                                                <form action="./admin.php?page=edit-category&id=<?php echo $category->getId(); ?>"
-                                                      id="register-form" method="post">
-                                                    <input type="hidden" value="<?php echo $category->getId(); ?>"
-                                                           name="id">
-                                                    <div class="row">
-                                                        <label for="category">Category Name:</label>
-                                                        <input type="text" class="form-control" readonly
-                                                               value="<?php echo $category->getName(); ?>"
-                                                               id="category"
-                                                               name="category"
-                                                               placeholder="Category name">
-                                                    </div>
+<!--                            <div class="col-md-12">-->
+                                <div class="modal fade" id="edit-form<?php echo $key + 1 ?>" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalLabel">Edit Category</h3>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-10 ml-auto mr-auto">
+                                                    <form action="./admin.php?page=edit-category&id=<?php echo $category->getId(); ?>"
+                                                          id="register-form" method="post">
+                                                        <input type="hidden" value="<?php echo $category->getId(); ?>"
+                                                               name="id">
+                                                        <div class="row">
+                                                            <label for="category">Category Name:</label>
+                                                            <input type="text" class="form-control" readonly
+                                                                   value="<?php echo $category->getName(); ?>"
+                                                                   id="category"
+                                                                   name="category"
+                                                                   placeholder="Category name">
+                                                        </div>
 
-                                                    <div class="row my-3">
-                                                        <label for="description">Description:</label>
-                                                        <textarea class="form-control" id="description"
-                                                                  name="description"
-                                                                  placeholder="Description"
-                                                                  rows="7"><?php echo $category->getDescription(); ?></textarea>
-                                                    </div>
+                                                        <div class="row my-3">
+                                                            <label for="description">Description:</label>
+                                                            <textarea class="form-control" id="description"
+                                                                      name="description"
+                                                                      placeholder="Description"
+                                                                      rows="7"><?php echo $category->getDescription(); ?></textarea>
+                                                        </div>
 
-                                                    <div class="row my-3">
-                                                        <button class="btn-primary btn" type="submit"><i
-                                                                    class="fas fa-edit"></i>
-                                                            Update
-                                                        </button>
-                                                        <button class="btn btn-secondary ml-1" type="button"
-                                                                onclick="location.href='./admin.php?page=manage-category'">
-                                                            <i
-                                                                    class="fas fa-window-close"></i> Cancel
-                                                        </button>
-                                                    </div>
-                                                </form>
+                                                        <div class="row my-3">
+                                                            <button class="btn-primary btn" type="submit"><i
+                                                                        class="fas fa-save"></i>
+                                                                Save
+                                                            </button>
+                                                            <button class="btn-secondary btn ml-1" type="reset"><i class="fas fa-undo"></i> Reset
+
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+<!--                            </div>-->
                         <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -95,7 +98,3 @@
         </div>
     </div>
 </div>
-
-<!--<a href="./admin.php?page=edit-category&id=--><?php //echo $category->getId(); ?><!--"><i-->
-<!--            class="far fa-edit"></i></a>-->
-

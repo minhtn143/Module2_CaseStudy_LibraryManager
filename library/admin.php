@@ -170,11 +170,13 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'return-book':
             $ticketController->returnBook();
             break;
-        default:
+        case 'listBook':
             $bookController->listBook();
             break;
+        default:
+            include 'view/default.php';
+            break;
     }
-
     ?>
 
 </div>
