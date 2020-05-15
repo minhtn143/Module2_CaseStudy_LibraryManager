@@ -65,4 +65,17 @@ class TicketDB
         return $stmt->execute([$id]);
     }
 
+    public function ticketDump($id)
+    {
+        $sql = "INSERT INTO ticket_dump SELECT * FROM tblborrowedbook WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$id]);
+    }
+
+    public function returnedBook($date,$id)
+    {
+        $sql = "UPDATE tblborrowedbook SET datereturned = ? WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$date,$id]);
+    }
 }

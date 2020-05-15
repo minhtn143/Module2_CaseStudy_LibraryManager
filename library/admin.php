@@ -50,7 +50,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
         <!--        BRAND LOGO-->
-        <a class="navbar-brand" href="admin.php"><img src="image/logo2.png" class="ml-3" style="width: 70px"></a>
+        <a class="navbar-brand" href="admin.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
         <!--            TOGGLE-BUTTON-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
@@ -97,7 +97,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo $_SESSION['username']; ?>
-                        <img src="<?php echo 'image/' . $_SESSION['avatar']; ?>" class="avatar"
+                        <img src="<?php echo 'upload/' . $_SESSION['avatar']; ?>" class="avatar"
                              alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -155,7 +155,7 @@ class UserController
             $user = $this->userDB->get($_SESSION['username']);
             $cur_avatar = $user->getAvatar();
             if (!empty($avatar)) {
-                $target_dir = "image/";
+                $target_dir = "upload/";
                 if ($cur_avatar !== 'default.png') {
                     $avatar_del = $target_dir . $cur_avatar;
                     unlink($avatar_del);
