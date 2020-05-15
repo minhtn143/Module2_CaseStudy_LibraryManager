@@ -44,11 +44,11 @@ class TicketDB
         return $booksBorrowed;
     }
 
-    public function listRequest()
+    public function listRequest($status)
     {
-        $sql = "SELECT * FROM borrow_detail WHERE status = 'available'";
+        $sql = "SELECT * FROM borrow_detail WHERE status = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$status]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $requests = [];
@@ -56,6 +56,13 @@ class TicketDB
             array_push($requests, $item);
         }
         return $requests;
+    }
+
+    public function deleteTicket($id)
+    {
+        $sql = "DELETE FROM tblborrowedbook WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$id]);
     }
 
 }

@@ -1,4 +1,3 @@
-<?php //var_dump($listRequests); ?>
 <div class="col-md-8 ml-auto mr-auto my-5">
     <div class="card bg-light">
         <div class="card-header bg-primary text-white">
@@ -20,15 +19,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($listRequests as $key => $request): ?>
+                            <?php foreach ($returnBooks as $key => $book): ?>
                                 <tr>
-                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $request['bookId'] ?>"
-                                               class="form-check form-check-inline"></td>
-                                    <td><?php echo $request['fullname'] ?></td>
-                                    <td><?php echo $request['booktitle'] ?></td>
-                                    <td><?php echo $request['dateborrowed'] ?></td>
-                                    <td><?php echo $request['duedate'] ?></td>
-                                    <td><?php echo $request['status'] ?></td>
+                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book['bookId'] ?>" class="form-check form-check-inline"></td>
+                                    <td><?php echo $book['fullname'] ?></td>
+                                    <td><?php echo $book['booktitle'] ?></td>
+                                    <td><?php echo $book['dateborrowed'] ?></td>
+                                    <td><?php echo $book['duedate'] ?></td>
+                                    <td><?php echo $book['status'] ?></td>
+                                    <input type="hidden" name="ticketId[]" value="<?php echo $book['ticketId']?>"
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

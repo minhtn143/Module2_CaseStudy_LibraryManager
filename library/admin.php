@@ -178,6 +178,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'request':
             $ticketController->acceptRequest();
             break;
+        case 'return-book':
+            $ticketController->returnBook();
+            break;
         default:
             $bookController->listBook();
             break;
