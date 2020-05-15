@@ -82,24 +82,13 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             </ul>
             <ul class="navbar-nav">
                 <li class="navbar-collapse dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Scores
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Score</a>
-                        <a class="dropdown-item" href="./index.php?page=change-psw">Manage Score</a>
-                    </div>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="navbar-collapse dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
                         Request
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="./admin.php?page=request">Manage request</a>
+                        <a class="dropdown-item" href="./admin.php?page=return-book">Manage borrowed books</a>
                     </div>
                 </li>
             </ul>
@@ -181,11 +170,13 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case 'return-book':
             $ticketController->returnBook();
             break;
-        default:
+        case 'listBook':
             $bookController->listBook();
             break;
+        default:
+            include 'view/default.php';
+            break;
     }
-
     ?>
 
 </div>
