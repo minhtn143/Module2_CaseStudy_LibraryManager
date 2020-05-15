@@ -39,13 +39,7 @@ class CategoryDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        $categories = [];
-        foreach ($result as $value) {
-            $category = new  Category($value['subjectname'], $value['description']);
-            $category->setId($value['ID']);
-            array_push($categories, $category);
-        }
-        return $categories;
+        return $this->createCategoryFromDB($result);
     }
 
     public function get($id)
@@ -73,5 +67,29 @@ class CategoryDB
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $id);
         return $stmt->execute();
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    public function createCategoryFromDB($result): array
+    {
+        $categories = [];
+        foreach ($result as $value) {
+            $category = new  Category($value['subjectname'], $value['description']);
+            $category->setId($value['ID']);
+            array_push($categories, $category);
+        }
+        return $categories;
+    }
+
+    public function searchCategory($keyword)
+    {
+        $sql = "SELECT * FROM tblsubject WHERE subjectname LIKE'%$keyword%'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $this->createCategoryFromDB($result);
     }
 }

@@ -7,6 +7,7 @@
             <h3>List Users</h3>
         </div>
         <div class="card-body">
+<!--            Search bar-->
             <form class="form-inline my-2 my-lg-0 justify-content-center"  >
                 <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search" name="keyword">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchUser">

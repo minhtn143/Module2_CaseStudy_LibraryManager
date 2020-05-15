@@ -149,6 +149,9 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         case'delete-category':
             $categoryController->delete();
             break;
+        case'searchCategory':
+            $categoryController->search();
+            break;
         case 'addBook':
             $bookController->add();
             break;

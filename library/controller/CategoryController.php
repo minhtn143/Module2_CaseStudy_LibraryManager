@@ -68,4 +68,13 @@ class CategoryController
             header("location:./admin.php?page=manage-category");
         }
     }
+
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $keyword = $_REQUEST['keyword'];
+            $categories = $this->categoryDB->searchCategory($keyword);
+            include "view/category/list.php";
+        }
+    }
 }

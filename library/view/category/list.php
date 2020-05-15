@@ -3,12 +3,18 @@
         myAlert('center', 'success', 'Update Complete!', 800, './admin.php?page=manage-category')
     </script>
 <?php endif; ?>
-<div class="col-md-8 ml-auto mr-auto">
+<div class="col-md-12 ml-auto mr-auto">
     <div class="card bg-light my-5">
         <div class="card-header bg-primary text-white">
             <h3>List Categories</h3>
         </div>
         <div class="card-body">
+            <!--            Search bar-->
+            <form class="form-inline my-2 my-lg-0 justify-content-center"  >
+                <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchCategory">
+                <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
+            </form>
             <div class="row justify-content-center">
                 <div class="col-md-10 col-xs-12 col-sm-6 my-3">
                     <table class="table text-center my-3">
