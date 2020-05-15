@@ -84,31 +84,6 @@ use controller\BookController;
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <!--                OPTIONAL-->
-                <!--                <ul class="navbar-nav ml-auto">-->
-                <!--                    <li class="navbar-collapse dropdown">-->
-                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                            Category-->
-                <!--                        </a>-->
-                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-                <!--                            <a class="dropdown-item" href="./admin.php?page=add-category">Add Category</a>-->
-                <!--                            <a class="dropdown-item" href="./admin.php?page=manage-category">Manage Category</a>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
-                <!--                <ul class="navbar-nav">-->
-                <!--                    <li class="navbar-collapse dropdown">-->
-                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-                <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                            Students-->
-                <!--                        </a>-->
-                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-                <!--                            <a class="dropdown-item" href="/lms-demo/view/edit-profile.php">Add Student</a>-->
-                <!--                            <a class="dropdown-item" href="./index.php?page=change-psw">Manage Student</a>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
                 <ul class="navbar-nav ml-auto">
                     <li class="navbar-collapse dropdown">
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
