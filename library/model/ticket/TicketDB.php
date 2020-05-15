@@ -32,7 +32,7 @@ class TicketDB
                 FROM `tblborrowedbook` 
                 RIGHT JOIN tblbook ON tblborrowedbook.bookid = tblbook.ID 
                 JOIN tblborrower ON tblborrowedbook.borrowerid = tblborrower.ID 
-                WHERE tblborrower.ID = ?";
+                WHERE tblborrower.ID = ? AND tblbook.status = 'unavailable'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,6 +42,20 @@ class TicketDB
             array_push($booksBorrowed, $item);
         }
         return $booksBorrowed;
+    }
+
+    public function listRequest()
+    {
+        $sql = "SELECT * FROM borrow_detail WHERE status = 'available'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $requests = [];
+        foreach ($result as $item) {
+            array_push($requests, $item);
+        }
+        return $requests;
     }
 
 }

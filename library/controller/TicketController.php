@@ -28,7 +28,6 @@ class TicketController
             include 'view/borrow/borrowBook.php';
         } else {
             $bookId = $_REQUEST['checkList'];
-//            var_dump($bookId);
 
             for ($i = 0; $i < count($bookId); $i++) {
                 $borrowerId = $_POST['borrowerId'];
@@ -51,4 +50,18 @@ class TicketController
         }
     }
 
+    public function acceptRequest()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $listRequests = $this->ticketDB->listRequest();
+            include 'view/admin-borrow/request.php';
+        } else {
+            $bookId = $_REQUEST['checkList'];
+            for ($i = 0; $i < count($bookId); $i++) {
+                $this->bookDB->changeStatus($bookId[$i],'unavailable');
+            }
+            $listRequests = $this->ticketDB->listRequest();
+            include 'view/admin-borrow/request.php';
+        }
+    }
 }

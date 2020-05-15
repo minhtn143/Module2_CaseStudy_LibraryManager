@@ -78,4 +78,13 @@ class BookDB
 
         return $stmt->execute(array($title, $author, $subjectId, $description, $publisher, $copyrightYear));
     }
+
+    public function changeStatus($id, $status)
+    {
+        $sql = "UPDATE tblbook SET status = ? WHERE ID = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$status, $id]);
+    }
+
+
 }

@@ -1,6 +1,6 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top', 'success', 'Request has been sent. We will check your request', 1500,'./index.php');
+        myAlert('top', 'success', 'Request has been sent. We will check your request', 1500, './index.php');
     </script>
 <?php endif; ?>
 <div class="col-md-8 ml-auto mr-auto my-5">
@@ -24,8 +24,7 @@
                             <tbody>
                             <?php foreach ($books as $key => $book): ?>
                                 <tr>
-                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]"
-                                               value="<?php echo $book->getId() ?>"
+                                    <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book->getId() ?>"
                                                class="form-check form-check-inline"></td>
                                     <td>
                                         <label for="checkbook<?php echo $key ?>"><?php echo $book->getTitle(); ?></label>

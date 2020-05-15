@@ -61,7 +61,7 @@ class UserController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             session_destroy();
-            echo "<script>location.href='index.php';</script>";
+            echo "<script>location.href='index.php?page=login';</script>";
         }
     }
 
