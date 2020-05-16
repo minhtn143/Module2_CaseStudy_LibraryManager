@@ -86,6 +86,14 @@ class TicketController
         }
     }
 
+    public function userReturned()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $userReturned = $this->ticketDB->returnedByBorrowerId($_SESSION['userID']);
+            include 'view/borrow/user-borrow/returned.php';
+        }
+    }
+
     public function storageHistory()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {

@@ -105,6 +105,7 @@ use controller\BookController;
                             <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
                             <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
                             <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
+                            <a class="dropdown-item" href="./index.php?page=listReturned">Returned books</a>
                         </div>
                     </li>
                     <li class="navbar-item dropdown">
@@ -165,6 +166,9 @@ use controller\BookController;
                 break;
             case 'searchBook':
                 $bookController->search();
+                break;
+            case 'listReturned':
+                $ticketController->userReturned();
                 break;
         }
     }

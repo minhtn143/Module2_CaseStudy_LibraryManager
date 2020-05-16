@@ -10,8 +10,6 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Student ID</th>
-                            <th>Student</th>
                             <th>Book Title</th>
                             <th>Date borrowed</th>
                             <th>Due date</th>
@@ -19,11 +17,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($returnedBooks as $key => $ticket): ?>
+                        <?php foreach ($userReturned as $key => $ticket): ?>
                             <tr>
                                 <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $ticket['borrowerid'] ?></td>
-                                <td><?php echo $ticket['fullname'] ?></td>
                                 <td><?php echo $ticket['booktitle'] ?></td>
                                 <td><?php echo $ticket['dateborrowed'] ?></td>
                                 <td><?php echo $ticket['duedate'] ?></td>
