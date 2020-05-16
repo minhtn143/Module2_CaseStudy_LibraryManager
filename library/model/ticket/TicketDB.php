@@ -72,10 +72,45 @@ class TicketDB
         return $stmt->execute([$id]);
     }
 
-    public function returnedBook($date, $id)
+    public function returnBook($date, $id)
     {
         $sql = "UPDATE tblborrowedbook SET datereturned = ? WHERE ID = ?";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$date, $id]);
+    }
+
+    public function allReturned()
+    {
+        $sql = "SELECT * FROM history_borrow";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $history = [];
+        foreach ($result as $item) {
+            array_push($history, $item);
+        }
+        return $history;
+    }
+
+    public function returnedByBorrowerId($id)
+    {
+        $sql = "SELECT * FROM history_borrow WHERE borrowerid = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $history = [];
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $item) {
+            array_push($history,$item);
+        }
+        return $history;
+    }
+
+    public function count()
+    {
+        $sql = "SELECT ID FROM ticket_dump";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
     }
 }

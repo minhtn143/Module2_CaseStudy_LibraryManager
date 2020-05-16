@@ -118,4 +118,10 @@ class BookController
         }
     }
 
+    public function count()
+    {
+        $countBooks = $this->bookDB->count();
+        include 'view/admin-dashboard.php';
+    }
+
 }

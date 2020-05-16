@@ -5,15 +5,28 @@ namespace controller;
 use model\DBConnect;
 use model\User;
 use model\UserDB;
+use model\Book;
+use model\BookDB;
+use model\Ticket;
+use model\TicketDB;
+use model\Category;
+use model\CategoryDB;
+
 
 class UserController
 {
     protected $userDB;
+    protected $bookDB;
+    protected $ticketDB;
+    protected $categoryDB;
 
     public function __construct()
     {
         $db = new DBConnect();
         $this->userDB = new UserDB($db->connect());
+        $this->bookDB = new BookDB($db->connect());
+        $this->categoryDB = new CategoryDB($db->connect());
+        $this->ticketDB = new TicketDB($db->connect());
     }
 
     public function login()
@@ -223,5 +236,14 @@ class UserController
             $users = $this->userDB->searchUser($keyword);
             include "view/user/list-users.php";
         }
+    }
+
+    public function dashboard()
+    {
+        $countBooks = $this->bookDB->count();
+        $countCategories = $this->categoryDB->count();
+        $countReturned = $this->ticketDB->count();
+        $countUser = $this->userDB->count();
+        include 'view/admin-dashboard.php';
     }
 }

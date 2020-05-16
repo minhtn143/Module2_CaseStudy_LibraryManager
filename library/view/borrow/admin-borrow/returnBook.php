@@ -23,18 +23,18 @@
                                 <tr>
                                     <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book['bookId'] ?>"
                                                class="form-check form-check-inline"></td>
-                                    <td><?php echo $book['fullname'] ?></td>
-                                    <td><?php echo $book['booktitle'] ?></td>
-                                    <td><?php echo $book['dateborrowed'] ?></td>
-                                    <td><?php echo $book['duedate'] ?></td>
-                                    <td><?php echo $book['status'] ?></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book['fullname'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book['booktitle'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book['dateborrowed'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book['duedate'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book['status'] ?></label></td>
                                     <input type="hidden" name="ticketId[]" value="<?php echo $book['ticketId'] ?>"
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
-                    <button type="submit" class="btn btn-primary">Accept</button>
+                    <button type="submit" class="btn btn-primary">Give back</button>
                 </form>
             </div>
         </div>

@@ -1,73 +1,45 @@
-<div class="content-wrapper my-5">
+<div class="content-wrapper mt-5">
     <div class="container">
-        <div class="row pad-botm">
+        <div class="row">
             <div class="col-md-12">
                 <h4 class="header-line">ADMIN DASHBOARD</h4>
-
             </div>
-
         </div>
 
-        <div class="row">
+        <hr class="my-4">
 
+        <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="alert alert-success back-widget-set text-center">
-                    <i class="fa fa-book fa-5x"></i>
-                    <h3></h3>
+                <div class="alert alert-success text-center">
+                    <a href="./admin.php?page=listBook" class="alert alert-success"><i class="fa fa-book fa-5x"></i></a>
+                    <h3><?php echo $countBooks ?></h3>
                     Books Listed
                 </div>
             </div>
-
-
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="alert alert-info back-widget-set text-center">
-                    <i class="fa fa-bars fa-5x"></i>
-                    <h3></h3>
-                    Times Book Issued
+            <div class="col-md-3 col-sm-3 rscol-xs-6">
+                <div class="alert alert-info text-center">
+                    <a href="./admin.php?page=manage-category" class="alert alert-info"><i class="far fa-file-archive fa-5x"></i></a>
+                    <h3><?php echo $countCategories ?></h3>
+                    Listed Categories
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="alert alert-warning back-widget-set text-center">
-                    <i class="fa fa-recycle fa-5x"></i>
-                    <h3></h3>
+                <div class="alert alert-warning text-center">
+                    <a href="./admin.php?page=history" class="alert alert-warning"><i class="fa fa-recycle fa-5x"></i></a>
+                    <h3><?php echo $countReturned ?></h3>
                     Times Books Returned
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="alert alert-danger back-widget-set text-center">
-                    <i class="fa fa-users fa-5x"></i>
-
-                    <h3></h3>
+                <div class="alert alert-danger text-center">
+                    <a href="admin.php?page=list-users" class="alert alert-danger"><i class="fa fa-users fa-5x"></i></a>
+                    <h3><?php echo $countUser ?></h3>
                     Registered Users
                 </div>
             </div>
-
         </div>
 
-
-        <div class="row">
-
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="alert alert-success back-widget-set text-center">
-                    <i class="fa fa-user fa-5x"></i>
-                    <h3></h3>
-                    Authors Listed
-                </div>
-            </div>
-
-
-            <div class="col-md-3 col-sm-3 rscol-xs-6">
-                <div class="alert alert-info back-widget-set text-center">
-                    <i class="far fa-file-archive fa-5x"></i>
-                    <h3></h3>
-                    Listed Categories
-                </div>
-            </div>
-
-
-        </div>
-
+        <hr class="my-4">
 
         <div class="row">
             <div class="col-md-12 col-sm-10 col-xs-12 col-md-offset-1 mr-auto ml-auto my-3">

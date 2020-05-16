@@ -2,6 +2,8 @@
 
 namespace model;
 
+use PDO;
+
 class BookDB
 {
     protected $conn;
@@ -104,5 +106,13 @@ class BookDB
         return $stmt->execute([$status, $id]);
     }
 
+    public function count()
+    {
+        $sql = "SELECT ID FROM tblbook";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
+    }
 
 }

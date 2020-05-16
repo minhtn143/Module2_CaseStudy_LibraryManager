@@ -61,13 +61,13 @@ use controller\BookController;
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto mr-5">
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link active">Home</a>
+                        <a href="index.php" class="nav-link active"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index.php?page=login" class="nav-link">Login</a>
+                        <a href="./index.php?page=login" class="nav-link"><i class="fa fa-sign-in-alt"></i>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index.php?page=register" class="nav-link">Register</a>
+                        <a href="./index.php?page=register" class="nav-link"><i class="fa fa-user-plus"></i>Register</a>
                     </li>
                 </ul>
             </div>
@@ -91,29 +91,30 @@ use controller\BookController;
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+
+                </ul>
+
+                <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
+                <ul class="navbar-nav mr-3">
                     <li class="navbar-collapse dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
-                            Books
+                            <i class="fa fa-book"></i>Books
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
                             <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
                             <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
                         </div>
                     </li>
-                </ul>
-
-                <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
-                <ul class="navbar-nav mr-5">
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
-                            <?php echo $_SESSION['username']; ?>
+                            <i class="fa fa-user"></i><?php echo $_SESSION['username']; ?>
                             <img src="<?php echo 'upload/' . $_SESSION['avatar']; ?>" class="avatar"
                                  alt="">
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
                             <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
                             <a class="dropdown-item" href="./index.php?page=logout">Logout</a>
@@ -132,13 +133,15 @@ use controller\BookController;
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     if (!isset($_SESSION['isLogin'])) {
         switch ($page) {
-            case 'login':
-                $userController->login();
-                break;
+//            case 'login':
+//                $userController->login();
+//                break;
             case 'register':
                 $userController->register();
                 break;
             default:
+                $userController->login();
+                break;
         }
     } else {
         switch ($page) {
@@ -164,13 +167,31 @@ use controller\BookController;
                 $bookController->search();
                 break;
         }
-
     }
 
     ?>
 </div>
 
+<footer class="fixed-bottom footer-section">
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12 mt-3">
+                <h3>Contact us</h3>
+            </div>
+            <div class="col-12 social padding">
+                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+            </div>
+            <div class="col-12 mt-1 mb-3">
+                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">
+                    Designed by : Master Login</a>
+            </div>
 
+        </div>
+    </div>
+</footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

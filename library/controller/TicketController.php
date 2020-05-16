@@ -25,7 +25,7 @@ class TicketController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $books = $this->bookDB->getAll();
-            include 'view/borrow/borrowBook.php';
+            include 'view/borrow/user-borrow/borrowBook.php';
         } else {
             $bookId = $_REQUEST['checkList'];
 
@@ -38,7 +38,7 @@ class TicketController
             }
             $success = 'success';
             $books = $this->bookDB->getAll();
-            include 'view/borrow/borrowBook.php';
+            include 'view/borrow/user-borrow/borrowBook.php';
         }
     }
 
@@ -46,7 +46,7 @@ class TicketController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $listBooks = $this->ticketDB->listBorrowed($_SESSION['userID']);
-            include 'view/borrow/borrowed.php';
+            include 'view/borrow/user-borrow/borrowed.php';
         }
     }
 
@@ -54,14 +54,14 @@ class TicketController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $listRequests = $this->ticketDB->listRequest('available');
-            include 'view/admin-borrow/request.php';
+            include 'view/borrow/admin-borrow/request.php';
         } else {
             $bookId = $_REQUEST['checkList'];
             for ($i = 0; $i < count($bookId); $i++) {
                 $this->bookDB->changeStatus($bookId[$i], 'unavailable');
             }
             $listRequests = $this->ticketDB->listRequest('available');
-            include 'view/admin-borrow/request.php';
+            include 'view/borrow/admin-borrow/request.php';
         }
     }
 
@@ -69,20 +69,28 @@ class TicketController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $returnBooks = $this->ticketDB->listRequest('unavailable');
-            include 'view/admin-borrow/returnBook.php';
+            include 'view/borrow/admin-borrow/returnBook.php';
         } else {
             $ticketId = $_REQUEST['ticketId'];
             $bookId = $_REQUEST['checkList'];
             $date = date('Y-m-d');
             for ($i = 0; $i < count($bookId); $i++) {
                 $date = date('Y-m-d');
-                $this->ticketDB->returnedBook($date, $ticketId[$i]);
+                $this->ticketDB->returnBook($date, $ticketId[$i]);
                 $this->ticketDB->ticketDump($ticketId[$i]);
                 $this->bookDB->changeStatus($bookId[$i], 'available');
                 $this->ticketDB->deleteTicket($ticketId[$i]);
             }
             $returnBooks = $this->ticketDB->listRequest('unavailable');
-            include 'view/admin-borrow/returnBook.php';
+            include 'view/borrow/admin-borrow/returnBook.php';
+        }
+    }
+
+    public function storageHistory()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $returnedBooks = $this->ticketDB->allReturned();
+            include 'view/borrow/admin-borrow/borrowHistory.php';
         }
     }
 }

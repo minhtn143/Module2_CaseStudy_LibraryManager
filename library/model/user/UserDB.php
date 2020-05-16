@@ -3,6 +3,7 @@
 
 namespace model;
 
+use PDO;
 
 class UserDB
 {
@@ -167,5 +168,14 @@ class UserDB
             array_push($users, $user);
         }
         return $users;
+    }
+
+    public function count()
+    {
+        $sql = "SELECT ID FROM tblborrower";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
     }
 }

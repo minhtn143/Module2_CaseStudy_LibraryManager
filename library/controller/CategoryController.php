@@ -77,4 +77,10 @@ class CategoryController
             include "view/category/list.php";
         }
     }
+
+    public function count()
+    {
+        $categories = $this->categoryDB->count();
+        include 'view/admin-dashboard.php';
+    }
 }

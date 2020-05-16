@@ -3,12 +3,12 @@
         myAlert('top', 'success', 'Successfully Added', 1000, './admin.php?page=addBook');
     </script>
 <?php endif; ?>
-<div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
+<div class="card bg-light ml-auto mr-auto mt-3" style="width: 700px">
     <div class="card-header bg-primary text-white">
         <h3>Add new book</h3>
     </div>
 
-    <div class="row justify-content-center my-4">
+    <div class="row justify-content-center">
         <div class="col-md-7 col-xs-12 col-sm-6 my-3">
             <form action="" id="register-form" method="post">
                 <div class="form-group">
@@ -56,11 +56,13 @@
                     <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                 </div>
 
-                <button class="btn-primary btn my-3" type="submit"><i class="fas fa-plus-circle"></i> Add
+                <button class="btn-primary btn mb-3" type="submit"><i class="fas fa-plus-circle"></i> Add
                 </button>
-                <button class="btn-secondary btn my-3" type="reset"><i class="fas fa-magic"></i> Reset
+                <button class="btn-secondary btn mb-3" type="reset"><i class="fas fa-magic"></i> Reset
                 </button>
-                <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                <div class="form-group">
+                    <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                </div>
             </form>
         </div>
     </div>
