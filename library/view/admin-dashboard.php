@@ -6,40 +6,40 @@
             </div>
         </div>
 
-        <hr class="my-4">
+        <hr class="my-3">
 
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="alert alert-success text-center">
-                    <a href="./admin.php?page=listBook" class="alert alert-success"><i class="fa fa-book fa-5x"></i></a>
+                    <a href="./admin.php?page=listBook" class="alert-link"><i class="fa fa-book fa-5x"></i></a>
                     <h3><?php echo $countBooks ?></h3>
                     Books Listed
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 rscol-xs-6">
                 <div class="alert alert-info text-center">
-                    <a href="./admin.php?page=manage-category" class="alert alert-info"><i class="far fa-file-archive fa-5x"></i></a>
+                    <a href="./admin.php?page=manage-category" class="alert-link"><i class="far fa-file-archive fa-5x"></i></a>
                     <h3><?php echo $countCategories ?></h3>
                     Listed Categories
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="alert alert-warning text-center">
-                    <a href="./admin.php?page=history" class="alert alert-warning"><i class="fa fa-recycle fa-5x"></i></a>
+                    <a href="./admin.php?page=history" class="alert-link"><i class="fa fa-recycle fa-5x"></i></a>
                     <h3><?php echo $countReturned ?></h3>
                     Times Books Returned
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="alert alert-danger text-center">
-                    <a href="admin.php?page=list-users" class="alert alert-danger"><i class="fa fa-users fa-5x"></i></a>
+                    <a href="admin.php?page=list-users" class="alert-link"><i class="fa fa-users fa-5x"></i></a>
                     <h3><?php echo $countUser ?></h3>
                     Registered Users
                 </div>
             </div>
         </div>
 
-        <hr class="my-4">
+        <hr class="my-3">
 
         <div class="row">
             <div class="col-md-12 col-sm-10 col-xs-12 col-md-offset-1 mr-auto ml-auto my-3">
