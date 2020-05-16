@@ -1,6 +1,21 @@
 html, body {
     font-family: "Roboto Thin", sans-serif;
 }
+/*section {*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    background-color: grey;*/
+/*}*/
+
+/*section .sec_bg {*/
+/*    background: url("../image/663.jpg") no-repeat;*/
+/*    background-size: cover;*/
+/*    box-sizing: border-box;*/
+/*    height: 850px;*/
+/*    width: 100%;*/
+/*    margin-top: 0;*/
+/*    position: absolute;*/
+/*}*/
 
 .error {
     color: red;
@@ -93,3 +108,11 @@ a.navbar-brand:hover {
     text-align: right;
     border-top: 1px solid #222629;
 }
+
+hr {
+    border-bottom: 1px solid black;
+}
+
+/*.header-line {*/
+/*    color: white;*/
+/*}*/

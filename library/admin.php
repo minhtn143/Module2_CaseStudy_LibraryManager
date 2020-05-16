@@ -37,7 +37,6 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     <title>Library Management System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -51,7 +50,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <!--        BRAND LOGO-->
-            <a class="navbar-brand" href="admin.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
+            <a class="navbar-brand" href="admin.php"><i class="fas fa-school fa-3x"></i></a>
             <!--            TOGGLE-BUTTON-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
@@ -113,77 +112,79 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     </nav>
 </header>
 <section>
-    <?php
-    $userController = new UserController();
-    $bookController = new BookController();
-    $categoryController = new CategoryController();
-    $ticketController = new TicketController();
-    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
-    switch ($page) {
-        case 'edit-profile':
-            $userController->edit('admin.php');
-            break;
-        case 'change-psw':
-            $userController->changePsw();
-            break;
-        case 'logout':
-            $userController->logout();
-            break;
-        case 'add-category':
-            $categoryController->add();
-            break;
-        case 'manage-category':
-            $categoryController->index();
-            break;
-        case 'edit-category':
-            $categoryController->update();
-            break;
-        case'delete-category':
-            $categoryController->delete();
-            break;
-        case'searchCategory':
-            $categoryController->search();
-            break;
-        case 'addBook':
-            $bookController->add();
-            break;
-        case 'deleteBook':
-            $bookController->delete();
-            break;
-        case 'editBook':
-            $bookController->edit();
-            break;
-        case 'searchBook':
-            $bookController->search();
-            break;
-        case 'list-users':
-            $userController->listUsers();
-            break;
-        case 'searchUser':
-            $userController->search();
-            break;
-        case 'changeStatus':
-            $userController->changeStatus();
-            break;
-        case 'request':
-            $ticketController->acceptRequest();
-            break;
-        case 'return-book':
-            $ticketController->returnBook();
-            break;
-        case 'listBook':
-            $bookController->listBook();
-            break;
-        case 'history':
-            $ticketController->storageHistory();
-            break;
-        default:
-            $userController->dashboard();
-            break;
-    }
-    ?>
+    <div class="sec_bg">
+        <?php
+        $userController = new UserController();
+        $bookController = new BookController();
+        $categoryController = new CategoryController();
+        $ticketController = new TicketController();
+        $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
+        switch ($page) {
+            case 'edit-profile':
+                $userController->edit('admin.php');
+                break;
+            case 'change-psw':
+                $userController->changePsw();
+                break;
+            case 'logout':
+                $userController->logout();
+                break;
+            case 'add-category':
+                $categoryController->add();
+                break;
+            case 'manage-category':
+                $categoryController->index();
+                break;
+            case 'edit-category':
+                $categoryController->update();
+                break;
+            case'delete-category':
+                $categoryController->delete();
+                break;
+            case'searchCategory':
+                $categoryController->search();
+                break;
+            case 'addBook':
+                $bookController->add();
+                break;
+            case 'deleteBook':
+                $bookController->delete();
+                break;
+            case 'editBook':
+                $bookController->edit();
+                break;
+            case 'searchBook':
+                $bookController->search();
+                break;
+            case 'list-users':
+                $userController->listUsers();
+                break;
+            case 'searchUser':
+                $userController->search();
+                break;
+            case 'changeStatus':
+                $userController->changeStatus();
+                break;
+            case 'request':
+                $ticketController->acceptRequest();
+                break;
+            case 'return-book':
+                $ticketController->returnBook();
+                break;
+            case 'listBook':
+                $bookController->listBook();
+                break;
+            case 'history':
+                $ticketController->storageHistory();
+                break;
+            default:
+                $userController->dashboard();
+                break;
+        }
+        ?>
+    </div>
 </section>
-<section class="fixed-bottom footer-section">
+<footer class="fixed-bottom footer-section">
     <div class="container-fluid padding">
         <div class="row text-center padding">
             <div class="col-12 mt-3">
@@ -201,7 +202,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
             </div>
         </div>
     </div>
-</section>
+</footer>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

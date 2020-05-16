@@ -36,35 +36,37 @@ class UserController
         } else {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $user = $this->userDB->get($username);
-            $id = $user->getId();
 
-            $status = $this->userDB->checkStatus($id);
             $isLogin = $this->userDB->userLogin($username, $password);
-            if ($isLogin && $status) {
-                $_SESSION['isLogin'] = true;
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
-                $_SESSION['userID'] = $user->getId();
-                $_SESSION['avatar'] = $user->getAvatar();
-                $_SESSION['studentId'] = $user->getStudentId();
-                $_SESSION['role'] = $user->getRole();
-                switch ($_SESSION['role']) {
-                    case 1:
-                        header("location:admin.php");
-                        break;
-                    case 5:
-                        header("location:index.php");
-                        break;
-                    default:
-                        session_destroy();
-                        include 'view/user/login.php';
+            if ($isLogin) {
+                $user = $this->userDB->get($username);
+                $id = $user->getId();
+                $status = $this->userDB->checkStatus($id);
+                if ($status) {
+                    $_SESSION['isLogin'] = true;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['userID'] = $user->getId();
+                    $_SESSION['avatar'] = $user->getAvatar();
+                    $_SESSION['studentId'] = $user->getStudentId();
+                    $_SESSION['role'] = $user->getRole();
+                    switch ($_SESSION['role']) {
+                        case 1:
+                            header("location:admin.php");
+                            break;
+                        case 5:
+                            header("location:index.php");
+                            break;
+                        default:
+                            session_destroy();
+                            include 'view/user/login.php';
+                    }
+                } else {
+                    $block = '* Your account has been locked, contact with admin to unlock your account.';
+                    include 'view/user/login.php';
                 }
-            } elseif (!$isLogin) {
-                $errLogin = '* Incorrect username or password.';
-                include 'view/user/login.php';
             } else {
-                $block = '* Your account has been locked, contact with admin to unlock the account.';
+                $errLogin = '* Incorrect username or password.';
                 include 'view/user/login.php';
             }
         }

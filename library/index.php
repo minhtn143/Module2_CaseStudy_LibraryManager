@@ -34,7 +34,6 @@ use controller\BookController;
     <title>Library Management System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -46,136 +45,140 @@ use controller\BookController;
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<?php if (!isset($_SESSION['isLogin']) && !isset($_SESSION['role'])): ?>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+<header>
+    <?php if (!isset($_SESSION['isLogin']) && !isset($_SESSION['role'])): ?>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class="container-fluid">
+                <!--        BRAND LOGO-->
+                <a class="navbar-brand" href="index.php"><i class="fas fa-school fa-3x"></i></a>
+
+                <!--            TOGGLE-BUTTON-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--            OPTIONAL-->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto mr-5">
+                        <li class="nav-item">
+                            <a href="index.php" class="nav-link active"><i class="fa fa-home"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?page=login" class="nav-link"><i class="fa fa-sign-in-alt"></i>Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?page=register" class="nav-link"><i class="fa fa-user-plus"></i>Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <?php elseif ($_SESSION['role'] == 5): ?>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <!--        BRAND LOGO-->
-            <a class="navbar-brand" href="index.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="admin.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
 
-            <!--            TOGGLE-BUTTON-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!--            TOGGLE-BUTTON-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="navbar-collapse dropdown">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
 
-            <!--            OPTIONAL-->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto mr-5">
-                    <li class="nav-item">
-                        <a href="index.php" class="nav-link active"><i class="fa fa-home"></i>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./index.php?page=login" class="nav-link"><i class="fa fa-sign-in-alt"></i>Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./index.php?page=register" class="nav-link"><i class="fa fa-user-plus"></i>Register</a>
-                    </li>
-                </ul>
+                    </ul>
+
+                    <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
+                    <ul class="navbar-nav mr-3">
+                        <li class="navbar-collapse dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="fa fa-book"></i>Books
+                            </a>
+                            <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
+                                <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
+                                <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
+                                <a class="dropdown-item" href="./index.php?page=listReturned">Returned books</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="fa fa-user"></i><?php echo $_SESSION['username']; ?>
+                                <img src="<?php echo 'upload/' . $_SESSION['avatar']; ?>" class="avatar"
+                                     alt="">
+                            </a>
+                            <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
+                                <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
+                                <a class="dropdown-item" href="./index.php?page=logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-<?php elseif ($_SESSION['role'] == 5): ?>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <!--        BRAND LOGO-->
+        </nav>
+    <?php endif; ?>
+</header>
+<section>
+    <div class="sec_bg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="admin.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
+            <?php
+            $ticketController = new TicketController();
+            $userController = new UserController();
+            $bookController = new BookController();
+            $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
+            if (!isset($_SESSION['isLogin'])) {
+                switch ($page) {
+                    case 'login':
+                        $userController->login();
+                        break;
+                    case 'register':
+                        $userController->register();
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                switch ($page) {
+                    case 'logout':
+                        $userController->logout();
+                        break;
+                    case 'change-psw':
+                        $userController->changePsw();
+                        break;
+                    case 'edit-profile':
+                        $userController->edit('index.php');
+                        break;
+                    case 'borrow':
+                        $ticketController->add();
+                        break;
+                    case 'listBorrowed':
+                        $ticketController->listBorrowed();
+                        break;
+                    case 'listBook':
+                        $bookController->listBook();
+                        break;
+                    case 'searchBook':
+                        $bookController->search();
+                        break;
+                    case 'listReturned':
+                        $ticketController->userReturned();
+                        break;
+                }
+            }
 
-            <!--            TOGGLE-BUTTON-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="navbar-collapse dropdown">
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-
-                </ul>
-
-                <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
-                <ul class="navbar-nav mr-3">
-                    <li class="navbar-collapse dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <i class="fa fa-book"></i>Books
-                        </a>
-                        <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
-                            <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
-                            <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
-                            <a class="dropdown-item" href="./index.php?page=listReturned">Returned books</a>
-                        </div>
-                    </li>
-                    <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <i class="fa fa-user"></i><?php echo $_SESSION['username']; ?>
-                            <img src="<?php echo 'upload/' . $_SESSION['avatar']; ?>" class="avatar"
-                                 alt="">
-                        </a>
-                        <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./index.php?page=edit-profile">Edit Profile</a>
-                            <a class="dropdown-item" href="./index.php?page=change-psw">Change Password</a>
-                            <a class="dropdown-item" href="./index.php?page=logout">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            ?>
         </div>
-    </nav>
-<?php endif; ?>
-<div class="container-fluid">
-    <?php
-    $ticketController = new TicketController();
-    $userController = new UserController();
-    $bookController = new BookController();
-    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
-    if (!isset($_SESSION['isLogin'])) {
-        switch ($page) {
-//            case 'login':
-//                $userController->login();
-//                break;
-            case 'register':
-                $userController->register();
-                break;
-            default:
-                $userController->login();
-                break;
-        }
-    } else {
-        switch ($page) {
-            case 'logout':
-                $userController->logout();
-                break;
-            case 'change-psw':
-                $userController->changePsw();
-                break;
-            case 'edit-profile':
-                $userController->edit('index.php');
-                break;
-            case 'borrow':
-                $ticketController->add();
-                break;
-            case 'listBorrowed':
-                $ticketController->listBorrowed();
-                break;
-            case 'listBook':
-                $bookController->listBook();
-                break;
-            case 'searchBook':
-                $bookController->search();
-                break;
-            case 'listReturned':
-                $ticketController->userReturned();
-                break;
-        }
-    }
-
-    ?>
-</div>
-
+    </div>
+</section>
 <footer class="fixed-bottom footer-section">
     <div class="container-fluid padding">
         <div class="row text-center padding">
