@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th5 15, 2020 lúc 01:33 PM
+-- Thời gian đã tạo: Th5 17, 2020 lúc 05:46 PM
 -- Phiên bản máy phục vụ: 8.0.20-0ubuntu0.20.04.1
 -- Phiên bản PHP: 7.4.3
 
@@ -41,6 +41,21 @@ CREATE TABLE `borrow_detail` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc đóng vai cho view `history_borrow`
+-- (See below for the actual view)
+--
+CREATE TABLE `history_borrow` (
+`booktitle` varchar(255)
+,`borrowerid` int
+,`fullname` varchar(100)
+,`dateborrowed` varchar(20)
+,`duedate` varchar(20)
+,`datereturned` varchar(20)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tblbook`
 --
 
@@ -64,8 +79,8 @@ INSERT INTO `tblbook` (`ID`, `booktitle`, `bookauthors`, `subjectid`, `mdescript
 (13, 'Số đỏ', 'Vũ Trọng Phụng', 5, '', '', 0, 'available', 'book-default.png'),
 (14, 'Doremon', 'honda', 5, '', '', 0, 'available', 'book-default.png'),
 (15, 'Truyện Kiều', 'Nguyễn Du', 5, '', '', 0, 'available', 'book-default.png'),
-(16, 'Vợ nhặt', 'Kim Lân', 5, '', '', 0, 'unavailable', 'book-default.png'),
-(17, 'Bí kíp làm giàu', 'Huần Hoa Hồng', 10, '', '', 0, 'unavailable', 'book-default.png');
+(16, 'Vợ nhặt', 'Kim Lân', 5, '', '', 0, 'available', 'book-default.png'),
+(17, 'Bí kíp làm giàu', 'Huần Hoa Hồng', 10, '', '', 0, 'available', 'book-default.png');
 
 -- --------------------------------------------------------
 
@@ -81,14 +96,6 @@ CREATE TABLE `tblborrowedbook` (
   `datereturned` date DEFAULT NULL,
   `borrowerid` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Đang đổ dữ liệu cho bảng `tblborrowedbook`
---
-
-INSERT INTO `tblborrowedbook` (`ID`, `bookid`, `dateborrowed`, `duedate`, `datereturned`, `borrowerid`) VALUES
-(101, 16, '2020-05-15', '2020-06-14', NULL, 4),
-(102, 17, '2020-05-15', '2020-06-14', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -118,9 +125,9 @@ CREATE TABLE `tblborrower` (
 
 INSERT INTO `tblborrower` (`ID`, `fullname`, `username`, `studentid`, `email`, `phone`, `address`, `dob`, `gender`, `password`, `avatar`, `role`, `status`) VALUES
 (1, 'anh', 'hieu1992', '', '', NULL, '', NULL, 'male', 'hieuanh92!A', 'default.png', 5, 'active'),
-(2, 'anh nguyen', 'admin', '', '', '0987656432', 'Đào Tấn', '2020-05-04', 'female', 'hieuanh92!A', 'default.png', 1, 'active'),
+(2, 'anh nguyen', 'admin', '', '', '0987656432', 'Đào Tấn', '2020-05-04', 'female', 'hieuanh92!A', '1589529116_AdobeStock_313222349_Preview.jpg', 1, 'active'),
 (3, '', 'admin1', '', '', NULL, '', NULL, 'male', '123456', NULL, 5, 'active'),
-(4, 'Anh Nguyễn', 'hieuanh92', 'h12', 'hieu132@gmail.com', '', '', '1992-09-09', 'male', 'hieuanh92!AS', '1589417697_AdobeStock_313222349_Preview.jpg', 5, 'active'),
+(4, 'Anh Nguyễn', 'hieuanh92', 'h12', 'hieu132@gmail.com', '', '', '1992-09-09', 'male', 'hieuanh92!A', '1589417697_AdobeStock_313222349_Preview.jpg', 5, 'active'),
 (5, '', 'hoang1234', 'h111', 'hoang@gmail.com', '0987654342', '', NULL, 'male', 'hieuanh92!A', NULL, 5, 'active'),
 (6, NULL, 'hung123456', 'hu12', 'hung@gmail.com', '0987654342', NULL, NULL, 'male', 'hieuanh92!A', NULL, 5, 'active');
 
@@ -143,7 +150,38 @@ CREATE TABLE `tblsubject` (
 INSERT INTO `tblsubject` (`ID`, `subjectname`, `description`) VALUES
 (5, 'Drama', 'Drama depends a lot on realistic characters dealing with emotional themes, such as: alcoholism, drug addiction, infidelity, morals, racism, religion, intolerance, sexuality, poverty, class issues, violence, and corruption [society or natural disasters can even be thrown in from time to time]. Drama often crosses over and meshes with other genres'),
 (10, 'Scientific', ''),
-(12, 'Horror', '');
+(13, 'Manga', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ticket_dump`
+--
+
+CREATE TABLE `ticket_dump` (
+  `ID` varchar(11) NOT NULL,
+  `bookid` varchar(11) DEFAULT NULL,
+  `dateborrowed` varchar(20) DEFAULT NULL,
+  `duedate` varchar(20) DEFAULT NULL,
+  `datereturned` varchar(20) DEFAULT NULL,
+  `borrowerid` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ticket_dump`
+--
+
+INSERT INTO `ticket_dump` (`ID`, `bookid`, `dateborrowed`, `duedate`, `datereturned`, `borrowerid`) VALUES
+('113', '13', '2020-05-15', '2020-06-14', '2020-05-15', '4'),
+('114', '14', '2020-05-15', '2020-06-14', '2020-05-15', '4'),
+('115', '15', '2020-05-15', '2020-06-14', '2020-05-15', '4'),
+('116', '16', '2020-05-15', '2020-06-14', '2020-05-15', '4'),
+('117', '17', '2020-05-15', '2020-06-14', '2020-05-15', '4'),
+('118', '13', '2020-05-17', '2020-06-16', '2020-05-17', '4'),
+('119', '14', '2020-05-17', '2020-06-16', '2020-05-17', '4'),
+('120', '15', '2020-05-17', '2020-06-16', '2020-05-17', '4'),
+('121', '16', '2020-05-17', '2020-06-16', '2020-05-17', '4'),
+('122', '17', '2020-05-17', '2020-06-16', '2020-05-17', '4');
 
 -- --------------------------------------------------------
 
@@ -153,6 +191,15 @@ INSERT INTO `tblsubject` (`ID`, `subjectname`, `description`) VALUES
 DROP TABLE IF EXISTS `borrow_detail`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `borrow_detail`  AS  select `tblborrowedbook`.`ID` AS `ticketId`,`tblborrowedbook`.`borrowerid` AS `borrowerid`,`tblborrower`.`fullname` AS `fullname`,`tblbook`.`ID` AS `bookId`,`tblbook`.`booktitle` AS `booktitle`,`tblborrowedbook`.`dateborrowed` AS `dateborrowed`,`tblborrowedbook`.`duedate` AS `duedate`,`tblbook`.`status` AS `status` from ((`tblborrowedbook` join `tblborrower` on((`tblborrower`.`ID` = `tblborrowedbook`.`borrowerid`))) join `tblbook` on((`tblbook`.`ID` = `tblborrowedbook`.`bookid`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `history_borrow`
+--
+DROP TABLE IF EXISTS `history_borrow`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `history_borrow`  AS  select `tblbook`.`booktitle` AS `booktitle`,`tblborrower`.`ID` AS `borrowerid`,`tblborrower`.`fullname` AS `fullname`,`ticket_dump`.`dateborrowed` AS `dateborrowed`,`ticket_dump`.`duedate` AS `duedate`,`ticket_dump`.`datereturned` AS `datereturned` from ((`ticket_dump` join `tblbook` on((`tblbook`.`ID` = `ticket_dump`.`bookid`))) join `tblborrower` on((`tblborrower`.`ID` = `ticket_dump`.`borrowerid`))) ;
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -186,6 +233,12 @@ ALTER TABLE `tblsubject`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Chỉ mục cho bảng `ticket_dump`
+--
+ALTER TABLE `ticket_dump`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -199,7 +252,7 @@ ALTER TABLE `tblbook`
 -- AUTO_INCREMENT cho bảng `tblborrowedbook`
 --
 ALTER TABLE `tblborrowedbook`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT cho bảng `tblborrower`
@@ -211,7 +264,7 @@ ALTER TABLE `tblborrower`
 -- AUTO_INCREMENT cho bảng `tblsubject`
 --
 ALTER TABLE `tblsubject`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
