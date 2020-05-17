@@ -24,7 +24,7 @@ class TicketController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $books = $this->bookDB->getAll();
+            $books = $this->bookDB->getAllAvailable('available');
             include 'view/borrow/user-borrow/borrowBook.php';
         } else {
             $bookId = $_REQUEST['checkList'];

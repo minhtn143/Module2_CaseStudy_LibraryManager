@@ -17,6 +17,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
+                                <th>Cover</th>
                                 <th>Description</th>
                                 <th></th>
                             </tr>
@@ -26,10 +27,9 @@
                                 <tr>
                                     <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $book->getId() ?>"
                                                class="form-check form-check-inline"></td>
-                                    <td>
-                                        <label for="checkbook<?php echo $key ?>"><?php echo $book->getTitle(); ?></label>
-                                    </td>
-                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book->getDescription(); ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book->getTitle(); ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><img class="cover" src="<?php echo './image/book-cover/' . $book->getCover(); ?>" alt="image"></label></td>
+                                    <td class="text-left"><label for="checkbook<?php echo $key ?>"><span class="text"><?php echo $book->getDescription(); ?></span></label></td>
                                     <td><input type="hidden" name="borrowerId"
                                                value="<?php echo $_SESSION['userID']; ?>"></td>
                                 </tr>

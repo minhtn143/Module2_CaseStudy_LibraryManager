@@ -242,10 +242,12 @@ class UserController
 
     public function dashboard()
     {
+
         $countBooks = $this->bookDB->count();
         $countCategories = $this->categoryDB->count();
-        $countReturned = $this->ticketDB->count();
+        $countReturned = $this->ticketDB->countReturned();
         $countUser = $this->userDB->count();
+        $countRequest = $this->ticketDB->countRequest('available');
         include 'view/admin-dashboard.php';
     }
 }

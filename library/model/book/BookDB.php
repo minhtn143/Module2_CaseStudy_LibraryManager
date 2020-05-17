@@ -119,4 +119,14 @@ class BookDB
         return $stmt->rowCount();
     }
 
+
+    public function getAllAvailable($status)
+    {
+        $sql = "SELECT * FROM tblbook WHERE status = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$status]);
+        $result = $stmt->fetchAll();
+
+        return $this->createBooksFromDB($result);
+    }
 }

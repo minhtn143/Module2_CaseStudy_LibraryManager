@@ -97,8 +97,7 @@ use controller\BookController;
                     <!--                EDIT PROFILE, CHANGE PSW, LOGOUT-->
                     <ul class="navbar-nav mr-3">
                         <li class="navbar-collapse dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-book"></i>Books
                             </a>
                             <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
@@ -109,8 +108,7 @@ use controller\BookController;
                             </div>
                         </li>
                         <li class="navbar-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i><?php echo $_SESSION['username']; ?>
                                 <img src="<?php echo 'upload/' . $_SESSION['avatar']; ?>" class="avatar"
                                      alt="">
@@ -180,26 +178,26 @@ use controller\BookController;
         </div>
     </div>
 </section>
-<footer class="footer-section">
-    <div class="container-fluid padding">
-        <div class="row text-center padding">
-            <div class="col-12 mt-3">
-                <h3>Contact us</h3>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
-                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>
-                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
-            </div>
-            <div class="col-12 mt-1 mb-3">
-                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">
-                    Designed by : Master Login</a>
-            </div>
-
-        </div>
-    </div>
-</footer>
+<!--<footer class="footer-section">-->
+<!--    <div class="container-fluid padding">-->
+<!--        <div class="row text-center padding">-->
+<!--            <div class="col-12 mt-3">-->
+<!--                <h3>Contact us</h3>-->
+<!--            </div>-->
+<!--            <div class="col-12 social padding">-->
+<!--                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>-->
+<!--            </div>-->
+<!--            <div class="col-12 mt-1 mb-3">-->
+<!--                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">-->
+<!--                    Designed by : Master Login</a>-->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

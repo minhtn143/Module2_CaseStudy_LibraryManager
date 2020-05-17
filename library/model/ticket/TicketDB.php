@@ -100,17 +100,26 @@ class TicketDB
         $history = [];
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $item) {
-            array_push($history,$item);
+            array_push($history, $item);
         }
         return $history;
     }
 
-    public function count()
+    public function countReturned()
     {
         $sql = "SELECT ID FROM ticket_dump";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
+    }
+
+    public function countRequest($status)
+    {
+        $sql = "SELECT * FROM borrow_detail WHERE status = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$status]);
+        $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $stmt->rowCount();
     }
 }

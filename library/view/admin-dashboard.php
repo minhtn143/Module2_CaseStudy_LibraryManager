@@ -39,6 +39,17 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6 mt-3">
+                <div class="alert alert-warning text-center">
+                    <a href="./admin.php?page=request" class="alert-link"><i class="fas fa-envelope fa-5x"></i></a>
+                    <h3><?php echo $countRequest ?></h3>
+                    Request
+                </div>
+            </div>
+        </div>
+
+
         <hr class="my-3">
 
         <div class="row">
