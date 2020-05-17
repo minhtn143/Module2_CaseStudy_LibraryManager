@@ -127,7 +127,7 @@ use controller\BookController;
         </nav>
     <?php endif; ?>
 </header>
-<section>
+<section class="main">
     <div class="sec_bg">
         <div class="container-fluid">
             <?php
@@ -179,7 +179,7 @@ use controller\BookController;
         </div>
     </div>
 </section>
-<footer class="fixed-bottom footer-section">
+<footer class="footer-section">
     <div class="container-fluid padding">
         <div class="row text-center padding">
             <div class="col-12 mt-3">

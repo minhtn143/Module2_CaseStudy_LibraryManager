@@ -1,21 +1,13 @@
 html, body {
     font-family: "Roboto Thin", sans-serif;
 }
-/*section {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    background-color: grey;*/
-/*}*/
 
-/*section .sec_bg {*/
-/*    background: url("../image/663.jpg") no-repeat;*/
-/*    background-size: cover;*/
-/*    box-sizing: border-box;*/
-/*    height: 850px;*/
-/*    width: 100%;*/
-/*    margin-top: 0;*/
-/*    position: absolute;*/
-/*}*/
+section {
+    min-height: 100%;
+    height: 69vh !important;
+    margin: 0 auto 142px;
+}
+
 
 .error {
     color: red;
@@ -30,6 +22,7 @@ img.avatar {
 
 .navbar {
     background: #3F4B52 !important;
+    font-size: 16px !important;
 }
 
 .navbar a {
@@ -103,7 +96,6 @@ a.navbar-brand:hover {
 }
 
 .footer-section {
-    position: fixed;
     font-size: 13px;
     text-align: right;
     border-top: 1px solid #222629;
