@@ -17,7 +17,6 @@
                     <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
                 </form>
             </div>
-
             <div class="card-group">
                 <?php foreach ($books as $key => $book): ?>
                     <div class="col-md-4 col-sm-12 col-xs-12 my-4">
@@ -25,15 +24,15 @@
                             <h4 class="card-header">
                                 <i><?php echo ++$key; ?>.</i> <?php echo $book->getTitle(); ?>
                             </h4>
-                            <div class="row">
-                                <div class="col-md-4 col-4">
+                            <div class="form-row">
+                                <div class="col-md-4 col-4 h-100">
                                     <img src="<?php echo './image/book-cover/' . $book->getCover(); ?>"
-                                         class="card-img" alt="Not Found">
+                                         class="card-img cover" alt="Not Found" style="height: 185px">
                                 </div>
-                                <div class="col-md-8 col-8">
+                                <div class="col-md-7 col-7 ">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $book->getAuthors(); ?></h5>
-                                        <p class="card-text"><?php echo $book->getDescription(); ?></p>
+                                        <p class="card-text text"><?php echo $book->getDescription(); ?></p>
                                         <a href="#" data-toggle="modal"
                                            data-target="#details-<?php echo $book->getId() ?>"><i
                                                     class="far fa-hand-point-right"></i> Details</a>

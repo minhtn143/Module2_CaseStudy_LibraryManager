@@ -112,6 +112,10 @@ class BookController
                     if ($oldCover != DEFAULT_COVER) {
                         $target_file = $target_dir . $oldCover;
                         unlink($target_file);
+                        $cover_name = time() . '-' . $_FILES['cover']['name'];
+                        $target_file = $target_dir . $cover_name;
+                        move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
+                        $book->setCover($cover_name);
                     }
                     //dat file anh moi
                     $cover_name = time() . '-' . $_FILES['cover']['name'];
