@@ -37,17 +37,14 @@ class BookController
                 include 'view/book/addBook.php';
             } else {
                 $success = true;
-                $this->bookDB->add($book);
                 if (isset($_FILES)){
                     $target_dir = "image/book-cover/";
-                    $cover_name = basename(time() . '-cover');
+                    $cover_name = time() . '-'.$_FILES['cover']['name'];
                     $target_file = $target_dir . $cover_name;
-                    var_dump($book,$target_file);
-
                     move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
                     $book->setCover($cover_name);
                 }
-                die();
+                $this->bookDB->add($book);
                 include 'view/book/addBook.php';
             }
 
@@ -77,8 +74,15 @@ class BookController
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = $_REQUEST['bookId'];
+            $book = $this->bookDB->getBookById($id);
+
+            $target_dir = "image/book-cover/";
+            $cover_name = $book->getCover();
+            $target_file = $target_dir . $cover_name;
+            unlink($target_file);
+
             $this->bookDB->deleteBook($id);
-            $book = $this->bookDB->getAll();
+            $books = $this->bookDB->getAll();
             echo "<script>location.href='./admin.php?page=listBook';</script>";
         }
     }
@@ -86,7 +90,7 @@ class BookController
     public function edit()
     {
         $id= $_REQUEST['bookId'];
-        $category = $this->categoryDB->getAll();
+        $categories = $this->categoryDB->getAll();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $book = $this->bookDB->getBookById($id);
             include "view/book/editBook.php";

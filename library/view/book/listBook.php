@@ -15,9 +15,11 @@
                        value="searchBook">
                 <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
             </form>
-            <div class="row">
+            <div class="card-group">
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 my-2">
+
                 <?php foreach ($books as $key => $book): ?>
-                    <div class="col-md-4 my-3">
+                    <div class="col mb-4">
                         <div class="card">
                             <h4 class="card-header">
                                 <i><?php echo ++$key; ?>.</i>
@@ -97,6 +99,7 @@
                         </div>
                     </div>
                 <?php endforeach ?>
+            </div>
             </div>
         </div>
     </div>

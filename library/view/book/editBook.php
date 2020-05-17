@@ -36,13 +36,7 @@
                         <div class="form-group">
                             <label for="subjectId">Category:</label>
                             <select id="subjectId" class="form-control" name="subjectId">
-                                <selected>
-                                    chossen
-                                    <?php
-
-                                    ?>
-                                </selected>
-                                <?php foreach ($category as $item): ?>
+                                <?php foreach ($categories as $item): ?>
                                     <option value="<?php echo $item->getId() ?>">
                                         <?php echo $item->getName() ?>
                                     </option>
