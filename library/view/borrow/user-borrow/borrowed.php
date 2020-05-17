@@ -14,7 +14,6 @@
                                 <th>Title</th>
                                 <th>Date borrowed</th>
                                 <th>Due Date</th>
-                                <th>Date return</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,7 +27,6 @@
                                         <?php echo $book['booktitle']; ?></a></td>
                                 <td><?php echo $book['dateborrowed']; ?></td>
                                 <td><?php echo $book['duedate']; ?></td>
-                                <td><?php echo $book['datereturned']; ?></td>
                             </tr>
 
                             <!-- Modal -->
