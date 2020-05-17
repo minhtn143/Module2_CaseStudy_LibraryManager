@@ -64,7 +64,12 @@
                                                         </div>
                                                         <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
-                                                                Category: <?php echo $book->getSubjectId() ?> </li>
+                                                                Category: <?php
+                                                                foreach ($categories as $category) {
+                                                                    if ($category->getId() == $book->getSubjectId())
+                                                                        echo $category->getName();
+                                                                }
+                                                                ?> </li>
                                                             <li class="list-group-item">
                                                                 Publisher: <?php echo $book->getPublisher() ?></li>
                                                             <li class="list-group-item">Copyright
