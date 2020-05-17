@@ -24,8 +24,8 @@ class BookController
 
     public function add()
     {
+        $category = $this->categoryDB->getAll();
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $category = $this->categoryDB->getAll();
             include 'view/book/addBook.php';
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -38,6 +38,16 @@ class BookController
             } else {
                 $success = true;
                 $this->bookDB->add($book);
+                if (isset($_FILES)){
+                    $target_dir = "image/book-cover/";
+                    $cover_name = basename(time() . '-cover');
+                    $target_file = $target_dir . $cover_name;
+                    var_dump($book,$target_file);
+
+                    move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
+                    $book->setCover($cover_name);
+                }
+                die();
                 include 'view/book/addBook.php';
             }
 
@@ -69,7 +79,7 @@ class BookController
             $id = $_REQUEST['bookId'];
             $this->bookDB->deleteBook($id);
             $book = $this->bookDB->getAll();
-            header("location:./admin.php?page=listBook");
+            echo "<script>location.href='./admin.php?page=listBook';</script>";
         }
     }
 

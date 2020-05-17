@@ -5,60 +5,79 @@
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
     <div class="card-header bg-primary text-white">
-        <h3>Add New Book</h3>
+        <h3>Add new book</h3>
     </div>
-
-    <div class="row justify-content-center my-4">
-        <div class="col-md-7 col-xs-12 col-sm-6 my-3">
-            <form action="" id="register-form" method="post">
-                <div class="form-group">
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-xs-12 col-sm-6 my-3">
+                <form action="" id="add-book-form" method="post" enctype="multipart/form-data">
+                    <!--Thông báo lỗi trùng-->
                     <?php if (isset($errDuplicate)): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php echo "$errDuplicate"; ?>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <h5 class="card-title"><?php echo "$errDuplicate"; ?></h5>
                         </div>
                     <?php endif; ?>
-                </div>
-                <div class="form-group">
-                    <label for="booktitle">Book Title:</label>
-                    <input type="text" class="form-control" id="booktitle" name="booktitle" placeholder="Book Title"
-                           required>
-                </div>
 
-                <div class="form-group">
-                    <label for="author">Author:</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Author" required>
-                </div>
+                    <!--Nhập tên sách-->
+                    <div class="form-group">
+                        <label class="col-form-label" for="booktitle"><strong>Book Title: </strong> </label>
+                        <input type="text" class="form-control" id="booktitle" name="booktitle"
+                               placeholder="Book Title"
+                               required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="subjectId">Category:</label>
-                    <select id="subjectId" class="form-control" name="subjectId">
-                        <?php foreach ($category as $item): ?>
-                            <option value="<?php echo $item->getId() ?>">
-                                <?php echo $item->getName() ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="publisher">Publisher:</label>
-                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher">
-                </div>
-                <div class="form-group">
-                    <label for="copyrightYear">Copyright Year:</label>
-                    <input type="number" class="form-control" id="copyrightYear" name="copyrightYear"
-                           placeholder="Copyright Year">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
-                </div>
-                <div class="form-inline form-group">
-                    <button class="btn-primary btn mr-1" type="submit"><i class="fas fa-plus"></i> Add</button>
-                    <button class="btn-secondary btn mr-1" type="reset"><i class="fas fa-undo"></i> Reset</button>
-                </div>
+                    <!--Nhập tên tác giả-->
+                    <div class="form-group">
+                        <label class="col-form-label" for="booktitle"><strong>Author: </strong> </label>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="Author"
+                               required>
+                    </div>
 
-                <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
-            </form>
+                    <!--Nhập tên loại sách-->
+                    <div class="form-group">
+                        <label for="subjectId"><strong>Category:</strong></label>
+                        <select id="subjectId" class="custom-select" name="subjectId" required>
+                            <?php foreach ($category as $item): ?>
+                                <option value="<?php echo $item->getId() ?>">
+                                    <?php echo $item->getName() ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!--Nhập tên Nhà xuất bản-->
+                    <div class="form-group">
+                        <label for="publisher"><strong>Publisher:</strong></label>
+                        <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher">
+                    </div>
+
+                    <!--Nhập năm cấp bản quyền -->
+                    <div class="form-group">
+                        <label for="copyrightYear"><strong>Copyright Year:</strong></label>
+                        <input type="number" class="form-control" id="copyrightYear" name="copyrightYear"
+                               placeholder="Copyright Year">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description"><strong>Description:</strong></label>
+                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                    </div>
+
+                    <!--Nhập bìa sách-->
+                    <div class="form-group">
+                        <label for="cover"><strong>Book Cover:</strong></label>
+                        <input type="file" class="form-control" id="cover" name="cover"
+                               placeholder="Copyright Year">
+                    </div>
+
+                    <!--Button-->
+                    <div class="form-inline form-group">
+                        <button class="btn-primary btn mr-1" type="submit"><i class="fas fa-plus"></i> Add</button>
+                        <button class="btn-secondary btn mr-1" type="reset"><i class="fas fa-undo"></i> Reset</button>
+                    </div>
+                    <a href="./admin.php" id="cancel"><i class="fas fa-angle-left"></i> Back</a>
+                </form>
+            </div>
         </div>
     </div>
 </div>

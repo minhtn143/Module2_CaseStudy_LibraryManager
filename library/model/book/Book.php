@@ -11,8 +11,9 @@ class Book
     protected $description;
     protected $publisher;
     protected $copyrightYear;
+    protected $cover;
 
-    public function __construct($title, $authors, $subjectId, $description, $publisher, $copyrightYear)
+    public function __construct($title, $authors, $subjectId, $description, $publisher, $copyrightYear, $cover = "book-cover-default.png")
     {
         $this->title = $title;
         $this->authors = $authors;
@@ -20,6 +21,7 @@ class Book
         $this->description = $description;
         $this->publisher = $publisher;
         $this->copyrightYear = $copyrightYear;
+        $this->cover = $cover;
     }
 
     /**
@@ -134,8 +136,19 @@ class Book
         return $this->publisher;
     }
 
-    public function test()
+    /**
+     * @return mixed
+     */
+    public function getCover()
     {
+        return $this->cover;
+    }
 
+    /**
+     * @param mixed $cover
+     */
+    public function setCover($cover): void
+    {
+        $this->cover = $cover;
     }
 }

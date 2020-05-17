@@ -1,6 +1,6 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top','success','Successfully Registered',1500,'index.php');
+        myAlert('top', 'success', 'Successfully Registered', 1500, 'index.php');
     </script>
 <?php endif; ?>
 <div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
@@ -22,7 +22,8 @@
 
                     <div class="form-group">
                         <label for="studentId">Student ID:</label>
-                        <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Student ID">
+                        <input type="text" class="form-control" id="studentId" name="studentId"
+                               placeholder="Student ID">
                         <div class="idErr error"></div>
                         <span class="error"><?php if (isset($existId)) {
                                 echo $existId;
