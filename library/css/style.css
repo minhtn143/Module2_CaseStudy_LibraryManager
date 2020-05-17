@@ -1,11 +1,11 @@
 html, body {
     font-family: "Roboto Thin", sans-serif;
 }
-/*section {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    background-color: grey;*/
-/*}*/
+section {
+    height: 95vh;
+    width: 100%;
+    min-height: 100%;
+}
 
 /*section .sec_bg {*/
 /*    background: url("../image/663.jpg") no-repeat;*/
@@ -17,7 +17,6 @@ html, body {
 /*    position: absolute;*/
 /*}*/
 
-
 .error {
     color: red;
     font-style: italic;
@@ -27,11 +26,6 @@ img.avatar {
     width: 35px;
     border-radius: 50%;
     margin-left: 5px;
-}
-
-img.cover {
-    width: 138px;
-    height: 185px;
 }
 
 .navbar {
@@ -108,6 +102,11 @@ a.navbar-brand:hover {
     color: #517fa4;
 }
 
+.footer-section {
+    font-size: 13px;
+    text-align: right;
+    border-top: 1px solid #222629;
+}
 
 hr {
     border-bottom: 1px solid black;

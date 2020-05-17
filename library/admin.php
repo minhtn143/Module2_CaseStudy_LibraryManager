@@ -182,25 +182,25 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
     }
     ?>
 </section>
-<!--<footer class="footer-section">-->
-<!--    <div class="container-fluid padding">-->
-<!--        <div class="row text-center padding">-->
-<!--            <div class="col-12 mt-3">-->
-<!--                <h3>Contact us</h3>-->
-<!--            </div>-->
-<!--            <div class="col-12 social padding">-->
-<!--                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>-->
-<!--                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>-->
-<!--                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>-->
-<!--                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>-->
-<!--            </div>-->
-<!--            <div class="col-12 mt-1 mb-3">-->
-<!--                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">-->
-<!--                    Designed by : Master Login</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</footer>-->
+<footer class="footer-section">
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12 mt-3">
+                <h3>Contact us</h3>
+            </div>
+            <div class="col-12 social padding">
+                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+            </div>
+            <div class="col-12 mt-1 mb-3">
+                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">
+                    Designed by : Master Login</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
