@@ -24,11 +24,11 @@
                                 <tr>
                                     <td><input type="checkbox" id="checkbook<?php echo $key ?>" name="checkList[]" value="<?php echo $request['bookId'] ?>"
                                                class="form-check form-check-inline"></td>
-                                    <td><?php echo $request['fullname'] ?></td>
-                                    <td><?php echo $request['booktitle'] ?></td>
-                                    <td><?php echo $request['dateborrowed'] ?></td>
-                                    <td><?php echo $request['duedate'] ?></td>
-                                    <td><?php echo $request['status'] ?></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $request['fullname'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $request['booktitle'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $request['dateborrowed'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $request['duedate'] ?></label></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $request['status'] ?></label></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

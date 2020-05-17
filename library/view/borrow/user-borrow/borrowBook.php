@@ -29,7 +29,7 @@
                                     <td>
                                         <label for="checkbook<?php echo $key ?>"><?php echo $book->getTitle(); ?></label>
                                     </td>
-                                    <td><?php echo $book->getDescription(); ?></td>
+                                    <td><label for="checkbook<?php echo $key ?>"><?php echo $book->getDescription(); ?></label></td>
                                     <td><input type="hidden" name="borrowerId"
                                                value="<?php echo $_SESSION['userID']; ?>"></td>
                                 </tr>

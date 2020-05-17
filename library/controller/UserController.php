@@ -5,15 +5,28 @@ namespace controller;
 use model\DBConnect;
 use model\User;
 use model\UserDB;
+use model\Book;
+use model\BookDB;
+use model\Ticket;
+use model\TicketDB;
+use model\Category;
+use model\CategoryDB;
+
 
 class UserController
 {
     protected $userDB;
+    protected $bookDB;
+    protected $ticketDB;
+    protected $categoryDB;
 
     public function __construct()
     {
         $db = new DBConnect();
         $this->userDB = new UserDB($db->connect());
+        $this->bookDB = new BookDB($db->connect());
+        $this->categoryDB = new CategoryDB($db->connect());
+        $this->ticketDB = new TicketDB($db->connect());
     }
 
     public function login()
@@ -23,35 +36,37 @@ class UserController
         } else {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $user = $this->userDB->get($username);
-            $id = $user->getId();
 
-            $status = $this->userDB->checkStatus($id);
             $isLogin = $this->userDB->userLogin($username, $password);
-            if ($isLogin && $status) {
-                $_SESSION['isLogin'] = true;
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
-                $_SESSION['userID'] = $user->getId();
-                $_SESSION['avatar'] = $user->getAvatar();
-                $_SESSION['studentId'] = $user->getStudentId();
-                $_SESSION['role'] = $user->getRole();
-                switch ($_SESSION['role']) {
-                    case 1:
-                        header("location:admin.php");
-                        break;
-                    case 5:
-                        header("location:index.php");
-                        break;
-                    default:
-                        session_destroy();
-                        include 'view/user/login.php';
+            if ($isLogin) {
+                $user = $this->userDB->get($username);
+                $id = $user->getId();
+                $status = $this->userDB->checkStatus($id);
+                if ($status) {
+                    $_SESSION['isLogin'] = true;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['userID'] = $user->getId();
+                    $_SESSION['avatar'] = $user->getAvatar();
+                    $_SESSION['studentId'] = $user->getStudentId();
+                    $_SESSION['role'] = $user->getRole();
+                    switch ($_SESSION['role']) {
+                        case 1:
+                            header("location:admin.php");
+                            break;
+                        case 5:
+                            header("location:index.php");
+                            break;
+                        default:
+                            session_destroy();
+                            include 'view/user/login.php';
+                    }
+                } else {
+                    $block = '* Your account has been locked, contact with admin to unlock your account.';
+                    include 'view/user/login.php';
                 }
-            } elseif (!$isLogin) {
-                $errLogin = '* Incorrect username or password.';
-                include 'view/user/login.php';
             } else {
-                $block = '* Your account has been locked, contact with admin to unlock the account.';
+                $errLogin = '* Incorrect username or password.';
                 include 'view/user/login.php';
             }
         }
@@ -155,7 +170,7 @@ class UserController
             $user = $this->userDB->get($_SESSION['username']);
             $cur_avatar = $user->getAvatar();
             if (!empty($avatar)) {
-                $target_dir = "image/";
+                $target_dir = "upload/";
                 if ($cur_avatar !== 'default.png') {
                     $avatar_del = $target_dir . $cur_avatar;
                     unlink($avatar_del);
@@ -200,10 +215,10 @@ class UserController
 
     public function changeStatus()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = $_REQUEST['userId'];
             $user = $this->userDB->getUserById($id);
-            switch ($user->getStatus()){
+            switch ($user->getStatus()) {
                 case "active":
                     $newStatus = "deactive";
                     break;
@@ -211,7 +226,7 @@ class UserController
                     $newStatus = "active";
                     break;
             }
-            $this->userDB->changeStatus($id,$newStatus);
+            $this->userDB->changeStatus($id, $newStatus);
             $this->listUsers();
         }
     }
@@ -223,5 +238,14 @@ class UserController
             $users = $this->userDB->searchUser($keyword);
             include "view/user/list-users.php";
         }
+    }
+
+    public function dashboard()
+    {
+        $countBooks = $this->bookDB->count();
+        $countCategories = $this->categoryDB->count();
+        $countReturned = $this->ticketDB->count();
+        $countUser = $this->userDB->count();
+        include 'view/admin-dashboard.php';
     }
 }

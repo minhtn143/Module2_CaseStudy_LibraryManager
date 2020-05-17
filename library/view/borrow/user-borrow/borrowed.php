@@ -18,21 +18,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($listBooks as $key => $book): ?>
-                                <tr>
-                                    <td><?php echo $key + 1; ?></td>
-                                    <td><a href="#" data-toggle="modal"
-                                           data-target="#details-<?php $book['bookId']?>">
+                            <?php foreach ($listBooks
+
+                            as $key => $book): ?>
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><a href="#" data-toggle="modal"
+                                       data-target="#details-<?php $book['bookId'] ?>">
                                         <?php echo $book['booktitle']; ?></a></td>
-                                    <td><?php echo $book['dateborrowed']; ?></td>
-                                    <td><?php echo $book['duedate']; ?></td>
-                                    <td><?php echo $book['datereturned']; ?></td>
-                                </tr>
+                                <td><?php echo $book['dateborrowed']; ?></td>
+                                <td><?php echo $book['duedate']; ?></td>
+                                <td><?php echo $book['datereturned']; ?></td>
+                            </tr>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="details-<?php $book['bookId']?>" tabindex="-1"
+                            <div class="modal fade" id="details-<?php $book['bookId'] ?>" tabindex="-1"
                                  role="dialog"
-                                 aria-labelledby="details-<?php $book['bookId']?>" aria-hidden="true">
+                                 aria-labelledby="details-<?php $book['bookId'] ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -64,7 +66,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                            <?php endforeach; ?>
+                                        <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

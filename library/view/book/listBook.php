@@ -64,16 +64,7 @@
                                                         </div>
                                                         <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
-                                                                Category:
-                                                                <?php
-                                                                $categoryId = $book->getSubjectId();
-                                                                foreach ($categories as $category) {
-                                                                    if ($categoryId == $category->getId()) {
-                                                                        echo $category->getName();
-                                                                        break;
-                                                                    }
-                                                                } ?>
-                                                            </li>
+                                                                Category: <?php echo $book->getSubjectId() ?> </li>
                                                             <li class="list-group-item">
                                                                 Publisher: <?php echo $book->getPublisher() ?></li>
                                                             <li class="list-group-item">Copyright
@@ -81,6 +72,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <?php if ($_SESSION['role'] == 1): ?>
@@ -89,18 +81,22 @@
                                                        role="button"><i class="fas fa-edit"></i> Edit</a>
                                                     <!--                                                Delete btn-->
                                                     <button class="btn btn-danger"
-                                                            onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')">
-                                                        <i class="far fa-trash-alt"></i> Delete
+                                                            onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"><i
+                                                                class="far fa-trash-alt"></i> Delete
                                                     </button>
                                                 <?php endif; ?>
+
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    <i class="fas fa-window-close"></i> Close
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
-                </div>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

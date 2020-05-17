@@ -39,8 +39,8 @@
                         <label for="remember-me" class="form-check-label">Remember me</label>
                     </div>
 
-                    <button class="btn-primary btn btn-block my-3" type="submit"><i class="fas fa-sign-in-alt"></i>
-                        Login
+                    <button class="btn-primary btn btn-block my-3" type="submit">
+                        <i class="fas fa-sign-in-alt"></i>Login
                     </button>
 
                     <div class="mb-3 text-muted text-center">

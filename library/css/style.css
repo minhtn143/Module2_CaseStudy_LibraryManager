@@ -1,6 +1,21 @@
-html,body {
+html, body {
     font-family: "Roboto Thin", sans-serif;
 }
+/*section {*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    background-color: grey;*/
+/*}*/
+
+/*section .sec_bg {*/
+/*    background: url("../image/663.jpg") no-repeat;*/
+/*    background-size: cover;*/
+/*    box-sizing: border-box;*/
+/*    height: 850px;*/
+/*    width: 100%;*/
+/*    margin-top: 0;*/
+/*    position: absolute;*/
+/*}*/
 
 .error {
     color: red;
@@ -11,4 +26,89 @@ img.avatar {
     width: 35px;
     border-radius: 50%;
     margin-left: 5px;
+}
+
+.navbar {
+    background: #3F4B52 !important;
+}
+
+.navbar a {
+    margin-left: 15px;
+    color: white !important;
+}
+
+.active, .navbar a:hover {
+    background: #849096;
+    border-radius: 3px;
+}
+
+.sub-menu-test {
+    display: none;
+}
+
+.navbar ul li:hover .sub-menu-test {
+    display: block !important;
+    position: absolute;
+    background: #3F4B52;
+    border: none;
+    margin-left: -15px;
+}
+
+.navbar ul li:hover .sub-menu-test a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: white !important;
+    border-bottom: 1px dotted #fff !important;
+    background: transparent !important;
+}
+
+.navbar ul li:hover .sub-menu-test a:last-child {
+    border-bottom: none !important;
+}
+
+.navbar ul li:hover .sub-menu-test a:hover {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: #C9D1D6 !important;
+    border-bottom: 1px dotted #fff;
+    background-color: transparent;
+}
+
+a.navbar-brand:hover {
+    background: none;
+}
+
+.fa, .fas, .far {
+    margin-right: 5px;
+}
+
+.social a {
+    padding: 3rem;
+}
+
+.fa-facebook {
+    color: #3b5998;
+}
+
+.fa-twitter {
+    color: #00acde;
+}
+
+.fa-google-plus-g {
+    color: #dd4b39;
+}
+
+.fa-instagram {
+    color: #517fa4;
+}
+
+.footer-section {
+    position: fixed;
+    font-size: 13px;
+    text-align: right;
+    border-top: 1px solid #222629;
+}
+
+hr {
+    border-bottom: 1px solid black;
 }

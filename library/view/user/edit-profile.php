@@ -52,8 +52,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="avatar">Avatar:</label>
-                        <input type="file" class="form-control" id="avatar" name="avatar" placeholder="Avatar">
+                        <p class="mb-2">Avatar:</p>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="avatar" name="avatar" placeholder="Avatar">
+                            <label class="custom-file-label" for="avatar">Choose file</label>
+                        </div>
                     </div>
 
 

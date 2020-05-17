@@ -3,6 +3,7 @@
 
 namespace model;
 
+use PDO;
 
 class CategoryDB
 {
@@ -91,5 +92,14 @@ class CategoryDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $this->createCategoryFromDB($result);
+    }
+
+    public function count()
+    {
+        $sql = "SELECT * FROM tblsubject";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
     }
 }

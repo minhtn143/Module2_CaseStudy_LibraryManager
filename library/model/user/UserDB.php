@@ -3,6 +3,7 @@
 
 namespace model;
 
+use PDO;
 
 class UserDB
 {
@@ -139,11 +140,11 @@ class UserDB
         return $user;
     }
 
-    public function changeStatus($id,$status)
+    public function changeStatus($id, $status)
     {
         $sql = "UPDATE `library`.`tblborrower` SET `status` = ? WHERE (`ID` = ?);";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute(array($status,$id));
+        return $stmt->execute(array($status, $id));
     }
 
     public function getUserById($id)
@@ -167,5 +168,14 @@ class UserDB
             array_push($users, $user);
         }
         return $users;
+    }
+
+    public function count()
+    {
+        $sql = "SELECT ID FROM tblborrower";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->rowCount();
     }
 }

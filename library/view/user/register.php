@@ -3,7 +3,7 @@
         myAlert('top', 'success', 'Successfully Registered', 1500, 'index.php');
     </script>
 <?php endif; ?>
-<div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
+<div class="card bg-light ml-auto mr-auto mt-4" style="width: 700px">
     <div class="card-header bg-primary text-white">
         <h3>Register form</h3>
     </div>
@@ -66,11 +66,11 @@
                         </label>
                     </div>
 
-                    <button class="btn-primary btn my-3 btn-block" type="submit"><i class="fas fa-user-plus"></i>
-                        Register
+                    <button class="btn-primary btn my-3 btn-block" type="submit">
+                        <i class="fas fa-user-plus"></i>Register
                     </button>
 
-                    <div class="mb-3 text-muted text-center">
+                    <div class="mb-0 text-muted text-center">
                         <label>
                             <a href="./index.php?page=login" class="stretched-link">Already have an account? Login</a>
                         </label>
