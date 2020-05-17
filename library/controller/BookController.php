@@ -30,6 +30,8 @@ class BookController
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $book = $this->createBookFromDB();
+
+
             if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
                 include 'view/book/addBook.php';
