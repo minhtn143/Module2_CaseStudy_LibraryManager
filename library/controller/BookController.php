@@ -3,6 +3,7 @@
 
 namespace controller;
 
+const DEFAULT_COVER = "book-cover-default.png";
 
 use model\BookDB;
 use model\CategoryDB;
@@ -35,15 +36,15 @@ class BookController
                 $errDuplicate = "Book has been library!";
                 include 'view/book/addBook.php';
             } else {
-                $success = true;
-                if (isset($_FILES)){
+                if (isset($_FILES)) {
                     $target_dir = "image/book-cover/";
-                    $cover_name = time() . '-'.$_FILES['cover']['name'];
+                    $cover_name = time() . '-' . $_FILES['cover']['name'];
                     $target_file = $target_dir . $cover_name;
                     move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
                     $book->setCover($cover_name);
                 }
                 $this->bookDB->add($book);
+                $success = true;
                 include 'view/book/addBook.php';
             }
 
@@ -78,7 +79,10 @@ class BookController
             $target_dir = "image/book-cover/";
             $cover_name = $book->getCover();
             $target_file = $target_dir . $cover_name;
-            unlink($target_file);
+
+            if ($cover_name != DEFAULT_COVER) {
+                unlink($target_file);
+            }
 
             $this->bookDB->deleteBook($id);
             $books = $this->bookDB->getAll();
@@ -88,20 +92,41 @@ class BookController
 
     public function edit()
     {
-        $id= $_REQUEST['bookId'];
+        $id = $_REQUEST['bookId'];
         $categories = $this->categoryDB->getAll();
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $book = $this->bookDB->getBookById($id);
             include "view/book/editBook.php";
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $book = $this->createBookFromDB();
-            $book->setId($_REQUEST['bookId']);
-                $this->bookDB->editBook($id,$book);
-                $success = ($this->bookDB->editBook($id,$book)) ? true:false;
-                include 'view/book/editBook.php';
+
+            if (isset($_FILES)) {
+
+                $target_dir = "image/book-cover/";
+                //kiem tra file gui len khac null
+
+                if (!empty($_FILES['cover']['name'])) {
+                    //kiem tra old cover co khac Default ko, neu khac thi xoa img
+                    $oldCover = $book->getCover();
+                    if ($oldCover != DEFAULT_COVER) {
+                        $target_file = $target_dir . $oldCover;
+                        unlink($target_file);
+                    }
+                    //dat file anh moi
+                    $cover_name = time() . '-' . $_FILES['cover']['name'];
+                    $target_file = $target_dir . $cover_name;
+                    move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
+                    $book->setCover($cover_name);
+                }
             }
+
+            $book->setId($_REQUEST['bookId']);
+            $this->bookDB->editBook($id, $book);
+            $success = ($this->bookDB->editBook($id, $book)) ? true : false;
+            include 'view/book/editBook.php';
         }
+    }
 
 
     /**
