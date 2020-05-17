@@ -15,8 +15,8 @@ class BookDB
 
     public function add($book)
     {
-        $sql = "INSERT INTO tblbook(booktitle,bookauthors,subjectid,mdescription,publisher,copyrightyear) 
-                VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO tblbook(booktitle,bookauthors,subjectid,mdescription,publisher,copyrightyear,cover) 
+                VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
         $newBook = [
             $book->getTitle(),
@@ -24,7 +24,8 @@ class BookDB
             (int)$book->getSubjectId(),
             $book->getDescription(),
             $book->getPublisher(),
-            (int)$book->getCopyrightYear()
+            (int)$book->getCopyrightYear(),
+            $book->getCover()
         ];
         $stmt->execute($newBook);
     }
@@ -48,6 +49,7 @@ class BookDB
         $book = new Book($result['booktitle'], $result['bookauthors'], $result['subjectid'], $result['mdescription'],
             $result['publisher'], $result['copyrightyear']);
         $book->setId($id);
+        $book->setCover($result['cover']);
         return $book;
     }
 
@@ -61,7 +63,7 @@ class BookDB
     public function editBook($id, $book)
     {
         $sql = "UPDATE tblbook SET booktitle = ?, bookauthors = ?, subjectid = ?, 
-                mdescription = ?, publisher = ?, copyrightyear = ? WHERE (ID = $id)";
+                mdescription = ?, publisher = ?, copyrightyear = ? , cover = ? WHERE (ID = $id)";
         $stmt = $this->conn->prepare($sql);
 
         $title = $book->getTitle();
@@ -70,8 +72,9 @@ class BookDB
         $description = $book->getDescription();
         $publisher = $book->getPublisher();
         $copyrightYear = $book->getCopyrightYear();
+        $cover = $book->getCover();
 
-        return $stmt->execute(array($title, $author, $subjectId, $description, $publisher, $copyrightYear));
+        return $stmt->execute(array($title, $author, $subjectId, $description, $publisher, $copyrightYear,$cover));
     }
 
     public function searchBook($keyword)
@@ -94,6 +97,7 @@ class BookDB
             $book = new Book($item['booktitle'], $item['bookauthors'], $item['subjectid'], $item['mdescription'],
                 $item['publisher'], $item['copyrightyear']);
             $book->setId($item['ID']);
+            $book->setCover($item['cover']);
             array_push($books, $book);
         }
         return $books;

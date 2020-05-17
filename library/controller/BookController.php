@@ -24,17 +24,25 @@ class BookController
 
     public function add()
     {
+        $category = $this->categoryDB->getAll();
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $category = $this->categoryDB->getAll();
             include 'view/book/addBook.php';
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $book = $this->createBookFromDB();
+
             if ($this->isDuplicate($book)) {
                 $errDuplicate = "Book has been library!";
                 include 'view/book/addBook.php';
             } else {
                 $success = true;
+                if (isset($_FILES)){
+                    $target_dir = "image/book-cover/";
+                    $cover_name = time() . '-'.$_FILES['cover']['name'];
+                    $target_file = $target_dir . $cover_name;
+                    move_uploaded_file($_FILES['cover']['tmp_name'], $target_file);
+                    $book->setCover($cover_name);
+                }
                 $this->bookDB->add($book);
                 include 'view/book/addBook.php';
             }
@@ -56,6 +64,7 @@ class BookController
     public function listBook()
     {
         $books = $this->bookDB->getAll();
+        $categories = $this->categoryDB->getAll();
         include "view/book/listBook.php";
     }
 
@@ -64,35 +73,36 @@ class BookController
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = $_REQUEST['bookId'];
+            $book = $this->bookDB->getBookById($id);
+
+            $target_dir = "image/book-cover/";
+            $cover_name = $book->getCover();
+            $target_file = $target_dir . $cover_name;
+            unlink($target_file);
+
             $this->bookDB->deleteBook($id);
-            $book = $this->bookDB->getAll();
-            header("location:./admin.php?page=listBook");
+            $books = $this->bookDB->getAll();
+            echo "<script>location.href='./admin.php?page=listBook';</script>";
         }
     }
 
     public function edit()
     {
-        $id = $_REQUEST['bookId'];
-        $category = $this->categoryDB->getAll();
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $id= $_REQUEST['bookId'];
+        $categories = $this->categoryDB->getAll();
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $book = $this->bookDB->getBookById($id);
             include "view/book/editBook.php";
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $book = $this->createBookFromDB();
             $book->setId($_REQUEST['bookId']);
-            if ($this->isDuplicate($book)) {
-                $errDuplicate = "Book has been library!";
-                include 'view/book/editBook.php';
-            } else {
-
-                $this->bookDB->editBook($id, $book);
-                $success = ($this->bookDB->editBook($id, $book)) ? true : false;
+                $this->bookDB->editBook($id,$book);
+                $success = ($this->bookDB->editBook($id,$book)) ? true:false;
                 include 'view/book/editBook.php';
             }
-
         }
-    }
+
 
     /**
      * @return Book

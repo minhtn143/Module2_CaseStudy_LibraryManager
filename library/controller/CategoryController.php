@@ -65,7 +65,8 @@ class CategoryController
             $id = $_GET['id'];
             $this->categoryDB->delete($id);
             $categories = $this->categoryDB->getAll();
-            header("location:./admin.php?page=manage-category");
+            echo "<script>location.href='admin.php?page=manage-category';</script>";
+//            header("location:./admin.php?page=manage-category");
         }
     }
 

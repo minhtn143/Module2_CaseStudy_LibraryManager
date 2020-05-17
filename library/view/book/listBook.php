@@ -9,32 +9,40 @@
         <div class="card-body">
             <!--                Search bar-->
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 col-12" type="search" placeholder="Search" aria-label="Search" name="keyword">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden value="searchBook">
+                <input class="form-control mr-sm-2 col-12" type="search" placeholder="Search" aria-label="Search"
+                       name="keyword">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="page" hidden
+                       value="searchBook">
                 <button class="btn btn-success my-2 my-sm-0 col-1" type="submit" hidden>Search</button>
             </form>
-            <div class="row">
-                <?php foreach ($books as $key => $book): ?>
-                    <div class="col-md-4 my-3">
-                        <div class="card">
-                            <h4 class="card-header">
-                                <i><?php echo ++$key; ?>.</i>
-                                <?php echo $book->getTitle(); ?>
-                            </h4>
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $book->getAuthors(); ?></h5>
-                                <p class="card-text"><?php echo $book->getDescription(); ?></p>
-
-                                <!--Button modal-->
-                                <button type="button" class="btn btn-info" data-toggle="modal"
-                                        data-target="#details-<?php echo $book->getId() ?>">
-                                    <i class="far fa-list-alt"></i> Details
-                                </button>
+            <div class="card-group">
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 my-2">
+                    <?php foreach ($books as $key => $book): ?>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <h4 class="card-header">
+                                    <i><?php echo ++$key; ?>.</i> <?php echo $book->getTitle(); ?>
+                                </h4>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 col-4">
+                                        <img src="<?php echo './image/book-cover/' . $book->getCover(); ?>"
+                                             class="card-img" alt="Not Found">
+                                    </div>
+                                    <div class="col-md-8 col-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $book->getAuthors(); ?></h5>
+                                            <p class="card-text"><?php echo $book->getDescription(); ?></p>
+                                            <a href="#" data-toggle="modal"
+                                               data-target="#details-<?php echo $book->getId() ?>"><i
+                                                        class="far fa-hand-point-right"></i> Details</a>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="details-<?php echo $book->getId() ?>" tabindex="-1"
-                                     role="dialog"
-                                     aria-labelledby="details-<?php echo $book->getId() ?>" aria-hidden="true">
+                                     role="dialog" aria-labelledby="details-<?php echo $book->getId() ?>"
+                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -77,6 +85,7 @@
                                                                 class="far fa-trash-alt"></i> Delete
                                                     </button>
                                                 <?php endif; ?>
+
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     <i class="fas fa-window-close"></i> Close
                                                 </button>

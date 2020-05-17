@@ -33,11 +33,14 @@
                                 <td><?php echo $category->getName() ?></td>
                                 <td style="width: 600px"
                                     class="text-left"><?php echo $category->getDescription() ?></td>
-                                <td><a class="text-primary" data-toggle="modal" data-target="#edit-form<?php echo $key + 1 ?>"><i
-                                                class="far fa-edit"></i></a> |
-                                    <a class="text-danger"><i class="far fa-trash-alt"
-                                                              onclick="confirmDel('./admin.php?page=delete-category&id=<?php echo $category->getId(); ?>')"></i></a>
+                                <td>
 
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit-form<?php echo $key + 1 ?>"><i
+                                                role="button" class="fas fa-edit"></i> Edit</button>
+                                    <button class="btn btn-danger"
+                                            onclick="confirmDel('./admin.php?page=delete-category&id=<?php echo $category->getId(); ?>')">
+                                        <i class="far fa-trash-alt"></i> Delete
+                                    </button>
                                 </td>
                             </tr>
                             <!--                            <div class="col-md-12">-->
