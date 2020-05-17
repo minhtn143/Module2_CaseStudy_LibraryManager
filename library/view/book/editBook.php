@@ -1,34 +1,32 @@
 <?php if (isset($success)): ?>
     <script type="text/javascript">
-        myAlert('top', 'success', 'Successfully Edited', 1000, './admin.php');
+        myAlert('top', 'success', 'Successfully Edited', 1000, './admin.php?page=listBook');
     </script>
 <?php endif; ?>
-<div class="card bg-light ml-auto mr-auto my-5" style="width: 700px">
-
-    <div class="card bg-light ml-auto mr-auto" style="width: 700px">
+    <div class="card bg-light ml-auto mr-auto mt-2" style="width: 700px">
         <div class="card-header bg-primary text-white">
             <h3>Edit Book</h3>
         </div>
         <div class="card-body">
             <div class="row justify-content-center">
-                <div class="col-md-10 col-xs-12 col-sm-6 my-3">
-                    <form action="" id="register-form" method="post">
-                        <div class="form-group">
+                <div class="col-md-10 col-xs-12 col-sm-6 my-2">
+                    <form action="" id="register-form" method="post" enctype="multipart/form-data">
+
                             <?php if (isset($errDuplicate)): ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?php echo "$errDuplicate"; ?>
                                 </div>
                             <?php endif; ?>
-                        </div>
+
                         <div class="form-group">
-                            <label for="booktitle">Book Title:</label>
+                            <label class="col-form-label" for="booktitle"><strong>Book Title: </strong> </label>
                             <input type="text" class="form-control" id="booktitle" name="booktitle"
                                    placeholder="Book Title" readonly
                                    value="<?php echo $book->getTitle(); ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="author">Author:</label>
+                            <label class="col-form-label" for="booktitle"><strong>Author: </strong> </label>
                             <input type="text" class="form-control" id="author" name="author" placeholder="Author"
                                    value="<?php echo $book->getAuthors(); ?>" readonly>
                         </div>
@@ -61,6 +59,13 @@
                             <textarea class="form-control" id="description" name="description"
                                       rows="5"><?php echo $book->getDescription(); ?></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="cover">Cover</label>
+                            <input type="file" class="form-control" id="cover" name="cover"
+                                   placeholder="New cover">
+                        </div>
+
                         <div class="form-group">
                             <div class="form-inline form-group">
                                 <button type="submit" class="btn btn-success mr-1" name="btn-save">
