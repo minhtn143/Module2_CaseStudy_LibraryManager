@@ -34,9 +34,9 @@ img.cover {
     height: 185px;
 }
 
-/*.navbar {*/
-/*    background: #3F4B52 !important;*/
-/*}*/
+.navbar {
+    background: #3F4B52 !important;
+}
 
 .navbar a {
     margin-left: 15px;
