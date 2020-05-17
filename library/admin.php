@@ -56,7 +56,7 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto mr-5">
+                <ul class="navbar-nav ml-auto mr-2">
                     <li class="navbar-collapse">
                         <a href="admin.php" class="nav-link active"><i class="fa fa-home"></i>Home</a>
                     </li>
@@ -111,80 +111,78 @@ if (!isset($_SESSION['isLogin']) || $_SESSION['role'] !== '1') {
         </div>
     </nav>
 </header>
-<section>
-    <div class="sec_bg">
-        <?php
-        $userController = new UserController();
-        $bookController = new BookController();
-        $categoryController = new CategoryController();
-        $ticketController = new TicketController();
-        $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
-        switch ($page) {
-            case 'edit-profile':
-                $userController->edit('admin.php');
-                break;
-            case 'change-psw':
-                $userController->changePsw();
-                break;
-            case 'logout':
-                $userController->logout();
-                break;
-            case 'add-category':
-                $categoryController->add();
-                break;
-            case 'manage-category':
-                $categoryController->index();
-                break;
-            case 'edit-category':
-                $categoryController->update();
-                break;
-            case'delete-category':
-                $categoryController->delete();
-                break;
-            case'searchCategory':
-                $categoryController->search();
-                break;
-            case 'addBook':
-                $bookController->add();
-                break;
-            case 'deleteBook':
-                $bookController->delete();
-                break;
-            case 'editBook':
-                $bookController->edit();
-                break;
-            case 'searchBook':
-                $bookController->search();
-                break;
-            case 'list-users':
-                $userController->listUsers();
-                break;
-            case 'searchUser':
-                $userController->search();
-                break;
-            case 'changeStatus':
-                $userController->changeStatus();
-                break;
-            case 'request':
-                $ticketController->acceptRequest();
-                break;
-            case 'return-book':
-                $ticketController->returnBook();
-                break;
-            case 'listBook':
-                $bookController->listBook();
-                break;
-            case 'history':
-                $ticketController->storageHistory();
-                break;
-            default:
-                $userController->dashboard();
-                break;
-        }
-        ?>
-    </div>
+<section class="main">
+    <?php
+    $userController = new UserController();
+    $bookController = new BookController();
+    $categoryController = new CategoryController();
+    $ticketController = new TicketController();
+    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
+    switch ($page) {
+        case 'edit-profile':
+            $userController->edit('admin.php');
+            break;
+        case 'change-psw':
+            $userController->changePsw();
+            break;
+        case 'logout':
+            $userController->logout();
+            break;
+        case 'add-category':
+            $categoryController->add();
+            break;
+        case 'manage-category':
+            $categoryController->index();
+            break;
+        case 'edit-category':
+            $categoryController->update();
+            break;
+        case'delete-category':
+            $categoryController->delete();
+            break;
+        case'searchCategory':
+            $categoryController->search();
+            break;
+        case 'addBook':
+            $bookController->add();
+            break;
+        case 'deleteBook':
+            $bookController->delete();
+            break;
+        case 'editBook':
+            $bookController->edit();
+            break;
+        case 'searchBook':
+            $bookController->search();
+            break;
+        case 'list-users':
+            $userController->listUsers();
+            break;
+        case 'searchUser':
+            $userController->search();
+            break;
+        case 'changeStatus':
+            $userController->changeStatus();
+            break;
+        case 'request':
+            $ticketController->acceptRequest();
+            break;
+        case 'return-book':
+            $ticketController->returnBook();
+            break;
+        case 'listBook':
+            $bookController->listBook();
+            break;
+        case 'history':
+            $ticketController->storageHistory();
+            break;
+        default:
+            $userController->dashboard();
+            break;
+    }
+    ?>
 </section>
-<!--<footer class="fixed-bottom footer-section">-->
+<!--<footer class="footer-section">-->
 <!--    <div class="container-fluid padding">-->
 <!--        <div class="row text-center padding">-->
 <!--            <div class="col-12 mt-3">-->

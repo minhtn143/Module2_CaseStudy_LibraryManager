@@ -66,11 +66,13 @@
                                   rows="5"><?php echo $book->getDescription(); ?></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="cover">Cover</label>
-                        <input type="file" class="form-control" id="cover" name="cover"
-                               placeholder="New cover">
-                    </div>
+                        <div class="form-group">
+                            <p class="mb-2">Book cover:</p>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="cover" name="cover" placeholder="New cover">
+                                <label class="custom-file-label" for="cover">Choose file</label>
+                            </div>
+                        </div>
 
                     <div class="form-group">
                         <div class="form-inline form-group">

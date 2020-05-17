@@ -17,6 +17,7 @@ html, body {
 /*    position: absolute;*/
 /*}*/
 
+
 .error {
     color: red;
     font-style: italic;
@@ -26,6 +27,11 @@ img.avatar {
     width: 35px;
     border-radius: 50%;
     margin-left: 5px;
+}
+
+img.cover {
+    width: 138px;
+    height: 185px;
 }
 
 .navbar {
@@ -102,13 +108,14 @@ a.navbar-brand:hover {
     color: #517fa4;
 }
 
-.footer-section {
-    position: fixed;
-    font-size: 13px;
-    text-align: right;
-    border-top: 1px solid #222629;
-}
 
 hr {
     border-bottom: 1px solid black;
+}
+
+.text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }

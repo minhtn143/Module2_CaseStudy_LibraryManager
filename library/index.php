@@ -127,7 +127,7 @@ use controller\BookController;
         </nav>
     <?php endif; ?>
 </header>
-<section>
+<section class="main">
     <div class="sec_bg">
         <div class="container-fluid">
             <?php
@@ -137,13 +137,14 @@ use controller\BookController;
             $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
             if (!isset($_SESSION['isLogin'])) {
                 switch ($page) {
-                    case 'login':
-                        $userController->login();
-                        break;
+//                    case 'login':
+//                        $userController->login();
+//                        break;
                     case 'register':
                         $userController->register();
                         break;
                     default:
+                        $userController->login();
                         break;
                 }
             } else {
@@ -179,26 +180,26 @@ use controller\BookController;
         </div>
     </div>
 </section>
-<footer class="fixed-bottom footer-section">
-    <div class="container-fluid padding">
-        <div class="row text-center padding">
-            <div class="col-12 mt-3">
-                <h3>Contact us</h3>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
-                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>
-                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
-            </div>
-            <div class="col-12 mt-1 mb-3">
-                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">
-                    Designed by : Master Login</a>
-            </div>
-
-        </div>
-    </div>
-</footer>
+<!--<footer class="footer-section">-->
+<!--    <div class="container-fluid padding">-->
+<!--        <div class="row text-center padding">-->
+<!--            <div class="col-12 mt-3">-->
+<!--                <h3>Contact us</h3>-->
+<!--            </div>-->
+<!--            <div class="col-12 social padding">-->
+<!--                <a href="#"><i class="fab fa-facebook fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-twitter fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-google-plus-g fa-3x"></i></a>-->
+<!--                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>-->
+<!--            </div>-->
+<!--            <div class="col-12 mt-1 mb-3">-->
+<!--                &copy; 2020 Library Management System |<a href="https://phpgurukul.com/" target="_blank">-->
+<!--                    Designed by : Master Login</a>-->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
