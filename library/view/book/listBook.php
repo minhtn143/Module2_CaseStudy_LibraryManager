@@ -66,7 +66,14 @@
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
-                                                    Category: <?php echo $book->getSubjectId() ?> </li>
+                                                    Category:<?php foreach ($categories as $category): ?>
+                                                        <?php if ($category->getId() == $book->getSubjectId()): ?>
+                                                            <option selected value="<?php echo $category->getId() ?>">
+                                                                <?php echo $category->getName() ?>
+                                                            </option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </li>
                                                 <li class="list-group-item">
                                                     Publisher: <?php echo $book->getPublisher() ?></li>
                                                 <li class="list-group-item">Copyright
@@ -83,7 +90,8 @@
                                            role="button"><i class="fas fa-edit"></i> Edit</a>
                                         <!--                                                Delete btn-->
                                         <button class="btn btn-danger"
-                                                onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')"><i
+                                                onclick="confirmDel('./admin.php?page=deleteBook&bookId=<?php echo $book->getId(); ?>')">
+                                            <i
                                                     class="far fa-trash-alt"></i> Delete
                                         </button>
                                     <?php endif; ?>
