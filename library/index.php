@@ -77,7 +77,7 @@ use controller\BookController;
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <!--        BRAND LOGO-->
             <div class="container-fluid">
-                <a class="navbar-brand" href="admin.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
+                <a class="navbar-brand" href="index.php"><img src="upload/logo2.png" class="ml-3" style="width: 70px"></a>
 
                 <!--            TOGGLE-BUTTON-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -101,7 +101,6 @@ use controller\BookController;
                                 <i class="fa fa-book"></i>Books
                             </a>
                             <div class="dropdown-menu sub-menu-test" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="./index.php?page=listBook">List Books</a>
                                 <a class="dropdown-item" href="./index.php?page=borrow">Borrow books</a>
                                 <a class="dropdown-item" href="./index.php?page=listBorrowed">Borrowed books</a>
                                 <a class="dropdown-item" href="./index.php?page=listReturned">Returned books</a>
@@ -162,15 +161,16 @@ use controller\BookController;
                     case 'listBorrowed':
                         $ticketController->listBorrowed();
                         break;
-                    case 'listBook':
-                        $bookController->listBook();
-                        break;
                     case 'searchBook':
                         $bookController->search();
                         break;
                     case 'listReturned':
                         $ticketController->userReturned();
                         break;
+                    default:
+                        $bookController->listBook();
+                        break;
+
                 }
             }
 

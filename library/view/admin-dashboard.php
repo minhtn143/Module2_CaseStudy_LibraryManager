@@ -27,7 +27,7 @@
                 <div class="alert alert-warning text-center">
                     <a href="./admin.php?page=history" class="alert-link"><i class="fa fa-recycle fa-5x"></i></a>
                     <h3><?php echo $countReturned ?></h3>
-                    Times Books Returned
+                    History borrowed
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6 mt-3">

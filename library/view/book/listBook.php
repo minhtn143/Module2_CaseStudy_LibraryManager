@@ -45,7 +45,7 @@
                     <div class="modal fade" id="details-<?php echo $book->getId() ?>" tabindex="-1"
                          role="dialog" aria-labelledby="details-<?php echo $book->getId() ?>"
                          aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h3 class="modal-title" id="exampleModalLabel">Book Details</h3>

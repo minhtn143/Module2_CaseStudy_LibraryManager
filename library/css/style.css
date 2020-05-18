@@ -22,6 +22,7 @@ section {
 .error {
     color: red;
     font-style: italic;
+    font-size: 8px;
 }
 
 img.avatar {
