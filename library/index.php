@@ -59,7 +59,7 @@ use controller\BookController;
 
                 <!--            OPTIONAL-->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto mr-5">
+                    <ul class="navbar-nav ml-auto mr-2">
                         <li class="nav-item">
                             <a href="index.php" class="nav-link active"><i class="fa fa-home"></i>Home</a>
                         </li>
