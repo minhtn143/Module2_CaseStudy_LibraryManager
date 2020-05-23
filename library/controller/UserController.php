@@ -52,10 +52,10 @@ class UserController
                     $_SESSION['role'] = $user->getRole();
                     switch ($_SESSION['role']) {
                         case 1:
-                            header("location:admin.php");
+                            echo "<script> window.location='admin.php' </script>";
                             break;
                         case 5:
-                            header("location:index.php");
+                            echo "<script> window.location='index.php' </script>";
                             break;
                         default:
                             session_destroy();
@@ -204,10 +204,10 @@ class UserController
             $id = $_REQUEST['id'];
             $status = $this->userDB->checkStatus($id);
             if ($status == 'active') {
-                $this->userDB->activate_deactivate('inactive', $id);
+                $this->userDB->changeStatus('inactive', $id);
                 header("location:./admin.php?page=list-users");
             } else {
-                $this->userDB->activate_deactivate('active', $id);
+                $this->userDB->changeStatus('active', $id);
                 header("location:./admin.php?page=list-users");
             }
         }

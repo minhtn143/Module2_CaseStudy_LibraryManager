@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12 col-sm-6 my-3">
                 <div class="form-group">
-                    <table class="table text-center my-3">
+                    <table class="table table-striped text-center my-3">
                         <thead>
                         <tr>
                             <th>#</th>
